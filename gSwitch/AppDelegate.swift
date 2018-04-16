@@ -39,13 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         // Lets set dynamic on startup
-        //        if(manager.GPUMode(mode: .SetDynamic)) {
-        //            print("Set Dynamic")
-        //        } else {
-        //            print("Could not set dynamic")
-        //        }
-        
-        manager.GPUMode(mode: SwitcherMode.ForceIntergrated)
+        if(manager.GPUMode(mode: .SetDynamic)) {
+            print("Set Dynamic")
+        } else {
+            print("Could not set dynamic")
+        }
         
         processer.getHungryProcesses()
         
