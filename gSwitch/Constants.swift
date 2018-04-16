@@ -96,3 +96,7 @@ struct Constants {
     static let kCGDisplayAddFlag                     = (1 << 4)
 }
 
+extension Notification.Name {
+    static let potentialGPUChange = Notification.Name("potentialGPUChange")
+}
+

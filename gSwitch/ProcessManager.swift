@@ -14,26 +14,32 @@ struct Process {
     var pid : String
     var name : String
     
-    init(data: [String: Any]) {
-        pid = data["pid"] as! String
-        name = data["name"] as! String
+    init(data: [String: String]) {
+        pid = data["pid"]!
+        name = data["name"]!
     }
 }
 
 class ProcessManager {
-    static var ProcessList = [Process]()
-    
-    public func getHungryProcesses() {
-        ProcessManager.ProcessList.removeAll()
+    public func getHungryProcesses() -> [Process] {
+        var ProcessList = [Process]()
         
         let hungry = GSProcess.getTaskList()
         
         for process in hungry! {
-            ProcessManager.ProcessList.append(Process(data: process as! [String : Any]))
+            ProcessList.append(Process(data: process as! [String : String]))
         }
         
-        for active in ProcessManager.ProcessList {
-            print("Hungry process \(active.name) (\(active.pid))")
+        return ProcessList
+    }
+
+    public func updateProcessMenuList() {
+        let hungry = self.getHungryProcesses()
+        
+        if(hungry.count > 0) {
+            print("NOTIFY: Update gpu dependencies in menu.")
         }
+        
+        
     }
 }

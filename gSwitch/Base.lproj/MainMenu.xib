@@ -10,11 +10,44 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="gSwitch" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <menu id="YiV-UP-01K">
+        <menu title="gSwitch" id="YiV-UP-01K">
             <items>
+                <menuItem title="About" id="Sbj-bN-UUm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Preferences" id="EvT-ge-HB2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="preferencesClicked:" target="P9x-zM-Cnz" id="jJD-qD-p3f"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="yYc-Oq-THU"/>
+                <menuItem title="GPU:" id="Fwf-ff-0Lg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="1Dc-nn-1x7"/>
+                <menuItem title="Integrated Only" id="HoZ-EA-5Lv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="intergratedOnlyClicked:" target="P9x-zM-Cnz" id="bfi-Kd-vsc"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Discrete Only" id="mM1-8I-1jF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="discreteOnlyClicked:" target="P9x-zM-Cnz" id="pZ7-fq-07S"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Dynamic Switching" state="on" id="Jk4-qm-LJU">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="dynamicSwitchingClicked:" target="P9x-zM-Cnz" id="oJ5-qw-WYZ"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="da2-QV-YDX"/>
                 <menuItem title="Quit" id="gZe-7v-L4S">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -22,9 +55,14 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="134" y="35"/>
         </menu>
         <customObject id="P9x-zM-Cnz" customClass="StatusMenuController" customModule="gSwitch" customModuleProvider="target">
             <connections>
+                <outlet property="CurrentGPU" destination="Fwf-ff-0Lg" id="B4D-Vy-fw2"/>
+                <outlet property="DiscreteOnlyItem" destination="mM1-8I-1jF" id="JJV-iA-Xxa"/>
+                <outlet property="DynamicSwitchingItem" destination="Jk4-qm-LJU" id="aYz-h1-MZ5"/>
+                <outlet property="IntegratedOnlyItem" destination="HoZ-EA-5Lv" id="oUb-ct-MOx"/>
                 <outlet property="statusMenu" destination="YiV-UP-01K" id="RT3-Dw-B7o"/>
             </connections>
         </customObject>

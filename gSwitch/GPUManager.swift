@@ -10,8 +10,37 @@ import Foundation
 import IOKit
 
 class GPUManager {
-    static var _connect: io_connect_t = IO_OBJECT_NULL;
+    var _connect: io_connect_t = IO_OBJECT_NULL;
+    var integratedName: String?
+    var discreteName: String?
+    
+    var currentGPU: String?
+    
     var requestedMode: SwitcherMode?
+    
+    init() {
+        let gpus = getGpuNames()
+        
+        /**
+            This is the first thing the app does so if
+            something is wrong it will silently fail.
+         
+            This only works if there are exactly 2 gpus
+            and the integrated one is intel and the discrete
+            one is not intel (AMD or NVIDIA).
+         
+            If apple changes the status quo this will break
+        */
+        for gpu in gpus {
+            if gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) {
+                self.integratedName = gpu
+            } else {
+                self.discreteName = gpu
+            }
+        }
+        
+        print("Integrated: \(integratedName ?? "Unkown")\nDiscrete: \(discreteName ?? "Unknown")")
+    }
     
     public func connect() throws {
         var kernResult: kern_return_t = 0
@@ -31,12 +60,12 @@ class GPUManager {
             throw RuntimeError.CanNotConnect("No matching drivers found.");
         }
         
-        kernResult = IOServiceOpen(service, mach_task_self_, 0, &GPUManager._connect);
+        kernResult = IOServiceOpen(service, mach_task_self_, 0, &self._connect);
         if kernResult != KERN_SUCCESS {
             throw RuntimeError.CanNotConnect("IOServiceOpen returned \(kernResult)");
         }
         
-        kernResult = IOConnectCallScalarMethod(GPUManager._connect, UInt32(DispatchSelectors.kOpen.rawValue), nil, 0, nil, nil);
+        kernResult = IOConnectCallScalarMethod(self._connect, UInt32(DispatchSelectors.kOpen.rawValue), nil, 0, nil, nil);
         if kernResult != KERN_SUCCESS {
             throw RuntimeError.CanNotConnect("IOConnectCallScalarMethod returned \(kernResult)")
         }
@@ -46,30 +75,30 @@ class GPUManager {
     
     public func close() -> Bool {
         var kernResult: kern_return_t = 0
-        if GPUManager._connect == IO_OBJECT_NULL {
+        if self._connect == IO_OBJECT_NULL {
             return true;
         }
         
-        kernResult = IOConnectCallScalarMethod(GPUManager._connect, UInt32(DispatchSelectors.kClose.rawValue), nil, 0, nil, nil);
+        kernResult = IOConnectCallScalarMethod(self._connect, UInt32(DispatchSelectors.kClose.rawValue), nil, 0, nil, nil);
         if kernResult != KERN_SUCCESS {
             print("IOConnectCallScalarMethod returned ", kernResult)
             return false
         }
         
-        kernResult = IOServiceClose(GPUManager._connect);
+        kernResult = IOServiceClose(self._connect);
         if kernResult != KERN_SUCCESS {
             print("IOServiceClose returned", kernResult)
             return false
         }
         
-        GPUManager._connect = IO_OBJECT_NULL
+        self._connect = IO_OBJECT_NULL
         print("Driver Connection Closed")
         
         return true
     }
     
     public func GPUMode(mode: SwitcherMode) -> Bool {
-        let connect = GPUManager._connect
+        let connect = self._connect
         
         requestedMode = mode
         
@@ -81,7 +110,6 @@ class GPUManager {
         
         switch mode {
         case .ForceIntergrated:
-            
             let integrated = isUsingIntegratedGPU()
             print("Requesting integrated, are we integrated?  \(integrated)")
             
@@ -93,8 +121,16 @@ class GPUManager {
             let discrete = isUsingDedicatedGPU()
             print("Requesting discrete, are we discrete?  \(discrete)")
             
+            /**
+                Why not use the way macos designed it?
+                And leaves the user the ability to change back via system pref
+            */
+            
             if (mode == .ForceDiscrete && !discrete) {
-                status = SwitchGPU(connect: connect)
+                _ = setFeatureInfo(connect: connect, feature: Features.Policy, enabled: true)
+                _ = setSwitchPolicy(connect: connect)
+                
+                status = setDynamicSwitching(connect: connect, enabled: false)
             }
         case .SetDynamic:
             // Set switch policy back, make the MBP think it's an auto switching one once again
@@ -108,19 +144,23 @@ class GPUManager {
     }
     
     public func isUsingIntegratedGPU() -> Bool {
-        if GPUManager._connect == IO_OBJECT_NULL {
-            return false  //throw
+        if self._connect == IO_OBJECT_NULL {
+            return false  //probably need to throw if we lost connection?
         }
         
-        return getGPUState(connect: GPUManager._connect, input: GPUState.GraphicsCard) != 0
+        let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
+        
+        currentGPU = isIntegrated ? integratedName : discreteName
+        
+        return isIntegrated
     }
     
     public func isUsingDynamicSwitching() -> Bool {
-        if GPUManager._connect == IO_OBJECT_NULL {
+        if self._connect == IO_OBJECT_NULL {
             return false //throw
         }
         
-        return getGPUState(connect: GPUManager._connect, input: GPUState.GpuSelect) != 0
+        return getGPUState(connect: self._connect, input: GPUState.GpuSelect) != 0
     }
     
     public func isUsingDedicatedGPU() -> Bool {
@@ -166,7 +206,7 @@ class GPUManager {
         );
 
         if kernResult == KERN_SUCCESS {
-            print("Successfully set state")
+            print("Modified state with \(state)")
         } else {
             print("ERROR: Set state returned", kernResult)
         }
