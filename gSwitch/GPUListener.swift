@@ -32,10 +32,11 @@ class GPUListener {
             
             let this = unsafeBitCast(data, to: GPUListener.self)
             
-            print("Get hungry processes to set in menu")
+            print("NOTIFY:  Get potential hungry processes to set in menu")
+            NotificationCenter.default.post(name: .checkForHungryProcesses, object: nil)
         
-            if(this._manager!.isUsingDedicatedGPU() && this._manager!.requestedMode == SwitcherMode.ForceIntergrated) {
-                //call potentialGPUChange
+            if(this._manager!.UpdateGPUStateAndisUsingIntegratedGPU() && this._manager!.requestedMode == SwitcherMode.ForceIntergrated) {
+                //calls potentialGPUChange
                 print("NOTIFY: Switched from desired integrated to discrete")
             }
             
@@ -46,18 +47,16 @@ class GPUListener {
 
                 this._notificationQueue?.async(execute: {
                     sleep(1)
-
-                    let isUsingIntegrated = this._manager!.isUsingIntegratedGPU()
+                    
+                    //calls potentialGPUChange
+                    
+                    let isUsingIntegrated = this._manager!.UpdateGPUStateAndisUsingIntegratedGPU()
                     let requestedMode = this._manager!.requestedMode
 
                     if(!isUsingIntegrated && requestedMode == SwitcherMode.ForceIntergrated) {
                         if(this._manager!.GPUMode(mode: .ForceIntergrated)) {
-                            //call potentialGPUChange (forced)
                             print("NOTIFY: Forced integrated GPU From dedicated GPU")
                         }
-                    } else {
-                        //call potentialGPUChange
-                        print("NOTIFY: current gpu name")
                     }
                 })
             }

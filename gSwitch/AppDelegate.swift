@@ -29,9 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
         
-        /** Get current state so current gpu name exists for use in menu */
-        _ = manager.isUsingIntegratedGPU()
-        
         /**
          TODO: Could add in ability to select mode with args here instead of hard .SetDynamic
          */
@@ -42,6 +39,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             print("Could not set dynamic")
         }
+        
+        /** Get current state so current gpu name exists for use in menu */
+        _ = manager.UpdateGPUStateAndisUsingIntegratedGPU()
         
         
         /** Are there any hungry processes off the bat?  Updates menu if so */

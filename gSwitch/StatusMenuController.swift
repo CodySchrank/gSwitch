@@ -28,11 +28,11 @@ class StatusMenuController: NSObject {
         
         statusItem.menu = statusMenu
         
-        changeMenuIcon(state: .SetDynamic)
+        CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
-        CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unkown")"
+        NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notification:)), name: .potentialGPUChange, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notfication:)), name: .potentialGPUChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProcessList(notification:)), name: .updateProcessListInMenu, object: nil)
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
@@ -46,7 +46,7 @@ class StatusMenuController: NSObject {
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         
         if(hungryProcesses!.count > 0) {
-            print("NOTIFY: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
+            print("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             return
         }
         
@@ -54,7 +54,6 @@ class StatusMenuController: NSObject {
         DiscreteOnlyItem.state = .off
         DynamicSwitchingItem.state = .off
         
-        changeMenuIcon(state: .ForceIntergrated)
         _ = appDelegate?.manager.GPUMode(mode: .ForceIntergrated)
         print("NOTIFY:  Set Force Integrated")
     }
@@ -68,7 +67,6 @@ class StatusMenuController: NSObject {
         DiscreteOnlyItem.state = .on
         DynamicSwitchingItem.state = .off
         
-        changeMenuIcon(state: .ForceDiscrete)
         _ = appDelegate?.manager.GPUMode(mode: .ForceDiscrete)
         print("NOTIFY:  Set Force Discrete")
     }
@@ -82,17 +80,12 @@ class StatusMenuController: NSObject {
         DiscreteOnlyItem.state = .off
         DynamicSwitchingItem.state = .on
         
-        changeMenuIcon(state: .SetDynamic)
         _ = appDelegate?.manager.GPUMode(mode: .SetDynamic)
         print("NOTIFY:  Set Dynamic")
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
-    }
-    
-    @objc private func changeGPUNameInMenu(notfication: NSNotification) {
-        CurrentGPU.title = "GPU: \((appDelegate?.manager.currentGPU)!)"
     }
     
     private func changeMenuIcon(state: SwitcherMode) {
@@ -110,5 +103,35 @@ class StatusMenuController: NSObject {
         icon?.isTemplate = true // best for dark mode
         statusItem.image = icon
         statusItem.menu = statusMenu
+    }
+    
+    @objc private func changeGPUNameInMenu(notification: NSNotification) {
+        DispatchQueue.main.async {
+            guard let currentGPU = self.appDelegate?.manager.currentGPU,
+                  let integratedName = self.appDelegate?.manager.integratedName
+            else {
+                print("Can't change gpu name in menu, Current GPU Unknown")
+                return
+            }
+            
+            self.CurrentGPU.title = "GPU: \(currentGPU)"
+            
+            if(currentGPU == integratedName) {
+                self.changeMenuIcon(state: SwitcherMode.ForceIntergrated)
+            } else {
+                self.changeMenuIcon(state: SwitcherMode.ForceDiscrete)
+            }
+        }
+    }
+    
+    @objc private func updateProcessList(notification: NSNotification) {
+        guard let hungry = notification.object as? [Process] else {
+            print("Could not update process list, invalid object received")
+            return
+        }
+        
+        for process in hungry {
+            print("HUNGRY: \(process.name) (\(process.pid))")
+        }
     }
 }

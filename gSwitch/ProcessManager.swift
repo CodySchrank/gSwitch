@@ -21,6 +21,10 @@ struct Process {
 }
 
 class ProcessManager {
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
+    }
+    
     public func getHungryProcesses() -> [Process] {
         var ProcessList = [Process]()
         
@@ -36,10 +40,10 @@ class ProcessManager {
     public func updateProcessMenuList() {
         let hungry = self.getHungryProcesses()
         
-        if(hungry.count > 0) {
-            print("NOTIFY: Update gpu dependencies in menu.")
-        }
-        
-        
+        NotificationCenter.default.post(name: .updateProcessListInMenu, object: hungry)
+    }
+    
+    @objc private func updateProcessMenuList(notification: NSNotification) {
+        self.updateProcessMenuList()
     }
 }

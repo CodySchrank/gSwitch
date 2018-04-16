@@ -98,5 +98,7 @@ struct Constants {
 
 extension Notification.Name {
     static let potentialGPUChange = Notification.Name("potentialGPUChange")
+    static let checkForHungryProcesses = Notification.Name("checkForHungryProcesses")
+    static let updateProcessListInMenu = Notification.Name("updateProcessListInMenu")
 }
 
