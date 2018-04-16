@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="gSwitch" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu id="YiV-UP-01K">
+            <items>
+                <menuItem title="Quit" id="gZe-7v-L4S">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitClicked:" target="P9x-zM-Cnz" id="g4j-Un-Wov"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+        <customObject id="P9x-zM-Cnz" customClass="StatusMenuController" customModule="gSwitch" customModuleProvider="target">
+            <connections>
+                <outlet property="statusMenu" destination="YiV-UP-01K" id="RT3-Dw-B7o"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

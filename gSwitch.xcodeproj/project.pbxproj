@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		82233EA120844AC9006C57E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233EA020844AC9006C57E7 /* AppDelegate.swift */; };
+		82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82233EA220844ACA006C57E7 /* Assets.xcassets */; };
+		82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82233EA420844ACA006C57E7 /* MainMenu.xib */; };
+		82233EB220844ACA006C57E7 /* gSwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233EB120844ACA006C57E7 /* gSwitchTests.swift */; };
+		82233EBD20844ACA006C57E7 /* gSwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233EBC20844ACA006C57E7 /* gSwitchUITests.swift */; };
+		82233ED320844ADF006C57E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECB20844ADF006C57E7 /* Constants.swift */; };
+		82233ED420844ADF006C57E7 /* GSProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECC20844ADF006C57E7 /* GSProcess.m */; };
+		82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECE20844ADF006C57E7 /* GPUManager.swift */; };
+		82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECF20844ADF006C57E7 /* StatusMenuController.swift */; };
+		82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED020844ADF006C57E7 /* GPUListener.swift */; };
+		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		82233EAE20844ACA006C57E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82233E9520844AC9006C57E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82233E9C20844AC9006C57E7;
+			remoteInfo = gSwitch;
+		};
+		82233EB920844ACA006C57E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82233E9520844AC9006C57E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82233E9C20844AC9006C57E7;
+			remoteInfo = gSwitch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		82233E9D20844AC9006C57E7 /* gSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82233EA020844AC9006C57E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		82233EA220844ACA006C57E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82233EA520844ACA006C57E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		82233EA720844ACA006C57E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82233EA820844ACA006C57E7 /* gSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gSwitch.entitlements; sourceTree = "<group>"; };
+		82233EAD20844ACA006C57E7 /* gSwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gSwitchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82233EB120844ACA006C57E7 /* gSwitchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gSwitchTests.swift; sourceTree = "<group>"; };
+		82233EB320844ACA006C57E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82233EB820844ACA006C57E7 /* gSwitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gSwitchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82233EBC20844ACA006C57E7 /* gSwitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gSwitchUITests.swift; sourceTree = "<group>"; };
+		82233EBE20844ACA006C57E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gSwitch-Bridging-Header.h"; sourceTree = "<group>"; };
+		82233ECB20844ADF006C57E7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		82233ECC20844ADF006C57E7 /* GSProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSProcess.m; sourceTree = "<group>"; };
+		82233ECD20844ADF006C57E7 /* GSProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSProcess.h; sourceTree = "<group>"; };
+		82233ECE20844ADF006C57E7 /* GPUManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUManager.swift; sourceTree = "<group>"; };
+		82233ECF20844ADF006C57E7 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		82233ED020844ADF006C57E7 /* GPUListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUListener.swift; sourceTree = "<group>"; };
+		82233ED120844ADF006C57E7 /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82233E9A20844AC9006C57E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EAA20844ACA006C57E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EB520844ACA006C57E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		82233E9420844AC9006C57E7 = {
+			isa = PBXGroup;
+			children = (
+				82233E9F20844AC9006C57E7 /* gSwitch */,
+				82233EB020844ACA006C57E7 /* gSwitchTests */,
+				82233EBB20844ACA006C57E7 /* gSwitchUITests */,
+				82233E9E20844AC9006C57E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		82233E9E20844AC9006C57E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82233E9D20844AC9006C57E7 /* gSwitch.app */,
+				82233EAD20844ACA006C57E7 /* gSwitchTests.xctest */,
+				82233EB820844ACA006C57E7 /* gSwitchUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82233E9F20844AC9006C57E7 /* gSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				82233EA020844AC9006C57E7 /* AppDelegate.swift */,
+				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
+				82233ECB20844ADF006C57E7 /* Constants.swift */,
+				82233ED020844ADF006C57E7 /* GPUListener.swift */,
+				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
+				82233ECD20844ADF006C57E7 /* GSProcess.h */,
+				82233ECC20844ADF006C57E7 /* GSProcess.m */,
+				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
+				82233EA220844ACA006C57E7 /* Assets.xcassets */,
+				82233EA420844ACA006C57E7 /* MainMenu.xib */,
+				82233EA720844ACA006C57E7 /* Info.plist */,
+				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
+				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
+			);
+			path = gSwitch;
+			sourceTree = "<group>";
+		};
+		82233EB020844ACA006C57E7 /* gSwitchTests */ = {
+			isa = PBXGroup;
+			children = (
+				82233EB120844ACA006C57E7 /* gSwitchTests.swift */,
+				82233EB320844ACA006C57E7 /* Info.plist */,
+			);
+			path = gSwitchTests;
+			sourceTree = "<group>";
+		};
+		82233EBB20844ACA006C57E7 /* gSwitchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				82233EBC20844ACA006C57E7 /* gSwitchUITests.swift */,
+				82233EBE20844ACA006C57E7 /* Info.plist */,
+			);
+			path = gSwitchUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		82233E9C20844AC9006C57E7 /* gSwitch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82233EC120844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitch" */;
+			buildPhases = (
+				82233E9920844AC9006C57E7 /* Sources */,
+				82233E9A20844AC9006C57E7 /* Frameworks */,
+				82233E9B20844AC9006C57E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gSwitch;
+			productName = gSwitch;
+			productReference = 82233E9D20844AC9006C57E7 /* gSwitch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		82233EAC20844ACA006C57E7 /* gSwitchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82233EC420844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitchTests" */;
+			buildPhases = (
+				82233EA920844ACA006C57E7 /* Sources */,
+				82233EAA20844ACA006C57E7 /* Frameworks */,
+				82233EAB20844ACA006C57E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82233EAF20844ACA006C57E7 /* PBXTargetDependency */,
+			);
+			name = gSwitchTests;
+			productName = gSwitchTests;
+			productReference = 82233EAD20844ACA006C57E7 /* gSwitchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		82233EB720844ACA006C57E7 /* gSwitchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82233EC720844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitchUITests" */;
+			buildPhases = (
+				82233EB420844ACA006C57E7 /* Sources */,
+				82233EB520844ACA006C57E7 /* Frameworks */,
+				82233EB620844ACA006C57E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82233EBA20844ACA006C57E7 /* PBXTargetDependency */,
+			);
+			name = gSwitchUITests;
+			productName = gSwitchUITests;
+			productReference = 82233EB820844ACA006C57E7 /* gSwitchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82233E9520844AC9006C57E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = CodySchrank;
+				TargetAttributes = {
+					82233E9C20844AC9006C57E7 = {
+						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
+					};
+					82233EAC20844ACA006C57E7 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 82233E9C20844AC9006C57E7;
+					};
+					82233EB720844ACA006C57E7 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 82233E9C20844AC9006C57E7;
+					};
+				};
+			};
+			buildConfigurationList = 82233E9820844AC9006C57E7 /* Build configuration list for PBXProject "gSwitch" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 82233E9420844AC9006C57E7;
+			productRefGroup = 82233E9E20844AC9006C57E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82233E9C20844AC9006C57E7 /* gSwitch */,
+				82233EAC20844ACA006C57E7 /* gSwitchTests */,
+				82233EB720844ACA006C57E7 /* gSwitchUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82233E9B20844AC9006C57E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
+				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EAB20844ACA006C57E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EB620844ACA006C57E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82233E9920844AC9006C57E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */,
+				82233EA120844AC9006C57E7 /* AppDelegate.swift in Sources */,
+				82233ED320844ADF006C57E7 /* Constants.swift in Sources */,
+				82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */,
+				82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */,
+				82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */,
+				82233ED420844ADF006C57E7 /* GSProcess.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EA920844ACA006C57E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82233EB220844ACA006C57E7 /* gSwitchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82233EB420844ACA006C57E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82233EBD20844ACA006C57E7 /* gSwitchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82233EAF20844ACA006C57E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82233E9C20844AC9006C57E7 /* gSwitch */;
+			targetProxy = 82233EAE20844ACA006C57E7 /* PBXContainerItemProxy */;
+		};
+		82233EBA20844ACA006C57E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82233E9C20844AC9006C57E7 /* gSwitch */;
+			targetProxy = 82233EB920844ACA006C57E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		82233EA420844ACA006C57E7 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82233EA520844ACA006C57E7 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		82233EBF20844ACA006C57E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		82233EC020844ACA006C57E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		82233EC220844ACA006C57E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = gSwitch/gSwitch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		82233EC320844ACA006C57E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = gSwitch/gSwitch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		82233EC520844ACA006C57E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gSwitch.app/Contents/MacOS/gSwitch";
+			};
+			name = Debug;
+		};
+		82233EC620844ACA006C57E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gSwitch.app/Contents/MacOS/gSwitch";
+			};
+			name = Release;
+		};
+		82233EC820844ACA006C57E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = gSwitch;
+			};
+			name = Debug;
+		};
+		82233EC920844ACA006C57E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z26D67C784;
+				INFOPLIST_FILE = gSwitchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = gSwitch;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82233E9820844AC9006C57E7 /* Build configuration list for PBXProject "gSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82233EBF20844ACA006C57E7 /* Debug */,
+				82233EC020844ACA006C57E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82233EC120844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82233EC220844ACA006C57E7 /* Debug */,
+				82233EC320844ACA006C57E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82233EC420844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82233EC520844ACA006C57E7 /* Debug */,
+				82233EC620844ACA006C57E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82233EC720844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82233EC820844ACA006C57E7 /* Debug */,
+				82233EC920844ACA006C57E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82233E9520844AC9006C57E7 /* Project object */;
+}
