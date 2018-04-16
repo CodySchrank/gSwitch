@@ -1,6 +1,6 @@
 //
 //  GPUListener.swift
-//  GSwitch
+//  gSwitch
 //
 //  Created by Cody Schrank on 4/15/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.

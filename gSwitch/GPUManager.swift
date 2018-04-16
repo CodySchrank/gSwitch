@@ -1,6 +1,6 @@
 //
 //  GPUManager.swift
-//  GSwitch
+//  gSwitch
 //
 //  Created by Cody Schrank on 4/14/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.

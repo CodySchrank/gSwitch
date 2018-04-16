@@ -1,12 +1,12 @@
 //
 //  GSProcess.m
-//  gfxCardStatus
+//  gSwitch
 //
-//  Created by Cody Krieger on 6/21/11.
-//  Copyright 2011 Cody Krieger. All rights reserved.
+//  https://github.com/codykrieger/gfxCardStatus/blob/master/LICENSE @ Jun 17, 2012
+//  Copyright (c) 2010-2012, Cody Krieger
+//  All rights reserved.
 //
 //  Original task list functionality Copyright 2010 Thierry Coppey.
-//  (look back in repo history at proc.h/m)
 //
 
 #import "GSProcess.h"
