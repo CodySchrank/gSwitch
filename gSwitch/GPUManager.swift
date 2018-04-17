@@ -8,6 +8,7 @@
 
 import Foundation
 import IOKit
+import SwiftyBeaver
 
 class GPUManager {
     var _connect: io_connect_t = IO_OBJECT_NULL;
@@ -15,6 +16,8 @@ class GPUManager {
     var discreteName: String?
     
     var currentGPU: String?
+    
+    let log = SwiftyBeaver.self
     
     var requestedMode: SwitcherMode?
     
@@ -39,7 +42,7 @@ class GPUManager {
             }
         }
         
-        print("Integrated: \(integratedName ?? "Unkown")\nDiscrete: \(discreteName ?? "Unknown")")
+        log.info("Integrated: \(integratedName ?? "Unknown")\nDiscrete: \(discreteName ?? "Unknown")")
     }
     
     public func connect() throws {
@@ -70,7 +73,7 @@ class GPUManager {
             throw RuntimeError.CanNotConnect("IOConnectCallScalarMethod returned \(kernResult)")
         }
         
-        print("Successfully connected")
+        log.info("Successfully connected")
     }
     
     public func close() -> Bool {
@@ -81,18 +84,18 @@ class GPUManager {
         
         kernResult = IOConnectCallScalarMethod(self._connect, UInt32(DispatchSelectors.kClose.rawValue), nil, 0, nil, nil);
         if kernResult != KERN_SUCCESS {
-            print("IOConnectCallScalarMethod returned ", kernResult)
+            log.error("IOConnectCallScalarMethod returned \(kernResult)")
             return false
         }
         
         kernResult = IOServiceClose(self._connect);
         if kernResult != KERN_SUCCESS {
-            print("IOServiceClose returned", kernResult)
+            log.error("IOServiceClose returned \(kernResult)")
             return false
         }
         
         self._connect = IO_OBJECT_NULL
-        print("Driver Connection Closed")
+        log.info("Driver Connection Closed")
         
         return true
     }
@@ -111,7 +114,7 @@ class GPUManager {
         switch mode {
         case .ForceIntergrated:
             let integrated = CheckGPUStateAndisUsingIntegratedGPU()
-            print("Requesting integrated, are we integrated?  \(integrated)")
+            log.info("Requesting integrated, are we integrated?  \(integrated)")
             
             if (mode == .ForceIntergrated && !integrated) {
                 status = SwitchGPU(connect: connect)
@@ -119,7 +122,7 @@ class GPUManager {
             
         case .ForceDiscrete:
             let discrete = !CheckGPUStateAndisUsingIntegratedGPU()
-            print("Requesting discrete, are we discrete?  \(discrete)")
+            log.info("Requesting discrete, are we discrete?  \(discrete)")
             
             /**
                 Why not use the way macos designed it?
@@ -153,12 +156,12 @@ class GPUManager {
     */
     public func CheckGPUStateAndisUsingIntegratedGPU() -> Bool {
         if self._connect == IO_OBJECT_NULL {
-            print("Lost connection to gpu")
+            log.error("Lost connection to gpu")
             return false  //probably need to throw or exit if we lost connection?
         }
         
         NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
-        print("NOTIFY: checkGPUState ~ Checking GPU...")
+        log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
         let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
         
@@ -214,9 +217,9 @@ class GPUManager {
         );
 
         if kernResult == KERN_SUCCESS {
-            print("Modified state with \(state)")
+            log.info("Modified state with \(state)")
         } else {
-            print("ERROR: Set state returned", kernResult)
+            log.info("ERROR: Set state returned \(kernResult)")
         }
             
         return kernResult == KERN_SUCCESS
@@ -249,9 +252,9 @@ class GPUManager {
         );
         
         if kernResult == KERN_SUCCESS {
-            print("Successfully got state, count \(outputCount), value \(output)")
+            log.info("Successfully got state, count \(outputCount), value \(output)")
         } else {
-            print("ERROR: Get state returned", kernResult)
+            log.info("ERROR: Get state returned \(kernResult)")
         }
         
         return output

@@ -18,6 +18,9 @@
 		82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECF20844ADF006C57E7 /* StatusMenuController.swift */; };
 		82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED020844ADF006C57E7 /* GPUListener.swift */; };
 		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
+		824BA5B92085C49A00A5261B /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; };
+		824BA5BA2085C49A00A5261B /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		824BA5BE2085C4D200A5261B /* SwiftyBeaver.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */; };
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,30 @@
 			remoteInfo = gSwitch;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		824BA5BB2085C49A00A5261B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				824BA5BA2085C49A00A5261B /* SwiftyBeaver.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		824BA5BC2085C4B800A5261B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				824BA5BE2085C4D200A5261B /* SwiftyBeaver.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		82233E9D20844AC9006C57E7 /* gSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +86,8 @@
 		82233ECF20844ADF006C57E7 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		82233ED020844ADF006C57E7 /* GPUListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUListener.swift; sourceTree = "<group>"; };
 		82233ED120844ADF006C57E7 /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+		824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824BA5B92085C49A00A5261B /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +124,8 @@
 				82233EB020844ACA006C57E7 /* gSwitchTests */,
 				82233EBB20844ACA006C57E7 /* gSwitchUITests */,
 				82233E9E20844AC9006C57E7 /* Products */,
+				824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */,
+				824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +188,8 @@
 				82233E9920844AC9006C57E7 /* Sources */,
 				82233E9A20844AC9006C57E7 /* Frameworks */,
 				82233E9B20844AC9006C57E7 /* Resources */,
+				824BA5BB2085C49A00A5261B /* Embed Frameworks */,
+				824BA5BC2085C4B800A5261B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -453,6 +487,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z26D67C784;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = gSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,6 +513,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z26D67C784;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = gSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

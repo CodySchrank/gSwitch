@@ -8,12 +8,15 @@
 
 import Foundation
 import Cocoa
+import SwiftyBeaver
 
 class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     let notificationCenter = NSUserNotificationCenter.default
     var _manager: GPUManager?
     
     var lastGPU: String?
+    
+    let log = SwiftyBeaver.self
     
     override init() {
         super.init()
@@ -45,7 +48,7 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     }
     
     @objc public func cleanUp() {
-        print("CLEAN: Notifications are gross")
+        log.info("CLEAN: Notifications are gross")
         notificationCenter.removeAllDeliveredNotifications()
     }
     

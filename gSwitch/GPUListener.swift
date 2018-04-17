@@ -8,11 +8,14 @@
 
 import Foundation
 import CoreGraphics
+import SwiftyBeaver
 
 class GPUListener {
     var _notificationQueue: DispatchQueue?
     var _manager: GPUManager?
     var _processor: ProcessManager?
+    
+    let log = SwiftyBeaver.self
     
     init() {
         self._notificationQueue = DispatchQueue.init(label: Constants.NOTIFICATION_QUEUE)
@@ -22,7 +25,7 @@ class GPUListener {
         self._manager = manager
         self._processor = processor
         displayCallback()
-        print("Listening")
+        log.info("Listening")
     }
     
     private func displayCallback() {
@@ -31,17 +34,17 @@ class GPUListener {
             
             let this = unsafeBitCast(data, to: GPUListener.self)
             
-            print("NOTIFY: checkForHungryProcesses ~ for menu update")
+            this.log.info("NOTIFY: checkForHungryProcesses ~ for menu update")
             NotificationCenter.default.post(name: .checkForHungryProcesses, object: nil)
         
             if(this._manager!.CheckGPUStateAndisUsingIntegratedGPU() && this._manager!.requestedMode == SwitcherMode.ForceIntergrated) {
                 //calls .checkGPUState
-                print("NOTIFY?: Switched from desired integrated to discrete")
+                this.log.info("NOTIFY?: Switched from desired integrated to discrete")
             }
             
             
             if Int(flags.rawValue) & Constants.kCGDisplaySetModeFlag > 0 {
-                print("Dedicated Graphics Card Called")
+                this.log.info("Dedicated Graphics Card Called")
                 _ = this._processor?.getHungryProcesses()
 
                 this._notificationQueue?.async(execute: {
@@ -54,11 +57,11 @@ class GPUListener {
 
                     if(!isUsingIntegrated && requestedMode == SwitcherMode.ForceIntergrated) {
                         if(this._manager!.GPUMode(mode: .ForceIntergrated)) {
-                            print("NOTIFY?: Forced integrated GPU From dedicated GPU")
+                            this.log.info("NOTIFY?: Forced integrated GPU From dedicated GPU")
                         }
                     } else {
                         // usually gets called when change but sometimes gets called when no change?
-                        print("NOTIFY: GPU maybe Changed")
+                        this.log.info("NOTIFY: GPU maybe Changed")
                         NotificationCenter.default.post(name: .probableGPUChange, object: this._manager?.currentGPU)
                     }
                 })

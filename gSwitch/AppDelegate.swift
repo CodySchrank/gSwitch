@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyBeaver
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -14,18 +15,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let listener = GPUListener()
     let processer = ProcessManager()
     let notifications = UserNotificationManager()
+    let log = SwiftyBeaver.self
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** If we cant connect to gpu there is no point in continuing */
         do {
             try manager.connect()
         } catch RuntimeError.CanNotConnect(let errorMessage) {
-            print(errorMessage)
+            log.error(errorMessage)
             NSApplication.shared.terminate(self)
         } catch {
-            print("Unknown error occured")
+            log.error("Unknown error occured")
             NSApplication.shared.terminate(self)
         }
+        
+        let console = ConsoleDestination()  // log to Xcode Console
+        let file = FileDestination()  // log to default swiftybeaver.log file
+        log.addDestination(console)
+        log.addDestination(file)
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
@@ -36,9 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Lets set dynamic on startup */
         if(manager.GPUMode(mode: .SetDynamic)) {
-            print("Set Dynamic")
+            log.info("Set Dynamic")
         } else {
-            print("Could not set dynamic")
+            log.warning("Could not set dynamic")
         }
         
         /** Get current state so current gpu name exists for use in menu */
@@ -59,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Lets go back to dynamic when exiting */
         if(manager.GPUMode(mode: .SetDynamic)) {
-            print("Set state to dynamic mode")
+            log.info("Set state to dynamic mode")
         }
         
         _ = manager.close()

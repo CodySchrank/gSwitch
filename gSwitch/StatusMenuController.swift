@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyBeaver
 
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
@@ -22,6 +23,8 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var DynamicSwitchingItem: NSMenuItem!
     
     var appDelegate: AppDelegate?
+    
+    let log = SwiftyBeaver.self
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
@@ -48,7 +51,7 @@ class StatusMenuController: NSObject {
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         
         if(hungryProcesses!.count > 0) {
-            print("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
+            log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             return
         }
         
@@ -57,7 +60,7 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .off
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceIntergrated)
-        print("NOTIFY?:  Set Force Integrated")
+        log.info("NOTIFY?:  Set Force Integrated")
     }
     
     @IBAction func discreteOnlyClicked(_ sender: NSMenuItem) {
@@ -70,7 +73,7 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .off
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceDiscrete)
-        print("NOTIFY?:  Set Force Discrete")
+        log.info("NOTIFY?:  Set Force Discrete")
     }
     
     @IBAction func dynamicSwitchingClicked(_ sender: NSMenuItem) {
@@ -83,7 +86,7 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .on
         
         _ = appDelegate?.manager.GPUMode(mode: .SetDynamic)
-        print("NOTIFY?:  Set Dynamic")
+        log.info("NOTIFY?:  Set Dynamic")
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
@@ -118,7 +121,7 @@ class StatusMenuController: NSObject {
             guard let currentGPU = self.appDelegate?.manager.currentGPU,
                   let integratedName = self.appDelegate?.manager.integratedName
             else {
-                print("Can't change gpu name in menu, Current GPU Unknown")
+                self.log.warning("Can't change gpu name in menu, Current GPU Unknown")
                 return
             }
             
@@ -136,7 +139,7 @@ class StatusMenuController: NSObject {
     
     @objc private func updateProcessList(notification: NSNotification) {
         guard var hungry = notification.object as? [Process] else {
-            print("Could not update process list, invalid object received")
+            log.warning("Could not update process list, invalid object received")
             return
         }
         

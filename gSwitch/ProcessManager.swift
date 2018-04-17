@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 import IOKit
+import SwiftyBeaver
 
 struct Process {
     var pid : String
@@ -21,6 +22,8 @@ struct Process {
 }
 
 class ProcessManager {
+    let log = SwiftyBeaver.self
+    
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(_updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
         
@@ -45,7 +48,7 @@ class ProcessManager {
         let hungry = self.getHungryProcesses()
         
         NotificationCenter.default.post(name: .updateProcessListInMenu, object: hungry)
-        print("UPDATE: Polling for hungry processes")
+        log.info("UPDATE: Polling for hungry processes")
     }
     
     @objc private func _updateProcessMenuList(notification: NSNotification) {
