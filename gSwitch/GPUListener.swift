@@ -37,7 +37,7 @@ class GPUListener {
         
             if(this._manager!.UpdateGPUStateAndisUsingIntegratedGPU() && this._manager!.requestedMode == SwitcherMode.ForceIntergrated) {
                 //calls potentialGPUChange
-                print("NOTIFY: Switched from desired integrated to discrete")
+                print("NOTIFY?: Switched from desired integrated to discrete")
             }
             
             
@@ -55,7 +55,7 @@ class GPUListener {
 
                     if(!isUsingIntegrated && requestedMode == SwitcherMode.ForceIntergrated) {
                         if(this._manager!.GPUMode(mode: .ForceIntergrated)) {
-                            print("NOTIFY: Forced integrated GPU From dedicated GPU")
+                            print("NOTIFY?: Forced integrated GPU From dedicated GPU")
                         }
                     }
                 })

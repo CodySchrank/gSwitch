@@ -43,7 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Get current state so current gpu name exists for use in menu */
         _ = manager.UpdateGPUStateAndisUsingIntegratedGPU()
         
-        
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
     }

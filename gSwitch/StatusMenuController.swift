@@ -15,6 +15,8 @@ class StatusMenuController: NSObject {
     
     @IBOutlet weak var IntegratedOnlyItem: NSMenuItem!
     
+    @IBOutlet weak var Dependencies: NSMenuItem!
+    
     @IBOutlet weak var DiscreteOnlyItem: NSMenuItem!
     
     @IBOutlet weak var DynamicSwitchingItem: NSMenuItem!
@@ -55,7 +57,7 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .off
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceIntergrated)
-        print("NOTIFY:  Set Force Integrated")
+        print("NOTIFY?:  Set Force Integrated")
     }
     
     @IBAction func discreteOnlyClicked(_ sender: NSMenuItem) {
@@ -68,7 +70,7 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .off
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceDiscrete)
-        print("NOTIFY:  Set Force Discrete")
+        print("NOTIFY?:  Set Force Discrete")
     }
     
     @IBAction func dynamicSwitchingClicked(_ sender: NSMenuItem) {
@@ -81,13 +83,18 @@ class StatusMenuController: NSObject {
         DynamicSwitchingItem.state = .on
         
         _ = appDelegate?.manager.GPUMode(mode: .SetDynamic)
-        print("NOTIFY:  Set Dynamic")
+        print("NOTIFY?:  Set Dynamic")
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
     
+    
+    /**
+        Originally this was designed to reflect the current state selected in the menu
+        but it is undoubtedly more useful when it shows the current active gpu
+    */
     private func changeMenuIcon(state: SwitcherMode) {
         let icon: NSImage?
         
@@ -106,6 +113,7 @@ class StatusMenuController: NSObject {
     }
     
     @objc private func changeGPUNameInMenu(notification: NSNotification) {
+        // this function always gets called from a non-main thread
         DispatchQueue.main.async {
             guard let currentGPU = self.appDelegate?.manager.currentGPU,
                   let integratedName = self.appDelegate?.manager.integratedName
@@ -116,6 +124,8 @@ class StatusMenuController: NSObject {
             
             self.CurrentGPU.title = "GPU: \(currentGPU)"
             
+            
+            /** At the same time update the stars */
             if(currentGPU == integratedName) {
                 self.changeMenuIcon(state: SwitcherMode.ForceIntergrated)
             } else {
@@ -125,13 +135,39 @@ class StatusMenuController: NSObject {
     }
     
     @objc private func updateProcessList(notification: NSNotification) {
-        guard let hungry = notification.object as? [Process] else {
+        guard var hungry = notification.object as? [Process] else {
             print("Could not update process list, invalid object received")
             return
         }
         
-        for process in hungry {
-            print("HUNGRY: \(process.name) (\(process.pid))")
+        for item in statusMenu.items {
+            if item.tag == 10 {
+                statusMenu.removeItem(item)
+            }
+        }
+        
+        if hungry.count > 0 {
+            Dependencies.isHidden = false
+            
+            if appDelegate?.manager.requestedMode == SwitcherMode.ForceIntergrated {
+                Dependencies.title = "Hungry"
+            } else {
+                Dependencies.title = "Dependencies"
+            }
+            
+            hungry.reverse() // because of insert
+            
+            for process in hungry {
+                let title = "\t\(process.name) (\(process.pid))"
+                let newDependency = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+                newDependency.tag = 10 // so its easy to find when we delete
+                statusMenu.insertItem(newDependency, at: 10)  // below the menu list name
+            }
+            
+        } else {
+            Dependencies.isHidden = true
+            
+            Dependencies.title = "Dependencies"
         }
     }
 }

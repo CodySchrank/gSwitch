@@ -48,6 +48,10 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="da2-QV-YDX"/>
+                <menuItem title="Dependencies" hidden="YES" id="a8k-Wf-oZ4">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Kpw-HJ-MmF"/>
                 <menuItem title="Quit" id="gZe-7v-L4S">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -60,11 +64,15 @@
         <customObject id="P9x-zM-Cnz" customClass="StatusMenuController" customModule="gSwitch" customModuleProvider="target">
             <connections>
                 <outlet property="CurrentGPU" destination="Fwf-ff-0Lg" id="B4D-Vy-fw2"/>
+                <outlet property="Dependencies" destination="a8k-Wf-oZ4" id="PgI-iN-hNf"/>
                 <outlet property="DiscreteOnlyItem" destination="mM1-8I-1jF" id="JJV-iA-Xxa"/>
                 <outlet property="DynamicSwitchingItem" destination="Jk4-qm-LJU" id="aYz-h1-MZ5"/>
                 <outlet property="IntegratedOnlyItem" destination="HoZ-EA-5Lv" id="oUb-ct-MOx"/>
                 <outlet property="statusMenu" destination="YiV-UP-01K" id="RT3-Dw-B7o"/>
             </connections>
         </customObject>
+        <menuItem title="Dependencies" hidden="YES" id="Ks7-9b-Ykb">
+            <modifierMask key="keyEquivalentModifierMask"/>
+        </menuItem>
     </objects>
 </document>

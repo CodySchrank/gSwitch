@@ -144,14 +144,17 @@ class GPUManager {
     }
     
     /**
-        Anytime we get state of gpu we might as well change
-        the active name and NOTIFY potentialGPUChange
-        This is why it is all here and not split up into
-        multiple functions
+        We should never assume gpu state that is why we always check.
+        Anytime we get state of gpu we might as well:
+     
+        Change the active name
+        NOTIFY potentialGPUChange in case it changed
+        return whether we are integrated or discrete
     */
     public func UpdateGPUStateAndisUsingIntegratedGPU() -> Bool {
         if self._connect == IO_OBJECT_NULL {
-            return false  //probably need to throw if we lost connection?
+            print("Lost connection to gpu")
+            return false  //probably need to throw or exit if we lost connection?
         }
         
         let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0

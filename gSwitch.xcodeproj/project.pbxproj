@@ -113,14 +113,14 @@
 				82233ECB20844ADF006C57E7 /* Constants.swift */,
 				82233ED020844ADF006C57E7 /* GPUListener.swift */,
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
-				82233ECD20844ADF006C57E7 /* GSProcess.h */,
-				82233ECC20844ADF006C57E7 /* GSProcess.m */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
 				82233EA220844ACA006C57E7 /* Assets.xcassets */,
 				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82233EA720844ACA006C57E7 /* Info.plist */,
 				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
 				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
+				82233ECD20844ADF006C57E7 /* GSProcess.h */,
+				82233ECC20844ADF006C57E7 /* GSProcess.m */,
 			);
 			path = gSwitch;
 			sourceTree = "<group>";

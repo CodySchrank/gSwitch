@@ -22,7 +22,11 @@ struct Process {
 
 class ProcessManager {
     init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(_updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
+        
+        /** Only poll to clear out old gpu dependencies from menu when the gpu doesn't get switched */
+        /** Maybe poll for more useful information like vram or gpu usage? */
+        Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(_updateProcessMenuList(notification:)), userInfo: nil, repeats: true)
     }
     
     public func getHungryProcesses() -> [Process] {
@@ -41,9 +45,10 @@ class ProcessManager {
         let hungry = self.getHungryProcesses()
         
         NotificationCenter.default.post(name: .updateProcessListInMenu, object: hungry)
+        print("UPDATE: Polling for hungry processes")
     }
     
-    @objc private func updateProcessMenuList(notification: NSNotification) {
+    @objc private func _updateProcessMenuList(notification: NSNotification) {
         self.updateProcessMenuList()
     }
 }
