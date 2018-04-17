@@ -110,7 +110,7 @@ class GPUManager {
         
         switch mode {
         case .ForceIntergrated:
-            let integrated = UpdateGPUStateAndisUsingIntegratedGPU()
+            let integrated = CheckGPUStateAndisUsingIntegratedGPU()
             print("Requesting integrated, are we integrated?  \(integrated)")
             
             if (mode == .ForceIntergrated && !integrated) {
@@ -118,7 +118,7 @@ class GPUManager {
             }
             
         case .ForceDiscrete:
-            let discrete = !UpdateGPUStateAndisUsingIntegratedGPU()
+            let discrete = !CheckGPUStateAndisUsingIntegratedGPU()
             print("Requesting discrete, are we discrete?  \(discrete)")
             
             /**
@@ -148,21 +148,21 @@ class GPUManager {
         Anytime we get state of gpu we might as well:
      
         Change the active name
-        NOTIFY potentialGPUChange in case it changed
+        NOTIFY checkGPUState in case it changed
         return whether we are integrated or discrete
     */
-    public func UpdateGPUStateAndisUsingIntegratedGPU() -> Bool {
+    public func CheckGPUStateAndisUsingIntegratedGPU() -> Bool {
         if self._connect == IO_OBJECT_NULL {
             print("Lost connection to gpu")
             return false  //probably need to throw or exit if we lost connection?
         }
         
+        NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
+        print("NOTIFY: checkGPUState ~ Naive ~ Checking GPU...")
+        
         let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
         
         currentGPU = isIntegrated ? integratedName : discreteName
-        
-        NotificationCenter.default.post(name: .potentialGPUChange, object: currentGPU)
-        print("SHOW: Potential GPU Change - shows card if it changed")
         
         return isIntegrated
     }
