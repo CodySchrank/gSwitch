@@ -178,10 +178,7 @@ class GPUManager {
         return getGPUState(connect: self._connect, input: GPUState.GpuSelect) != 0
     }
     
-    /**
-         This doesn't switch the gpu for me just sets it to integrated..
-         But I'm keeping it SwitchGPU for now
-     **/
+    /** Kind of a misnomer because it only sets it to integrated, ie. switch back from discrete */
     private func SwitchGPU(connect: io_connect_t) -> Bool {
         let _ = setDynamicSwitching(connect: connect, enabled: false)
         

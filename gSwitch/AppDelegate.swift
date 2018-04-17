@@ -30,7 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         let console = ConsoleDestination()  // log to Xcode Console
-        let file = FileDestination()  // log to default swiftybeaver.log file
+        let file = FileDestination()
+        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")
         log.addDestination(console)
         log.addDestination(file)
         
