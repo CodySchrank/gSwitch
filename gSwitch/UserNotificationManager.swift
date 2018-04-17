@@ -38,7 +38,6 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     public func showNotification(currentGPU: String?) {
         let notification = NSUserNotification()
         notification.title = "GPU Changed"
-        notification.contentImage = NSImage(contentsOfFile: "ic_star_half")
         notification.informativeText = currentGPU ?? ""
         
         // Manually display the notification

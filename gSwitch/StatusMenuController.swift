@@ -100,11 +100,11 @@ class StatusMenuController: NSObject {
         
         switch state {
         case .ForceIntergrated:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_star_border"))
+            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_low"))
         case .SetDynamic:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_star_half"))
+            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_auto"))
         case .ForceDiscrete:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_star"))
+            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_high"))
         }
 
         icon?.isTemplate = true // best for dark mode
