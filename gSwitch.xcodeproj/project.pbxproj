@@ -18,6 +18,7 @@
 		82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECF20844ADF006C57E7 /* StatusMenuController.swift */; };
 		82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED020844ADF006C57E7 /* GPUListener.swift */; };
 		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
+		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		82233ECF20844ADF006C57E7 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		82233ED020844ADF006C57E7 /* GPUListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUListener.swift; sourceTree = "<group>"; };
 		82233ED120844ADF006C57E7 /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				82233ED020844ADF006C57E7 /* GPUListener.swift */,
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
+				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
 				82233EA220844ACA006C57E7 /* Assets.xcassets */,
 				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82233EA720844ACA006C57E7 /* Info.plist */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */,
+				82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */,
 				82233EA120844AC9006C57E7 /* AppDelegate.swift in Sources */,
 				82233ED320844ADF006C57E7 /* Constants.swift in Sources */,
 				82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */,

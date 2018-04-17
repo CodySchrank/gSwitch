@@ -26,17 +26,16 @@ class GPUListener {
     }
     
     private func displayCallback() {
-        
         let callback: @convention(c) (_ display: UInt32, _ flags: CGDisplayChangeSummaryFlags, _ data: UnsafeMutableRawPointer?) -> Void = {
             (display, flags, data) -> Void in
             
             let this = unsafeBitCast(data, to: GPUListener.self)
             
-            print("NOTIFY: CheckForHungryProcesses ~ for menu update")
+            print("NOTIFY: checkForHungryProcesses ~ for menu update")
             NotificationCenter.default.post(name: .checkForHungryProcesses, object: nil)
         
             if(this._manager!.CheckGPUStateAndisUsingIntegratedGPU() && this._manager!.requestedMode == SwitcherMode.ForceIntergrated) {
-                //calls CheckGPUState
+                //calls .checkGPUState
                 print("NOTIFY?: Switched from desired integrated to discrete")
             }
             
@@ -48,7 +47,7 @@ class GPUListener {
                 this._notificationQueue?.async(execute: {
                     sleep(1)
                     
-                    //calls CheckGPUState
+                    //calls .checkGPUState
                     
                     let isUsingIntegrated = this._manager!.CheckGPUStateAndisUsingIntegratedGPU()
                     let requestedMode = this._manager!.requestedMode
@@ -58,8 +57,9 @@ class GPUListener {
                             print("NOTIFY?: Forced integrated GPU From dedicated GPU")
                         }
                     } else {
-                        // sometimes gets called when no change?
-                        print("NOTIFY? GPU maybe Changed")
+                        // usually gets called when change but sometimes gets called when no change?
+                        print("NOTIFY: GPU maybe Changed")
+                        NotificationCenter.default.post(name: .probableGPUChange, object: this._manager?.currentGPU)
                     }
                 })
             }

@@ -10,9 +10,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var manager = GPUManager()
-    var listener = GPUListener()
-    var processer = ProcessManager()
+    let manager = GPUManager()
+    let listener = GPUListener()
+    let processer = ProcessManager()
+    let notifications = UserNotificationManager()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** If we cant connect to gpu there is no point in continuing */
@@ -45,10 +46,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
+        
+        /** NotificationCenter want to check the gpu too */
+        notifications.inject(manager: manager)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        
+        /** Clean up gpu change notifications */
+        notifications.cleanUp()
         
         /** Lets go back to dynamic when exiting */
         if(manager.GPUMode(mode: .SetDynamic)) {
@@ -57,7 +64,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         _ = manager.close()
     }
-    
-    
 }
 

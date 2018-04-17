@@ -100,5 +100,6 @@ extension Notification.Name {
     static let checkGPUState = Notification.Name("checkGPUState")
     static let checkForHungryProcesses = Notification.Name("checkForHungryProcesses")
     static let updateProcessListInMenu = Notification.Name("updateProcessListInMenu")
+    static let probableGPUChange = Notification.Name("probableGPUChange")
 }
 

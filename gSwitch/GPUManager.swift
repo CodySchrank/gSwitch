@@ -158,7 +158,7 @@ class GPUManager {
         }
         
         NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
-        print("NOTIFY: checkGPUState ~ Naive ~ Checking GPU...")
+        print("NOTIFY: checkGPUState ~ Checking GPU...")
         
         let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
         
