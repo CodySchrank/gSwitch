@@ -10,8 +10,8 @@ if [ -d "$dir" ]; then
 fi
 
 # set up your app name, version number, and background image file name
-APP_NAME="SuperCoolApp"
-VERSION="1.0.0"
+APP_NAME="gSwitch"
+VERSION="1.2.1"
 DMG_BACKGROUND_IMG="Background.png"
 
 # you should not need to change these
