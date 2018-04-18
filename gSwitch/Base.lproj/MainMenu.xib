@@ -71,8 +71,5 @@
                 <outlet property="statusMenu" destination="YiV-UP-01K" id="RT3-Dw-B7o"/>
             </connections>
         </customObject>
-        <menuItem title="Dependencies" hidden="YES" id="Ks7-9b-Ykb">
-            <modifierMask key="keyEquivalentModifierMask"/>
-        </menuItem>
     </objects>
 </document>

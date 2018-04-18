@@ -12,19 +12,18 @@ import SwiftyBeaver
 
 class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     let notificationCenter = NSUserNotificationCenter.default
-    var _manager: GPUManager?
-    
-    var lastGPU: String?
-    
     let log = SwiftyBeaver.self
+    
+    var _manager: GPUManager?
+    var lastGPU: String?
     
     override init() {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(_showNotification(notification:)), name: .probableGPUChange, object: nil)
         
-        /** Removes notifications approx every 5 minutes */
-        Timer.scheduledTimer(timeInterval: 60 * 5, target: self, selector: #selector(cleanUp), userInfo: nil, repeats: true)
+        /** Removes notifications from notification center approx every 15 minutes */
+        Timer.scheduledTimer(timeInterval: 60 * 15, target: self, selector: #selector(cleanUp), userInfo: nil, repeats: true)
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter,

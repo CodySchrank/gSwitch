@@ -9,7 +9,7 @@
 import Cocoa
 import SwiftyBeaver
 
-class StatusMenuController: NSObject {
+class StatusMenuController: NSViewController {
     @IBOutlet weak var statusMenu: NSMenu!
 
     @IBOutlet weak var CurrentGPU: NSMenuItem!
@@ -22,22 +22,32 @@ class StatusMenuController: NSObject {
     
     @IBOutlet weak var DynamicSwitchingItem: NSMenuItem!
     
-    var appDelegate: AppDelegate?
-    
     let log = SwiftyBeaver.self
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
+    var appDelegate: AppDelegate?
+    
     override func awakeFromNib() {
-        appDelegate = (NSApplication.shared.delegate as! AppDelegate) 
+        appDelegate = (NSApplication.shared.delegate as! AppDelegate)
         
         statusItem.menu = statusMenu
+        
+        if let button = statusItem.button {
+            button.target = self
+            button.action = #selector(self.statusBarButtonClicked(sender:))
+            button.sendAction(on: NSEvent.EventTypeMask.leftMouseUp)
+        }
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notification:)), name: .checkGPUState, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProcessList(notification:)), name: .updateProcessListInMenu, object: nil)
+    }
+    
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        log.info("Status menu clicked")
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
@@ -48,9 +58,13 @@ class StatusMenuController: NSObject {
             return  //already set
         }
         
-        let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         
+        /** According to gfx we cant do this */
+        let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         if(hungryProcesses!.count > 0) {
+            
+            /** TODO: Instead of showing warning present window with the offending optinos and the option
+                        to delete them              */
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             return
         }
@@ -112,7 +126,6 @@ class StatusMenuController: NSObject {
 
         icon?.isTemplate = true // best for dark mode
         statusItem.image = icon
-        statusItem.menu = statusMenu
     }
     
     @objc private func changeGPUNameInMenu(notification: NSNotification) {

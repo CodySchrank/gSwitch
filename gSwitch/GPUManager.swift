@@ -11,23 +11,18 @@ import IOKit
 import SwiftyBeaver
 
 class GPUManager {
+    let log = SwiftyBeaver.self
+    
     var _connect: io_connect_t = IO_OBJECT_NULL;
     var integratedName: String?
     var discreteName: String?
-    
     var currentGPU: String?
-    
-    let log = SwiftyBeaver.self
-    
     var requestedMode: SwitcherMode?
     
     init() {
         let gpus = getGpuNames()
         
         /**
-            This is the first thing the app does so if
-            something is wrong it will silently fail.
-         
             This only works if there are exactly 2 gpus
             and the integrated one is intel and the discrete
             one is not intel (AMD or NVIDIA).
@@ -264,9 +259,9 @@ class GPUManager {
             arg: 1 << feature.rawValue)
     }
     
-    private func setSwitchPolicy(connect: io_connect_t) -> Bool {
-        /** If old style switching needs to be enabled arg needs to be a 2 */
-        return setGPUState(connect: connect, state: GPUState.SwitchPolicy, arg: 0)
+    private func setSwitchPolicy(connect: io_connect_t, dynamic: Bool = true) -> Bool {
+        /** dynamic = 0: instant switching, dynamic = 2: user needs to logout before switching */
+        return setGPUState(connect: connect, state: GPUState.SwitchPolicy, arg: dynamic ? 0 : 2)
     }
     
     private func setDynamicSwitching(connect: io_connect_t, enabled: Bool) -> Bool {

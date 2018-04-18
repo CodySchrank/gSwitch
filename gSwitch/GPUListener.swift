@@ -11,11 +11,11 @@ import CoreGraphics
 import SwiftyBeaver
 
 class GPUListener {
+    let log = SwiftyBeaver.self
+    
     var _notificationQueue: DispatchQueue?
     var _manager: GPUManager?
     var _processor: ProcessManager?
-    
-    let log = SwiftyBeaver.self
     
     init() {
         self._notificationQueue = DispatchQueue.init(label: Constants.NOTIFICATION_QUEUE)

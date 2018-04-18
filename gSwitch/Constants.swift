@@ -92,8 +92,8 @@ struct Constants {
     static let INTEL_GPU_PREFIX = "Intel"
     static let GRAPHICS_CONTROL = "AppleGraphicsControl"
     static let NOTIFICATION_QUEUE = "com.CodySchrank.GSwitch.GPUChangeNotificationQueue"
-    static let kCGDisplaySetModeFlag                 = (1 << 3)
-    static let kCGDisplayAddFlag                     = (1 << 4)
+    static let kCGDisplaySetModeFlag = (1 << 3)
+    static let kCGDisplayAddFlag = (1 << 4)
 }
 
 extension Notification.Name {

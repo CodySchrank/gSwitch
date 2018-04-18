@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let console = ConsoleDestination()  // log to Xcode Console
         let file = FileDestination()
-        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")
+        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //log to container/bundle/swiftybeaver.log
         log.addDestination(console)
         log.addDestination(file)
         
@@ -60,8 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-        
         /** Clean up gpu change notifications */
         notifications.cleanUp()
         
