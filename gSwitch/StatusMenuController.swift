@@ -11,16 +11,20 @@ import SwiftyBeaver
 
 class StatusMenuController: NSViewController {
     @IBOutlet weak var statusMenu: NSMenu!
-
-    @IBOutlet weak var CurrentGPU: NSMenuItem!
     
     @IBOutlet weak var IntegratedOnlyItem: NSMenuItem!
+    
+    @IBOutlet weak var GPUViewLabel: NSMenuItem!
     
     @IBOutlet weak var Dependencies: NSMenuItem!
     
     @IBOutlet weak var DiscreteOnlyItem: NSMenuItem!
     
     @IBOutlet weak var DynamicSwitchingItem: NSMenuItem!
+    
+    @IBOutlet weak var CurrentGPU: NSMenuItem!
+    
+    @IBOutlet weak var GPUViewController: GPUView!
     
     let log = SwiftyBeaver.self
     
@@ -32,6 +36,7 @@ class StatusMenuController: NSViewController {
         appDelegate = (NSApplication.shared.delegate as! AppDelegate)
         
         statusItem.menu = statusMenu
+        GPUViewLabel.view = GPUViewController
         
         if let button = statusItem.button {
             button.target = self
@@ -51,6 +56,10 @@ class StatusMenuController: NSViewController {
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+    }
+    
+    override func viewDidDisappear() {
+        log.info("BYE")
     }
     
     @IBAction func intergratedOnlyClicked(_ sender: NSMenuItem) {
@@ -173,11 +182,16 @@ class StatusMenuController: NSViewController {
             
             hungry.reverse() // because of insert
             
+            let seperator = NSMenuItem.separator()
+            seperator.tag = 10
+            statusMenu.insertItem(seperator, at: 4)
+            
             for process in hungry {
                 let title = "\t\(process.name) (\(process.pid))"
                 let newDependency = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+                newDependency.isEnabled = false
                 newDependency.tag = 10 // so its easy to find when we delete
-                statusMenu.insertItem(newDependency, at: 10)  // below the menu list name
+                statusMenu.insertItem(newDependency, at: 6)  // below the menu list name
             }
             
         } else {

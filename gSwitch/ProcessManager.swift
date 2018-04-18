@@ -24,10 +24,19 @@ struct Process {
 class ProcessManager {
     let log = SwiftyBeaver.self
     
+    /**
+        At this time not doing any polling but its possible.
+        Maybe poll for more useful information like vram or gpu usage?
+     */
+    
+    var pollTimer: Timer?
+    
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(_updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
         
-        /** Maybe poll for more useful information like vram or gpu usage? */
+        NotificationCenter.default.addObserver(self, selector: #selector(startPoll(notification:)), name: .startPolling, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(stopPoll(notification:)), name: .stopPolling, object: nil)
     }
     
     public func getHungryProcesses() -> [Process] {
@@ -51,5 +60,26 @@ class ProcessManager {
     
     @objc private func _updateProcessMenuList(notification: NSNotification) {
         self.updateProcessMenuList()
+    }
+    
+    /** Doesn't seem to work */
+    @objc private func startPoll(notification: NSNotification) {
+        if self.pollTimer == nil {
+            log.info("Starting Poll")
+            self.pollTimer =  Timer.scheduledTimer(
+                timeInterval: 2,
+                target      : self,
+                selector    : #selector(_updateProcessMenuList(notification:)),
+                userInfo    : nil,
+                repeats     : false)
+        }
+    }
+    
+    @objc private func stopPoll(notification: NSNotification) {
+        if pollTimer != nil {
+            log.info("Stopping Poll")
+            pollTimer?.invalidate()
+            pollTimer = nil
+        }
     }
 }
