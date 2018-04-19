@@ -71,7 +71,7 @@ class StatusMenuController: NSViewController {
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         if(hungryProcesses!.count > 0) {
             
-            /** TODO: Instead of showing warning present window with the offending optinos and the option
+            /** TODO: Instead of showing warning present window with the offending processes and the option
                         to delete them              */
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             return

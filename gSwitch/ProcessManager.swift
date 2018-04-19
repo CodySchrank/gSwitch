@@ -62,7 +62,7 @@ class ProcessManager {
         self.updateProcessMenuList()
     }
     
-    /** Doesn't seem to work */
+    /** Seems to start on secondary thread */
     @objc private func startPoll(notification: NSNotification) {
         if self.pollTimer == nil {
             log.info("Starting Poll")

@@ -46,7 +46,6 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         notification.title = "GPU Changed"
         notification.informativeText = currentGPU ?? ""
         
-        // Manually display the notification
         notificationCenter.deliver(notification)
     }
     
