@@ -82,7 +82,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
         log.verbose("Initial App Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
     }
-    
+
     func applicationWillTerminate(_ aNotification: Notification) {
         /** Clean up gpu change notifications */
         notifications.cleanUp()
