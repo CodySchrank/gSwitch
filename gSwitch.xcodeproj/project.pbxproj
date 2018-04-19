@@ -21,6 +21,8 @@
 		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
 		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
+		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
+		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUViewController.swift */; };
 		82BC004320882C7900C65B9E /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; };
 		82BC004420882C7900C65B9E /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -114,6 +116,8 @@
 		82360C712088361700ADD0CE /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyBeaver.framework; sourceTree = "<group>"; };
 		824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
+		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		82AD4BE82087F335003375C1 /* GPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUViewController.swift; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,22 +175,24 @@
 			isa = PBXGroup;
 			children = (
 				82233EA020844AC9006C57E7 /* AppDelegate.swift */,
-				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
 				82233ECB20844ADF006C57E7 /* Constants.swift */,
 				82233ED020844ADF006C57E7 /* GPUListener.swift */,
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
 				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
-				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
-				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
-				82233EA220844ACA006C57E7 /* Assets.xcassets */,
-				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
-				82233EA720844ACA006C57E7 /* Info.plist */,
-				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
+				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
+				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
+				829553C520884BFA00A29C49 /* AboutWindow.swift */,
+				829553C620884BFA00A29C49 /* AboutWindow.xib */,
+				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
+				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
 				82233ECD20844ADF006C57E7 /* GSProcess.h */,
 				82233ECC20844ADF006C57E7 /* GSProcess.m */,
+				82233EA720844ACA006C57E7 /* Info.plist */,
+				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
+				82233EA220844ACA006C57E7 /* Assets.xcassets */,
 			);
 			path = gSwitch;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
+				829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +391,7 @@
 				82233ED320844ADF006C57E7 /* Constants.swift in Sources */,
 				82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */,
 				82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */,
+				829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */,
 				82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */,
 				82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */,
 				82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */,

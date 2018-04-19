@@ -19,16 +19,16 @@ class GPUManager {
     var currentGPU: String?
     var requestedMode: SwitcherMode?
     
-    init() {
+    public func setGPUNames() {
         let gpus = getGpuNames()
         
         /**
-            This only works if there are exactly 2 gpus
-            and the integrated one is intel and the discrete
-            one is not intel (AMD or NVIDIA).
+         This only works if there are exactly 2 gpus
+         and the integrated one is intel and the discrete
+         one is not intel (AMD or NVIDIA).
          
-            If apple changes the status quo this will break
-        */
+         If apple changes the status quo this will break
+         */
         for gpu in gpus {
             if gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) {
                 self.integratedName = gpu
@@ -37,7 +37,8 @@ class GPUManager {
             }
         }
         
-        log.info("Integrated: \(integratedName ?? "Unknown")\nDiscrete: \(discreteName ?? "Unknown")")
+        log.verbose("Integrated: \(integratedName ?? "Unknown")")
+        log.verbose("Discrete: \(discreteName ?? "Unknown")")
     }
     
     public func connect() throws {

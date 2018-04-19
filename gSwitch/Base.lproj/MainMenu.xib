@@ -18,6 +18,9 @@
             <items>
                 <menuItem title="About" id="Sbj-bN-UUm">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="aboutClicked:" target="P9x-zM-Cnz" id="Sdu-v6-5sD"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Preferences" id="EvT-ge-HB2">
                     <modifierMask key="keyEquivalentModifierMask"/>

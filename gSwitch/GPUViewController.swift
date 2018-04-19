@@ -15,8 +15,6 @@ class GPUView: NSView {
     
     @IBOutlet weak var CurrentGPUField: NSTextField!
     
-    var pollTimer : Timer?
-    
     let log = SwiftyBeaver.self
     
     override func draw(_ dirtyRect: NSRect) {

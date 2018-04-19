@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow" customModule="gSwitch" customModuleProvider="target">
             <connections>
+                <outlet property="gpuChangeNotificationsPressed" destination="Pwe-TZ-SpL" id="H7W-bV-Ko5"/>
+                <outlet property="toggleGPUChangeNotifications" destination="Pwe-TZ-SpL" id="Bk1-JL-9hc"/>
                 <outlet property="toggleOpenAppLogin" destination="VdX-b8-dTZ" id="9JL-Rg-k8E"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -22,24 +24,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="298" height="97"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Td3-VJ-ftn">
-                        <rect key="frame" x="104" y="22" width="111" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Launch at startup" id="7cD-O5-Tfp">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdX-b8-dTZ">
-                        <rect key="frame" x="83" y="18" width="25" height="25"/>
+                        <rect key="frame" x="18" y="18" width="139" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mIt-Wo-pgi">
+                        <buttonCell key="cell" type="check" title="Launch at Startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mIt-Wo-pgi">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="loginItemPressed:" target="-2" id="A6e-5r-TeR"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-TZ-SpL">
+                        <rect key="frame" x="18" y="45" width="217" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show GPU Change Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gou-CF-jiG">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="gpuChangeNotificationsPressed:" target="-2" id="Jyg-OX-O4G"/>
                         </connections>
                     </button>
                 </subviews>

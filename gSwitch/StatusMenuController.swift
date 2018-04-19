@@ -27,6 +27,7 @@ class StatusMenuController: NSViewController {
     @IBOutlet weak var GPUViewController: GPUView!
     
     var preferencesWindow: PreferencesWindow!
+    var aboutWindow: AboutWindow!
     
     let log = SwiftyBeaver.self
     
@@ -42,11 +43,7 @@ class StatusMenuController: NSViewController {
         
         preferencesWindow = PreferencesWindow(windowNibName: NSNib.Name(rawValue: "PreferencesWindow"))
         
-        if let button = statusItem.button {
-            button.target = self
-            button.action = #selector(self.statusBarButtonClicked(sender:))
-            button.sendAction(on: NSEvent.EventTypeMask.leftMouseUp)
-        }
+        aboutWindow = AboutWindow(windowNibName: NSNib.Name(rawValue: "AboutWindow"))
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
@@ -55,17 +52,14 @@ class StatusMenuController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateProcessList(notification:)), name: .updateProcessListInMenu, object: nil)
     }
     
-    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
-        log.info("Status menu clicked")
-    }
-    
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
     }
     
-    override func viewDidDisappear() {
-        log.info("BYE")
+    @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        aboutWindow.showWindow(nil)
     }
+    
     
     @IBAction func intergratedOnlyClicked(_ sender: NSMenuItem) {
         if(appDelegate?.manager.requestedMode == .ForceIntergrated) {

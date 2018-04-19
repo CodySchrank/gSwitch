@@ -38,6 +38,10 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     }
     
     public func showNotification(currentGPU: String?) {
+        if UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 0 {
+            return
+        }
+        
         let notification = NSUserNotification()
         notification.title = "GPU Changed"
         notification.informativeText = currentGPU ?? ""

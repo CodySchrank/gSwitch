@@ -16,19 +16,27 @@ class PreferencesWindow: NSWindowController {
     
     @IBOutlet weak var toggleOpenAppLogin: NSButton!
     
+    @IBOutlet weak var toggleGPUChangeNotifications: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
         log.info("Preferences Opened")
         
-        print(UserDefaults.standard.integer(forKey: "appLoginStart"))
+        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))
         
-        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "appLoginStart"))
+        toggleGPUChangeNotifications.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func gpuChangeNotificationsPressed(_ sender: NSButton) {
+        let status = sender.state.rawValue
+        
+        log.info("Successfully set gpuChangeNotifications item to be \(status)")
+        UserDefaults.standard.set(status, forKey: Constants.GPU_CHANGE_NOTIFICATIONS)
     }
     
     @IBAction func loginItemPressed(_ sender: NSButton) {
@@ -39,7 +47,7 @@ class PreferencesWindow: NSWindowController {
             }
             else {
                 log.info("Successfully set login item to be on")
-                UserDefaults.standard.set(1, forKey: "appLoginStart")
+                UserDefaults.standard.set(1, forKey: Constants.APP_LOGIN_START)
             }
         }
         else {
@@ -49,7 +57,7 @@ class PreferencesWindow: NSWindowController {
             }
             else {
                 log.info("Successfully set login item to be off")
-                UserDefaults.standard.set(0, forKey: "appLoginStart")
+                UserDefaults.standard.set(0, forKey: Constants.APP_LOGIN_START)
             }
         }
         

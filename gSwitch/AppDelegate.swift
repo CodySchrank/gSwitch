@@ -11,14 +11,14 @@ import SwiftyBeaver
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let log = SwiftyBeaver.self
     let manager = GPUManager()
     let listener = GPUListener()
     let processer = ProcessManager()
     let notifications = UserNotificationManager()
-    let log = SwiftyBeaver.self
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
-        /** If we cant connect to gpu there is no point in continuing */
+        /** Check if the launcher app is started */
         var startedAtLogin = false
         for app in NSWorkspace.shared.runningApplications {
             if app.bundleIdentifier == Constants.launcherApplicationIdentifier {
@@ -26,11 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     
-        // If the app's started, post to the notification center to kill the launcher app
+        /** If the app started, post to the notification center to kill the launcher app */
         if startedAtLogin {
-            DistributedNotificationCenter.default().postNotificationName(Constants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
+            DistributedNotificationCenter.default().postNotificationName(.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
+        /** If we cant connect to gpu there is no point in continuing */
         do {
             try manager.connect()
         } catch RuntimeError.CanNotConnect(let errorMessage) {
@@ -41,11 +42,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.shared.terminate(self)
         }
         
-        let console = ConsoleDestination()  // log to Xcode Console
+        /** Juicy logs */
+        let console = ConsoleDestination()
         let file = FileDestination()
-        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //log to container/bundle/swiftybeaver.log
+        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //logs to container/*/swiftybeaver.log
         log.addDestination(console)
         log.addDestination(file)
+        
+        /** GPU Names are good */
+        manager.setGPUNames()
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
@@ -56,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Lets set dynamic on startup */
         if(manager.GPUMode(mode: .SetDynamic)) {
-            log.info("Set Dynamic")
+            log.info("Initial Set  Dynamic")
         } else {
             log.warning("Could not set dynamic")
         }
@@ -67,8 +72,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
         
-        /** NotificationCenter want to check the gpu too */
+        /** NotificationCenter wants to check the gpu too */
         notifications.inject(manager: manager)
+        
+        /** Default prefs so shit works */
+        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : true])
+        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : false])
+        
+        log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
+        log.verbose("Initial App Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
