@@ -25,6 +25,7 @@ Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/
 
 ## Roadmap
 
+*   Actual release app and an auto-updater
 *   Testing needs to be done for 2010 and older machines
 *   Handle external displays
 *   Localization
