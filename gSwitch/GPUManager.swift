@@ -153,22 +153,22 @@ class GPUManager {
     public func CheckGPUStateAndisUsingIntegratedGPU() -> Bool {
         if self._connect == IO_OBJECT_NULL {
             log.error("Lost connection to gpu")
-            return false  //probably need to throw or exit if we lost connection?
+            return false  //probably need to throw or exit if lost connection?
         }
-        
-        NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
-        log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
         let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
         
         currentGPU = isIntegrated ? integratedName : discreteName
+        
+        NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
+        log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
         return isIntegrated
     }
     
     public func isUsingDynamicSwitching() -> Bool {
         if self._connect == IO_OBJECT_NULL {
-            return false //throw
+            return false
         }
         
         return getGPUState(connect: self._connect, input: GPUState.GpuSelect) != 0

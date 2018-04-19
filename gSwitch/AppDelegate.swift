@@ -80,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : false])
         
         log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
-        log.verbose("Initial App Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
+        log.verbose("Initial App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
