@@ -21,7 +21,7 @@ carthage bootstrap
 
 ## FAQ
 
-Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists? Well it had problems on high seirra and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
+Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists? Well it had problems on high sierra and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
 
 ## Roadmap
 
