@@ -71,6 +71,8 @@ class StatusMenuController: NSViewController {
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         if(hungryProcesses!.count > 0) {
             
+            /** TODO: If external display is connected and it is the only hungry process switch to dynamic */
+            
             /** TODO: Instead of showing warning present window with the offending processes and the option
                         to delete them              */
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
