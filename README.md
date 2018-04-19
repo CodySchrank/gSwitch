@@ -8,7 +8,7 @@ Currently the only way to install is to build the source, however I will be addi
 
 ## FAQ
 
-Why create this when the amazing [gfxCardStatus](hhttps://github.com/codykrieger/gfxCardStatus) exists? Well it was kind of buggy and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
+Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists? Well it was kind of buggy and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
 
 ## Notes
 
