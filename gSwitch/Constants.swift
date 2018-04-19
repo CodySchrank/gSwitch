@@ -94,6 +94,8 @@ struct Constants {
     static let NOTIFICATION_QUEUE = "com.CodySchrank.GSwitch.GPUChangeNotificationQueue"
     static let kCGDisplaySetModeFlag = (1 << 3)
     static let kCGDisplayAddFlag = (1 << 4)
+    static let KILLME = Notification.Name("killme")
+    static let launcherApplicationIdentifier = "com.CodySchrank.gSwitchLauncher"
 }
 
 extension Notification.Name {

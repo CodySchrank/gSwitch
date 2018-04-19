@@ -26,6 +26,8 @@ class StatusMenuController: NSViewController {
     
     @IBOutlet weak var GPUViewController: GPUView!
     
+    var preferencesWindow: PreferencesWindow!
+    
     let log = SwiftyBeaver.self
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -37,6 +39,8 @@ class StatusMenuController: NSViewController {
         
         statusItem.menu = statusMenu
         GPUViewLabel.view = GPUViewController
+        
+        preferencesWindow = PreferencesWindow(windowNibName: NSNib.Name(rawValue: "PreferencesWindow"))
         
         if let button = statusItem.button {
             button.target = self
@@ -56,6 +60,7 @@ class StatusMenuController: NSViewController {
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        preferencesWindow.showWindow(nil)
     }
     
     override func viewDidDisappear() {

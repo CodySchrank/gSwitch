@@ -18,11 +18,15 @@
 		82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECF20844ADF006C57E7 /* StatusMenuController.swift */; };
 		82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED020844ADF006C57E7 /* GPUListener.swift */; };
 		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
-		824BA5B92085C49A00A5261B /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; };
-		824BA5BA2085C49A00A5261B /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		824BA5BE2085C4D200A5261B /* SwiftyBeaver.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */; };
+		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
+		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
+		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
 		82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUViewController.swift */; };
+		82BC004320882C7900C65B9E /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; };
+		82BC004420882C7900C65B9E /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82BC004720882CAB00C65B9E /* SwiftyBeaver.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */; };
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
+		82EB58F520882E5F00747BAF /* gSwitchLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8230418720882B40006701CB /* gSwitchLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,27 +44,44 @@
 			remoteGlobalIDString = 82233E9C20844AC9006C57E7;
 			remoteInfo = gSwitch;
 		};
+		8230418620882B40006701CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8230418220882B3F006701CB /* gSwitchLauncher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8230417120882B3E006701CB;
+			remoteInfo = gSwitchLauncher;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		824BA5BB2085C49A00A5261B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				824BA5BA2085C49A00A5261B /* SwiftyBeaver.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		824BA5BC2085C4B800A5261B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				824BA5BE2085C4D200A5261B /* SwiftyBeaver.framework.dSYM in CopyFiles */,
+				82BC004720882CAB00C65B9E /* SwiftyBeaver.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82BC004520882C7900C65B9E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				82BC004420882C7900C65B9E /* SwiftyBeaver.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82EB58F320882E1B00747BAF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				82EB58F520882E5F00747BAF /* gSwitchLauncher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +108,12 @@
 		82233ECF20844ADF006C57E7 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		82233ED020844ADF006C57E7 /* GPUListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUListener.swift; sourceTree = "<group>"; };
 		82233ED120844ADF006C57E7 /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
-		824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
-		824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
+		8230418220882B3F006701CB /* gSwitchLauncher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gSwitchLauncher.xcodeproj; path = gSwitchLauncher/gSwitchLauncher.xcodeproj; sourceTree = "<group>"; };
+		8230418920882BB2006701CB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		82360C702088361700ADD0CE /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		82360C712088361700ADD0CE /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyBeaver.framework; sourceTree = "<group>"; };
+		824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
 		82AD4BE82087F335003375C1 /* GPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUViewController.swift; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824BA5B92085C49A00A5261B /* SwiftyBeaver.framework in Frameworks */,
+				8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */,
+				82BC004320882C7900C65B9E /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +152,8 @@
 				82233EB020844ACA006C57E7 /* gSwitchTests */,
 				82233EBB20844ACA006C57E7 /* gSwitchUITests */,
 				82233E9E20844AC9006C57E7 /* Products */,
-				824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */,
-				824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */,
+				8230418220882B3F006701CB /* gSwitchLauncher.xcodeproj */,
+				8230418820882BB1006701CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +177,8 @@
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
 				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
+				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
+				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
 				82233EA220844ACA006C57E7 /* Assets.xcassets */,
 				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
@@ -181,6 +209,24 @@
 			path = gSwitchUITests;
 			sourceTree = "<group>";
 		};
+		8230418320882B3F006701CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8230418720882B40006701CB /* gSwitchLauncher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8230418820882BB1006701CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				824BA5B82085C49A00A5261B /* SwiftyBeaver.framework */,
+				824BA5BD2085C4D200A5261B /* SwiftyBeaver.framework.dSYM */,
+				8230418920882BB2006701CB /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,8 +237,9 @@
 				82233E9920844AC9006C57E7 /* Sources */,
 				82233E9A20844AC9006C57E7 /* Frameworks */,
 				82233E9B20844AC9006C57E7 /* Resources */,
-				824BA5BB2085C49A00A5261B /* Embed Frameworks */,
 				824BA5BC2085C4B800A5261B /* CopyFiles */,
+				82BC004520882C7900C65B9E /* Embed Frameworks */,
+				82EB58F320882E1B00747BAF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -274,6 +321,12 @@
 			mainGroup = 82233E9420844AC9006C57E7;
 			productRefGroup = 82233E9E20844AC9006C57E7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8230418320882B3F006701CB /* Products */;
+					ProjectRef = 8230418220882B3F006701CB /* gSwitchLauncher.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				82233E9C20844AC9006C57E7 /* gSwitch */,
@@ -283,12 +336,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		8230418720882B40006701CB /* gSwitchLauncher.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = gSwitchLauncher.app;
+			remoteRef = 8230418620882B40006701CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		82233E9B20844AC9006C57E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
+				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +384,7 @@
 				82233ED320844ADF006C57E7 /* Constants.swift in Sources */,
 				82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */,
 				82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */,
+				82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */,
 				82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */,
 				82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */,
 				82233ED420844ADF006C57E7 /* GSProcess.m in Sources */,
@@ -494,6 +559,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = gSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,6 +586,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = gSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

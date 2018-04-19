@@ -1,0 +1,4 @@
+framework module SwiftyBeaver {
+    header "SwiftyBeaver-Swift.h"
+    requires objc
+}

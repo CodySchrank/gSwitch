@@ -19,6 +19,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** If we cant connect to gpu there is no point in continuing */
+        var startedAtLogin = false
+        for app in NSWorkspace.shared.runningApplications {
+            if app.bundleIdentifier == Constants.launcherApplicationIdentifier {
+                startedAtLogin = true
+            }
+        }
+    
+        // If the app's started, post to the notification center to kill the launcher app
+        if startedAtLogin {
+            DistributedNotificationCenter.default().postNotificationName(Constants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
+        }
+        
         do {
             try manager.connect()
         } catch RuntimeError.CanNotConnect(let errorMessage) {
