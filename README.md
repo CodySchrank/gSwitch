@@ -2,9 +2,13 @@
 
 gSwitch allows control over the gpu on dual gpu macs. It also gives a notification when the gpu changed.
 
-## Info
+## Install
 
-Why create this when the amazing [gfxCardStatus](https://github.com/CodySchrank/gfxCardStatus) exists? Well it was kind of buggy and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
+Either build from source or download a release
+
+## FAQ
+
+Why create this when the amazing [gfxCardStatus](hhttps://github.com/codykrieger/gfxCardStatus) exists? Well it was kind of buggy and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
 
 ## Notes
 
