@@ -7,8 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow" customModule="gSwitch" customModuleProvider="target">
             <connections>
-                <outlet property="gpuChangeNotificationsPressed" destination="Pwe-TZ-SpL" id="H7W-bV-Ko5"/>
-                <outlet property="toggleGPUChangeNotifications" destination="Pwe-TZ-SpL" id="Bk1-JL-9hc"/>
+                <outlet property="toggleGPUChangeNotifications" destination="Pwe-TZ-SpL" id="WQy-XJ-XOg"/>
                 <outlet property="toggleOpenAppLogin" destination="VdX-b8-dTZ" id="9JL-Rg-k8E"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -43,7 +42,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="gpuChangeNotificationsPressed:" target="-2" id="Jyg-OX-O4G"/>
+                            <action selector="gpuChangeNotificationsPressed:" target="-2" id="rY3-VO-Xav"/>
                         </connections>
                     </button>
                 </subviews>
