@@ -1,10 +1,10 @@
 # gSwitch
 
-gSwitch allows control over the gpu on dual gpu macs. It also gives a notification when the gpu changed.
+gSwitch allows control over the gpu on dual gpu macs. It also optionally gives a notification when the gpu changed.
 
 ## Install
 
-Either build from source or download a release
+Currently the only way to install is to build the source, however I will be adding a proper solution soon.
 
 ## FAQ
 
