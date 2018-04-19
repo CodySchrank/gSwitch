@@ -25,6 +25,8 @@ Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/
 
 ## Notes
 
+Unless you have a 2013 Macbook Pro with a 750m consider yourself a guinea pig. Since this is so new it is untested on anything else.
+
 Does not support macs older than 2011
 
 Since I wrote this in about 3 days I'm sure there are going to be issues.
