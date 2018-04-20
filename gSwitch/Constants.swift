@@ -5,6 +5,10 @@
 //  Created by Cody Schrank on 4/14/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
+//  GPUState, DispatchSelectors, and Features is from gfxCardStatus
+//  Copyright (c) 2010-2012, Cody Krieger
+//  All rights reserved.
+//
 
 import Foundation
 
@@ -94,6 +98,7 @@ struct Constants {
     static let NOTIFICATION_QUEUE = "com.CodySchrank.GSwitch.GPUChangeNotificationQueue"
     static let kCGDisplaySetModeFlag = (1 << 3)
     static let kCGDisplayAddFlag = (1 << 4)
+    static let kCGDisplayRemoveFlag = (1 << 5)
     static let launcherApplicationIdentifier = "com.CodySchrank.gSwitchLauncher"
     static let GPU_CHANGE_NOTIFICATIONS = "gpuChangeNotifications"
     static let APP_LOGIN_START = "appLoginStart"
@@ -104,6 +109,7 @@ extension Notification.Name {
     static let checkForHungryProcesses = Notification.Name("checkForHungryProcesses")
     static let updateProcessListInMenu = Notification.Name("updateProcessListInMenu")
     static let probableGPUChange = Notification.Name("probableGPUChange")
+    static let externalDisplayConnect = Notification.Name("externalDisplayConnect")
     static let startPolling = Notification.Name("startPolling")
     static let stopPolling = Notification.Name("stopPolling")
     static let KILLME = Notification.Name("killme")

@@ -6,8 +6,6 @@
 //  Copyright (c) 2010-2012, Cody Krieger
 //  All rights reserved.
 //
-//  Original task list functionality Copyright 2010 Thierry Coppey.
-//
 
 #import "GSProcess.h"
 

@@ -31,6 +31,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().postNotificationName(.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
+        /** I like logs */
+        let console = ConsoleDestination()
+        let file = FileDestination()
+        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //logs to container/*/swiftybeaver.log
+        log.addDestination(console)
+        log.addDestination(file)
+        
         /** If we cant connect to gpu there is no point in continuing */
         do {
             try manager.connect()
@@ -42,28 +49,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.shared.terminate(self)
         }
         
-        /** Juicy logs */
-        let console = ConsoleDestination()
-        let file = FileDestination()
-        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //logs to container/*/swiftybeaver.log
-        log.addDestination(console)
-        log.addDestination(file)
-        
         /** GPU Names are good */
         manager.setGPUNames()
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
         
-        /**
-         TODO: Could add in ability to select mode with args here instead of hard .SetDynamic
-         */
-        
         /** Lets set dynamic on startup */
         if(manager.GPUMode(mode: .SetDynamic)) {
-            log.info("Initial Set  Dynamic")
+            log.info("Initially set as Dynamic")
         } else {
-            log.warning("Could not set dynamic")
+            //if it could connect but couldnt set idk if thats possible?
+            //if it is possible this should quit the program here and report error
+            log.error("Could not set dynamic")
         }
         
         /** Get current state so current gpu name exists for use in menu */
@@ -72,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
         
-        /** NotificationCenter wants to check the gpu too */
+        /** UserNotificationManager likes the gpu too */
         notifications.inject(manager: manager)
         
         /** Default prefs so shit works */

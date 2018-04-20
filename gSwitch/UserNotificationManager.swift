@@ -11,18 +11,21 @@ import Cocoa
 import SwiftyBeaver
 
 class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
-    let notificationCenter = NSUserNotificationCenter.default
-    let log = SwiftyBeaver.self
+    private let log = SwiftyBeaver.self
     
-    var _manager: GPUManager?
-    var lastGPU: String?
+    private let notificationCenter = NSUserNotificationCenter.default
     
-    var isGoingToCleanNotifications = false
+    private var _manager: GPUManager?
+    private var lastGPU: String?
+    
+    private var isGoingToCleanNotifications = false
     
     override init() {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(_showNotification(notification:)), name: .probableGPUChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(_showExternalDisplayNotification(notification:)), name: .externalDisplayConnect, object: nil)
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter,
@@ -36,6 +39,27 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         lastGPU = manager.currentGPU
     }
     
+    public func showExternalDisplayNotification() {
+        if UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 0 {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            sleep(3)
+            
+            self.log.info("Showing external display notification")
+            
+            let notification = NSUserNotification()
+            notification.title = "External Display Connected"
+            notification.informativeText = "Mode returned to Dynamic Switching"
+            notification.actionButtonTitle = "action"
+            
+            self.notificationCenter.deliver(notification)
+            
+            self.checkIfMaidOnTheWay()
+        }
+    }
+    
     public func showNotification(currentGPU: String?) {
         if UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 0 {
             return
@@ -47,21 +71,17 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         
         notificationCenter.deliver(notification)
         
-        if !isGoingToCleanNotifications {
-            log.info("Called the maid")
-
-            DispatchQueue.main.async {
-                /** Removes notifications in approx 15 seconds */
-                Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.cleanUp), userInfo: nil, repeats: false)
-                self.isGoingToCleanNotifications = true
-            }
-        }
+        checkIfMaidOnTheWay()
     }
     
-    @objc public func cleanUp() {
+    public func cleanUp() {
         log.info("CLEAN: Notifications are gross")
         notificationCenter.removeAllDeliveredNotifications()
         isGoingToCleanNotifications = false
+    }
+    
+    @objc private func _showExternalDisplayNotification(notification: NSNotification) {
+        self.showExternalDisplayNotification()
     }
     
     @objc private func _showNotification(notification: NSNotification) {
@@ -69,12 +89,27 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
             return
         }
         
-        print("\(currentGPU) vs \(lastGPU)")
-        
         if(currentGPU != lastGPU) {
+            log.info("GPU did change")
             self.lastGPU = currentGPU
             
             showNotification(currentGPU: currentGPU)
+        }
+    }
+    
+    private func checkIfMaidOnTheWay() {
+        if !isGoingToCleanNotifications {
+            log.info("Called the maid")
+            
+            DispatchQueue.main.async {
+                /** Removes notifications in approx 30 seconds */
+                self.isGoingToCleanNotifications = true
+                
+                Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: {
+                    (Timer) in
+                    self.cleanUp()
+                })
+            }
         }
     }
     

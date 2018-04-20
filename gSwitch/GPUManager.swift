@@ -5,19 +5,25 @@
 //  Created by Cody Schrank on 4/14/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
+//  some logic is from gfxCardStatus
+//  https://github.com/codykrieger/gfxCardStatus/blob/master/LICENSE @ Jun 17, 2012
+//  Copyright (c) 2010-2012, Cody Krieger
+//  All rights reserved.
+//
 
 import Foundation
 import IOKit
 import SwiftyBeaver
 
 class GPUManager {
-    let log = SwiftyBeaver.self
+    private let log = SwiftyBeaver.self
     
-    var _connect: io_connect_t = IO_OBJECT_NULL;
-    var integratedName: String?
-    var discreteName: String?
-    var currentGPU: String?
-    var requestedMode: SwitcherMode?
+    public var integratedName: String?
+    public var discreteName: String?
+    public var currentGPU: String?
+    public var requestedMode: SwitcherMode?
+    
+    private var _connect: io_connect_t = IO_OBJECT_NULL;
     
     public func setGPUNames() {
         let gpus = getGpuNames()
@@ -112,27 +118,28 @@ class GPUManager {
             let integrated = CheckGPUStateAndisUsingIntegratedGPU()
             log.info("Requesting integrated, are we integrated?  \(integrated)")
             
-            if (mode == .ForceIntergrated && !integrated) {
+            if !integrated {
                 status = SwitchGPU(connect: connect)
             }
             
         case .ForceDiscrete:
-            let discrete = !CheckGPUStateAndisUsingIntegratedGPU()
-            log.info("Requesting discrete, are we discrete?  \(discrete)")
+            log.info("Requesting discrete")
             
-            /**
-                Why not use the way macos designed it?
-                And leaves the user the ability to change back via system pref
-            */
+            /** Essientialy ticks and unticks the box in system prefs, which by design forces discrete */
             
-            if (mode == .ForceDiscrete && !discrete) {
-                _ = setFeatureInfo(connect: connect, feature: Features.Policy, enabled: true)
-                _ = setSwitchPolicy(connect: connect)
-                
-                status = setDynamicSwitching(connect: connect, enabled: false)
-            }
+            _ = setFeatureInfo(connect: connect, feature: Features.Policy, enabled: true)
+            _ = setSwitchPolicy(connect: connect)
+            
+            status = setDynamicSwitching(connect: connect, enabled: true)
+            
+            // give the gpu a second to switch
+            sleep(1)
+            
+            status = setDynamicSwitching(connect: connect, enabled: false)
         case .SetDynamic:
-            // Set switch policy back, make the MBP think it's an auto switching one once again
+            log.info("Requesting Dynamic")
+            
+            /** Set switch policy back, makes it think its on auto switching */
             _ = setFeatureInfo(connect: connect, feature: Features.Policy, enabled: true)
             _ = setSwitchPolicy(connect: connect)
             
@@ -210,9 +217,9 @@ class GPUManager {
         );
 
         if kernResult == KERN_SUCCESS {
-            log.info("Modified state with \(state)")
+            log.verbose("Modified state with \(state)")
         } else {
-            log.info("ERROR: Set state returned \(kernResult)")
+            log.error("ERROR: Set state returned \(kernResult)")
         }
             
         return kernResult == KERN_SUCCESS
@@ -245,9 +252,9 @@ class GPUManager {
         );
         
         if kernResult == KERN_SUCCESS {
-            log.info("Successfully got state, count \(outputCount), value \(output)")
+            log.verbose("Successfully got state, count \(outputCount), value \(output)")
         } else {
-            log.info("ERROR: Get state returned \(kernResult)")
+            log.error("ERROR: Get state returned \(kernResult)")
         }
         
         return output

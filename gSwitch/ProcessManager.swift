@@ -22,14 +22,14 @@ struct Process {
 }
 
 class ProcessManager {
-    let log = SwiftyBeaver.self
+    private let log = SwiftyBeaver.self
     
     /**
         At this time not doing any polling but its possible.
-        Maybe poll for more useful information like vram or gpu usage?
+        Maybe poll for more useful information like vram or gpu usage when the menu is open
      */
     
-    var pollTimer: Timer?
+    private var pollTimer: Timer?
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(_updateProcessMenuList(notification:)), name: .checkForHungryProcesses, object: nil)
@@ -62,24 +62,29 @@ class ProcessManager {
         self.updateProcessMenuList()
     }
     
-    /** Need to start on main thread */
+    /** Not currently used */
     @objc private func startPoll(notification: NSNotification) {
-        if self.pollTimer == nil {
-            log.info("Starting Poll")
-            self.pollTimer =  Timer.scheduledTimer(
-                timeInterval: 2,
-                target      : self,
-                selector    : #selector(_updateProcessMenuList(notification:)),
-                userInfo    : nil,
-                repeats     : false)
+        DispatchQueue.main.async {
+            if self.pollTimer == nil {
+                self.log.info("Starting Poll")
+                self.pollTimer =  Timer.scheduledTimer(
+                    timeInterval: 2,
+                    target      : self,
+                    selector    : #selector(self._updateProcessMenuList(notification:)),
+                    userInfo    : nil,
+                    repeats     : false)
+            }
         }
     }
     
+    /** Not currently used */
     @objc private func stopPoll(notification: NSNotification) {
-        if pollTimer != nil {
-            log.info("Stopping Poll")
-            pollTimer?.invalidate()
-            pollTimer = nil
+        DispatchQueue.main.async {
+            if self.pollTimer != nil {
+                self.log.info("Stopping Poll")
+                self.pollTimer?.invalidate()
+                self.pollTimer = nil
+            }
         }
     }
 }

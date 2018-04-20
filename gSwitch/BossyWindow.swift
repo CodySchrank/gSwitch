@@ -11,7 +11,7 @@ import Foundation
 import SwiftyBeaver
 
 class BossyWindow: NSWindowController {
-    let log = SwiftyBeaver.self
+    internal let log = SwiftyBeaver.self
     
     public func pushToFront() {
         self.window?.center()

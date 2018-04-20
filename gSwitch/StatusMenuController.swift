@@ -26,14 +26,14 @@ class StatusMenuController: NSViewController {
     
     @IBOutlet weak var GPUViewController: GPUView!
     
-    var preferencesWindow: PreferencesWindow!
-    var aboutWindow: AboutWindow!
+    private var preferencesWindow: PreferencesWindow!
+    private var aboutWindow: AboutWindow!
     
-    let log = SwiftyBeaver.self
+    private let log = SwiftyBeaver.self
     
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
-    var appDelegate: AppDelegate?
+    private var appDelegate: AppDelegate?
     
     override func awakeFromNib() {
         appDelegate = (NSApplication.shared.delegate as! AppDelegate)
@@ -69,21 +69,17 @@ class StatusMenuController: NSViewController {
         }
         
         
-        /** According to gfx we cant do this */
+        /** According to gfx we cant do this.  Idk in testing it seems like I can do force it.
+            How do i find out if the dgpu is still on? */
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         if(hungryProcesses!.count > 0) {
-            
-            /** TODO: If external display is connected and it is the only hungry process switch to dynamic */
-            
             /** TODO: Instead of showing warning present window with the offending processes and the option
                         to delete them              */
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             return
         }
         
-        IntegratedOnlyItem.state = .on
-        DiscreteOnlyItem.state = .off
-        DynamicSwitchingItem.state = .off
+        changeGPUButtonToCorrectState(state: .ForceIntergrated)
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceIntergrated)
         log.info("NOTIFY?:  Set Force Integrated")
@@ -94,9 +90,7 @@ class StatusMenuController: NSViewController {
             return  //already set
         }
         
-        IntegratedOnlyItem.state = .off
-        DiscreteOnlyItem.state = .on
-        DynamicSwitchingItem.state = .off
+        changeGPUButtonToCorrectState(state: .ForceDiscrete)
         
         _ = appDelegate?.manager.GPUMode(mode: .ForceDiscrete)
         log.info("NOTIFY?:  Set Force Discrete")
@@ -107,9 +101,7 @@ class StatusMenuController: NSViewController {
             return  //already set
         }
         
-        IntegratedOnlyItem.state = .off
-        DiscreteOnlyItem.state = .off
-        DynamicSwitchingItem.state = .on
+        changeGPUButtonToCorrectState(state: .SetDynamic)
         
         _ = appDelegate?.manager.GPUMode(mode: .SetDynamic)
         log.info("NOTIFY?:  Set Dynamic")
@@ -174,6 +166,21 @@ class StatusMenuController: NSViewController {
             }
         }
         
+        for process in hungry {
+            if process.name.contains("External Display")
+                && appDelegate?.manager.requestedMode != SwitcherMode.SetDynamic {
+                
+                if (appDelegate?.manager.GPUMode(mode: SwitcherMode.SetDynamic))! {
+                    log.warning("External display connected, going back to dynamic")
+                    
+                    NotificationCenter.default.post(name: .externalDisplayConnect, object: nil)
+                    
+                    changeGPUButtonToCorrectState(state: .SetDynamic)
+                    return
+                }
+            }
+        }
+        
         if hungry.count > 0 {
             Dependencies.isHidden = false
             
@@ -190,7 +197,10 @@ class StatusMenuController: NSViewController {
             statusMenu.insertItem(seperator, at: 4)
             
             for process in hungry {
-                let title = "\t\(process.name) (\(process.pid))"
+                var title = "\t\(process.name)"
+                if process.pid != "" {
+                    title += "(\(process.pid))"
+                }
                 let newDependency = NSMenuItem(title: title, action: nil, keyEquivalent: "")
                 newDependency.isEnabled = false
                 newDependency.tag = 10 // so its easy to find when we delete
@@ -201,6 +211,25 @@ class StatusMenuController: NSViewController {
             Dependencies.isHidden = true
             
             Dependencies.title = "Dependencies"
+        }
+    }
+    
+    private func changeGPUButtonToCorrectState(state: SwitcherMode) {
+        switch state {
+        case .ForceIntergrated:
+            IntegratedOnlyItem.state = .on
+            DynamicSwitchingItem.state = .off
+            DiscreteOnlyItem.state = .off
+        
+        case .SetDynamic:
+            IntegratedOnlyItem.state = .off
+            DynamicSwitchingItem.state = .on
+            DiscreteOnlyItem.state = .off
+
+        case .ForceDiscrete:
+            IntegratedOnlyItem.state = .off
+            DynamicSwitchingItem.state = .off
+            DiscreteOnlyItem.state = .on
         }
     }
 }

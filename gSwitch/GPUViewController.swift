@@ -13,7 +13,7 @@ class GPUView: NSView {
 
     /**  We use a hidden view to poll for hungry processes or possibly other information like vram */
     
-    let log = SwiftyBeaver.self
+    private let log = SwiftyBeaver.self
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
