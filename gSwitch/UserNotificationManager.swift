@@ -49,10 +49,12 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         
         if !isGoingToCleanNotifications {
             log.info("Called the maid")
-            
-            /** Removes notifications in 15 minutes */
-            Timer.scheduledTimer(timeInterval: 60 * 15, target: self, selector: #selector(cleanUp), userInfo: nil, repeats: false)
-            isGoingToCleanNotifications = true
+
+            DispatchQueue.main.async {
+                /** Removes notifications in approx 15 seconds */
+                Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.cleanUp), userInfo: nil, repeats: false)
+                self.isGoingToCleanNotifications = true
+            }
         }
     }
     
