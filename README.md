@@ -27,7 +27,7 @@ and then build in xcode
 
 ## Roadmap
 
-*   And an auto-updater
+*   Auto updates
 *   Localization
 *   Polling for gpu vram and processor usage?
 
