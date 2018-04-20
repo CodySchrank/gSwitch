@@ -4,7 +4,7 @@ gSwitch allows control over the gpu on dual gpu macs. It also optionally gives a
 
 ## Install
 
-Currently the only way to install is to build the source, however I will be adding a proper solution soon.
+Either download the most recent release or build from the source.
 
 You must have Carthage installed:
 
@@ -18,6 +18,8 @@ And then bootstrap the frameworks:
 ```
 carthage bootstrap
 ```
+
+Build in xcode
 
 ## FAQ
 
