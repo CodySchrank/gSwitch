@@ -6,7 +6,7 @@ gSwitch allows control over the gpu on dual gpu macs. It also optionally gives a
 
 Either [download the most recent release](https://codyschrank.github.io/gSwitch/) or build from the source.
 
-To build from the source:
+To build from the source
 
 You must have Carthage installed:
 
@@ -21,7 +21,7 @@ And then bootstrap the frameworks:
 carthage bootstrap
 ```
 
-and the build in xcode
+and then build in xcode
 
 ## FAQ
 
