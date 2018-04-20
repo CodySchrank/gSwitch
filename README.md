@@ -4,7 +4,7 @@ gSwitch allows control over the gpu on dual gpu macs. It also optionally gives a
 
 ## Install
 
-Either download the most recent release or build from the source.
+Either [download the most recent release](https://codyschrank.github.io/gSwitch/) or build from the source.
 
 You must have Carthage installed:
 
