@@ -30,6 +30,7 @@ and then build in xcode
 *   Auto updates
 *   Localization
 *   Polling for gpu vram and processor usage?
+*   A settable list of applications/processes that are allowed to use discrete gpu (when integrated only)?
 
 ## Notes
 
