@@ -32,6 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         /** I like logs */
+        // if i ever want to use swiftybeaver cloud logging.. probably not
+        // Okn11N
+        // l4T8lQbvbvtfjoOndosh6msocjxqdyrl
+        // q7epzszGSDoVnimkq9ckRd9wuaCwjdVh
         let console = ConsoleDestination()
         let file = FileDestination()
         file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //logs to container/*/swiftybeaver.log

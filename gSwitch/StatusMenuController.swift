@@ -52,6 +52,12 @@ class StatusMenuController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateProcessList(notification:)), name: .updateProcessListInMenu, object: nil)
     }
     
+    @IBAction func helpClicked(_ sender: NSMenuItem) {
+        if let url = URL(string: Constants.HELP_URL), NSWorkspace.shared.open(url) {
+            log.info("Opened help")
+        }
+    }
+    
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
         preferencesWindow.pushToFront()
@@ -160,8 +166,9 @@ class StatusMenuController: NSViewController {
             return
         }
         
+        // get rid of old dependencies
         for item in statusMenu.items {
-            if item.tag == 10 {
+            if item.tag == Constants.STATUS_MENU_DEPENDENCY_TAG {
                 statusMenu.removeItem(item)
             }
         }
@@ -193,8 +200,8 @@ class StatusMenuController: NSViewController {
             hungry.reverse() // because of insert
             
             let seperator = NSMenuItem.separator()
-            seperator.tag = 10
-            statusMenu.insertItem(seperator, at: 4)
+            seperator.tag = Constants.STATUS_MENU_DEPENDENCY_TAG
+            statusMenu.insertItem(seperator, at: Constants.STATUS_MENU_DEPENDENCY_APPEND_INDEX)
             
             for process in hungry {
                 var title = "\t\(process.name)"
@@ -203,8 +210,8 @@ class StatusMenuController: NSViewController {
                 }
                 let newDependency = NSMenuItem(title: title, action: nil, keyEquivalent: "")
                 newDependency.isEnabled = false
-                newDependency.tag = 10 // so its easy to find when we delete
-                statusMenu.insertItem(newDependency, at: 6)  // below the menu list name
+                newDependency.tag = Constants.STATUS_MENU_DEPENDENCY_TAG
+                statusMenu.insertItem(newDependency, at: Constants.STATUS_MENU_DEPENDENCY_APPEND_INDEX + 2)
             }
             
         } else {

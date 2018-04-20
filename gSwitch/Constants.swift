@@ -5,7 +5,7 @@
 //  Created by Cody Schrank on 4/14/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
-//  GPUState, DispatchSelectors, and Features is from gfxCardStatus
+//  GPUState, DispatchSelectors, and Features are from gfxCardStatus
 //  Copyright (c) 2010-2012, Cody Krieger
 //  All rights reserved.
 //
@@ -102,6 +102,9 @@ struct Constants {
     static let launcherApplicationIdentifier = "com.CodySchrank.gSwitchLauncher"
     static let GPU_CHANGE_NOTIFICATIONS = "gpuChangeNotifications"
     static let APP_LOGIN_START = "appLoginStart"
+    static let STATUS_MENU_DEPENDENCY_APPEND_INDEX = 5
+    static let STATUS_MENU_DEPENDENCY_TAG = 10
+    static let HELP_URL = "https://codyschrank.github.io/gSwitch/#faq"
 }
 
 extension Notification.Name {

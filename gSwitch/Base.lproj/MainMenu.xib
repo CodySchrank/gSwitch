@@ -19,7 +19,13 @@
                 <menuItem title="About" id="Sbj-bN-UUm">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="aboutClicked:" target="P9x-zM-Cnz" id="Sdu-v6-5sD"/>
+                        <action selector="aboutClicked:" target="P9x-zM-Cnz" id="GqQ-6D-8td"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Help" id="bKp-qZ-uQ2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="helpClicked:" target="P9x-zM-Cnz" id="Cge-DD-EqM"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Preferences" id="EvT-ge-HB2">
