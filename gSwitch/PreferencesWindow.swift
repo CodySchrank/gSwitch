@@ -8,12 +8,8 @@
 
 import Cocoa
 import ServiceManagement
-import SwiftyBeaver
 
-class PreferencesWindow: NSWindowController {
-    
-    let log = SwiftyBeaver.self
-    
+class PreferencesWindow: BossyWindow {
     @IBOutlet weak var toggleOpenAppLogin: NSButton!
     
     @IBOutlet weak var toggleGPUChangeNotifications: NSButton!
@@ -26,10 +22,6 @@ class PreferencesWindow: NSWindowController {
         toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))
         
         toggleGPUChangeNotifications.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))
-        
-        self.window?.center()
-        self.window?.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
     }
     
     @IBAction func gpuChangeNotificationsPressed(_ sender: NSButton) {

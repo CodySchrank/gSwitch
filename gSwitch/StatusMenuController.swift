@@ -54,10 +54,12 @@ class StatusMenuController: NSViewController {
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
+        preferencesWindow.pushToFront()
     }
     
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
         aboutWindow.showWindow(nil)
+        aboutWindow.pushToFront()
     }
     
     

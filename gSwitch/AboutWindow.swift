@@ -7,19 +7,22 @@
 //
 
 import Cocoa
-import SwiftyBeaver
 
-class AboutWindow: NSWindowController {
+class AboutWindow: BossyWindow {
+    let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
+
+    @IBOutlet weak var aboutText: NSTextField!
     
-    let log = SwiftyBeaver.self
-
     override func windowDidLoad() {
         super.windowDidLoad()
 
         log.info("About Opened")
         
+        aboutText.stringValue = "gSwitch \(version)"
+        
         self.window?.center()
-        self.window?.makeKeyAndOrderFront(nil)
+        self.window?.makeKeyAndOrderFront(self)
+        self.window?.orderedIndex = 0
         NSApp.activate(ignoringOtherApps: true)
     }
     

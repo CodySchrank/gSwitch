@@ -17,13 +17,12 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
     var _manager: GPUManager?
     var lastGPU: String?
     
+    var isGoingToCleanNotifications = false
+    
     override init() {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(_showNotification(notification:)), name: .probableGPUChange, object: nil)
-        
-        /** Removes notifications from notification center approx every 15 minutes */
-        Timer.scheduledTimer(timeInterval: 60 * 15, target: self, selector: #selector(cleanUp), userInfo: nil, repeats: true)
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter,
@@ -47,11 +46,20 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         notification.informativeText = currentGPU ?? ""
         
         notificationCenter.deliver(notification)
+        
+        if !isGoingToCleanNotifications {
+            log.info("Called the maid")
+            
+            /** Removes notifications in 15 minutes */
+            Timer.scheduledTimer(timeInterval: 60 * 15, target: self, selector: #selector(cleanUp), userInfo: nil, repeats: false)
+            isGoingToCleanNotifications = true
+        }
     }
     
     @objc public func cleanUp() {
         log.info("CLEAN: Notifications are gross")
         notificationCenter.removeAllDeliveredNotifications()
+        isGoingToCleanNotifications = false
     }
     
     @objc private func _showNotification(notification: NSNotification) {
