@@ -29,16 +29,14 @@ Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/
 
 ## Roadmap
 
-*   Actual release app and an auto-updater
-*   Testing needs to be done for 2010 and older machines
-*   Handle external displays
+*   And an auto-updater
 *   Localization
 *   Polling for gpu vram and processor usage?
 
 ## Notes
 
-Unless you have a 2013 Macbook Pro with a 750m consider yourself a guinea pig. Since this is so new it is untested on anything else.
+Unless you have a 2013 Macbook Pro with a 750m consider yourself a guinea pig. Since this is so new it is untested on anything else. I'm still unsure if this will work if you have a mac older than 2010.
 
 Only tested on high sierra
 
-Since I wrote this in about 3 days I'm sure there are going to be issues.
+Since I wrote this in about a week I'm sure there are going to be issues.
