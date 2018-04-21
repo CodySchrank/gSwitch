@@ -27,7 +27,9 @@ and then build in xcode
 
 **Why does the app go back to discrete when a display is plugged in?** Unfortunately your mac is designed such that in order to use an external display it has to use the dedicated graphics card. And since you plugged in the cable I'm assuming you want to use it. Unfortunately when you unplug the display, if you want to use a different mode than dynamic, you will have to manually set it (at this time).
 
-**Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists?** Well it had some problems on high sierra and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes.
+**What is a dependency process vs a hungry process?** A dependency is a process that is currently using your dedicated gpu. You can not change to _integrated only_ when there is a dependency. A hungry process is one that wants to use the dedicated gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become a dependency.
+
+**Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists?** Well it had some problems on high sierra and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes. Regardless, big shoutout to [cody](https://github.com/codykrieger) this project wouldn't have been possible without his gpu mux code.
 
 ## Roadmap
 
@@ -39,7 +41,5 @@ and then build in xcode
 ## Notes
 
 Unless you have a 2013 Macbook Pro with a 750m consider yourself a guinea pig. Since this is so new it is untested on anything else. I'm especially unsure if this will work if you have a mac older than 2011.
-
-Only tested on high sierra
 
 Since I wrote this in about a week I'm sure there are going to be issues.
