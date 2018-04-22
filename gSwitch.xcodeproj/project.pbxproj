@@ -22,10 +22,10 @@
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
 		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
 		823B2748208BFE4A00A7DFB6 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
-		823B274A208BFE7600A7DFB6 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		823B274B208BFE8F00A7DFB6 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
-		823B274C208BFF6B00A7DFB6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; };
 		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
+		823B274F208C290E00A7DFB6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; };
+		823B2750208C290E00A7DFB6 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
 		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
@@ -82,7 +82,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */,
-				823B274A208BFE7600A7DFB6 /* Sparkle.framework in Embed Frameworks */,
+				823B2750208C290E00A7DFB6 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,8 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */,
+				823B274F208C290E00A7DFB6 /* Sparkle.framework in Frameworks */,
 				829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */,
-				823B274C208BFF6B00A7DFB6 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
