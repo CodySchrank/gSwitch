@@ -29,7 +29,7 @@ and then build in xcode
 
 **What is a dependent process vs a hungry process?** A dependent process is one that is currently using your dedicated gpu. A hungry process is one that wants to use the dedicated gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.
 
-**Why can't I change to _Integrated Only_ when there is a dependent process?** You can not change to _integrated only_ when there is a dependency, because your dedicated gpu stays powered on. To prevent both gpus being power on the app prevents you from switching until you quit all dependent processes. (this is still being tested and might change in the future)
+**Why can't I change to _integrated only_ when there is a dependent process?** You can not change to _integrated only_ when there is a dependency, because your dedicated gpu stays powered on. To prevent both gpus being power on the app prevents you from switching until you quit all dependent processes. (this is still being tested and might change in the future)
 
 **Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists?** Well it had some problems on high sierra and I thought the notification system was a bit too happy so I rewrote the program in swift and made a bunch of changes. I'm also considering adding more features. Regardless, big shoutout to [cody](https://github.com/codykrieger) this project wouldn't have been possible without his gpu mux code.
 
