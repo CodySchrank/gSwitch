@@ -178,7 +178,7 @@ class StatusMenuController: NSViewController {
         
         for process in hungry {
             if process.name.contains("External Display")
-                && appDelegate?.manager.requestedMode != SwitcherMode.SetDynamic {
+                && appDelegate?.manager.requestedMode == SwitcherMode.ForceIntergrated {
                 
                 if (appDelegate?.manager.GPUMode(mode: SwitcherMode.SetDynamic))! {
                     log.warning("External display connected, going back to dynamic")
