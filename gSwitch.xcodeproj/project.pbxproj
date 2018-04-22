@@ -26,6 +26,7 @@
 		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
 		823B274F208C290E00A7DFB6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; };
 		823B2750208C290E00A7DFB6 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82556518208C505900A6807F /* UpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82556517208C505900A6807F /* UpdaterDelegate.swift */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
 		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
@@ -127,6 +128,7 @@
 		823B2744208BFE4100A7DFB6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		823B274D208C0A2900A7DFB6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		82556517208C505900A6807F /* UpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterDelegate.swift; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
@@ -192,16 +194,17 @@
 			children = (
 				82233EA020844AC9006C57E7 /* AppDelegate.swift */,
 				82233ECB20844ADF006C57E7 /* Constants.swift */,
+				829553D120884FC200A29C49 /* Extentions.swift */,
 				82233ED020844ADF006C57E7 /* GPUListener.swift */,
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
 				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
-				829553D120884FC200A29C49 /* Extentions.swift */,
-				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
 				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
+				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
+				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
 				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
 				829553C520884BFA00A29C49 /* AboutWindow.swift */,
-				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
+				82556517208C505900A6807F /* UpdaterDelegate.swift */,
 				829553C620884BFA00A29C49 /* AboutWindow.xib */,
 				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
 				82233EA420844ACA006C57E7 /* MainMenu.xib */,
@@ -417,6 +420,7 @@
 				82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */,
 				82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */,
 				82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */,
+				82556518208C505900A6807F /* UpdaterDelegate.swift in Sources */,
 				82233EA120844AC9006C57E7 /* AppDelegate.swift in Sources */,
 				82233ED320844ADF006C57E7 /* Constants.swift in Sources */,
 				82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */,

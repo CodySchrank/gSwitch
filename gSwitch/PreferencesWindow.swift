@@ -57,6 +57,7 @@ class PreferencesWindow: BossyWindow {
     
     @IBAction func checkForUpdatesClicked(_ sender: NSButton) {
         appDelegate.checkForUpdates()
+        log.info("Checking for updates..")
         self.window?.close()
     }
 }

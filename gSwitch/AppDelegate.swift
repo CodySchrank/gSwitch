@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let notifications = UserNotificationManager()
     
     var updater: SPUUpdater?
+    var updaterDelegate: UpdaterDelegate?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** Check if the launcher app is started */
@@ -112,7 +113,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var userDriver: SPUStandardUserDriverProtocol?
         userDriver = SPUStandardUserDriver(hostBundle: hostBundle, delegate: nil)
         
-        updater = SPUUpdater(hostBundle: hostBundle, applicationBundle: applicationBundle, userDriver: userDriver as! SPUUserDriver, delegate: nil)
+        updaterDelegate = UpdaterDelegate()
+        
+        updater = SPUUpdater(hostBundle: hostBundle, applicationBundle: applicationBundle, userDriver: userDriver as! SPUUserDriver, delegate: updaterDelegate)
         
         do {
             try updater?.start()
