@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.2 Fixed bug in updater</title>
+        <title>1.7.3 Disabled app sandbox</title>
         <description>
-          The updater seems to fail quite frequently... trying to fix it
+          This isn't ideal but updates work now.  When sparkle 2.0 comes out I'll likely be able to turn it back on
         </description>
-        <pubDate>2018-04-21.22:18:36</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.2/gSwitch.zip" sparkle:version="1.7.2" length="10045082" type="application/octet-stream" sparkle:dsaSignature="MEUCIHIHm+r8l12GgXEludW+zxomrDU+GO3PkDLJmEn2B3npAiEAgAHE3kAZ4/3f
-wgd1B5Uol6SoE9gjGk+oe3/x5ENupig=" />
+        <pubDate>2018-04-21.23:05:31</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.3/gSwitch.zip" sparkle:version="1.7.3" length="10279068" type="application/octet-stream" sparkle:dsaSignature="MEUCIDYjUOEcjhF8jAEwcxX5wbJiDxlBE06dCBWXYQ/Shv1mAiEAj3Xq1m/q7+Eg
++lmjcxIr4OkgoAQYDI9QozH+KC8F5eE=" />
       </item>
   </channel>
 </rss>
