@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.1 Moved check for updates button</title>
+        <title>1.7.2 Fixed bug in updater</title>
         <description>
-          Moved check for updates button from the main menu to the preferences window because I thought it looks better
+          The updater seems to fail quite frequently... trying to fix it
         </description>
-        <pubDate>2018-04-21.22:03:58</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.1/gSwitch.zip" sparkle:version="1.7.1" length="10043485" type="application/octet-stream" sparkle:dsaSignature="MEQCIBbygOd90TIZbe1rRbzmsPFg8WngHetAmvAyAPKzBJ1rAiBfQrdGxJFnX6ya
-SoF/legEDl3RNEeuLw/X6czWK03BKg==" />
+        <pubDate>2018-04-21.22:18:36</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.2/gSwitch.zip" sparkle:version="1.7.2" length="10045082" type="application/octet-stream" sparkle:dsaSignature="MEUCIHIHm+r8l12GgXEludW+zxomrDU+GO3PkDLJmEn2B3npAiEAgAHE3kAZ4/3f
+wgd1B5Uol6SoE9gjGk+oe3/x5ENupig=" />
       </item>
   </channel>
 </rss>
