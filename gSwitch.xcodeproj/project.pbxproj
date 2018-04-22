@@ -21,12 +21,12 @@
 		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
 		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
-		823B2748208BFE4A00A7DFB6 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
-		823B274B208BFE8F00A7DFB6 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
 		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
-		823B274F208C290E00A7DFB6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; };
-		823B2750208C290E00A7DFB6 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82556518208C505900A6807F /* UpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82556517208C505900A6807F /* UpdaterDelegate.swift */; };
+		82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
+		82556533208C5BA900A6807F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8255652F208C5B9300A6807F /* Sparkle.framework */; };
+		82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8255652F208C5B9300A6807F /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82556535208C5BB200A6807F /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
 		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
@@ -71,7 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				823B274B208BFE8F00A7DFB6 /* Sparkle.framework.dSYM in CopyFiles */,
+				82556535208C5BB200A6807F /* Sparkle.framework.dSYM in CopyFiles */,
 				829553D020884F6200A29C49 /* SwiftyBeaver.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +83,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */,
-				823B2750208C290E00A7DFB6 /* Sparkle.framework in Embed Frameworks */,
+				82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,10 +125,10 @@
 		8230418920882BB2006701CB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		82360C702088361700ADD0CE /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		82360C712088361700ADD0CE /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
-		823B2744208BFE4100A7DFB6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
-		823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		823B274D208C0A2900A7DFB6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		82556517208C505900A6807F /* UpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterDelegate.swift; sourceTree = "<group>"; };
+		8255652F208C5B9300A6807F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		82556530208C5B9300A6807F /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */,
-				823B274F208C290E00A7DFB6 /* Sparkle.framework in Frameworks */,
+				82556533208C5BA900A6807F /* Sparkle.framework in Frameworks */,
 				829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,8 +248,8 @@
 		8230418820882BB1006701CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				823B2744208BFE4100A7DFB6 /* Sparkle.framework */,
-				823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */,
+				8255652F208C5B9300A6807F /* Sparkle.framework */,
+				82556530208C5B9300A6807F /* Sparkle.framework.dSYM */,
 				829553CA20884F4700A29C49 /* SwiftyBeaver.framework */,
 				829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */,
 				8230418920882BB2006701CB /* ServiceManagement.framework */,
@@ -331,7 +331,7 @@
 						LastSwiftMigration = 0930;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -391,8 +391,8 @@
 				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
 				829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */,
+				82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */,
 				829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */,
-				823B2748208BFE4A00A7DFB6 /* Sparkle.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +595,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = gSwitch/gSwitch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z26D67C784;
@@ -609,6 +608,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
@@ -622,7 +622,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = gSwitch/gSwitch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z26D67C784;
@@ -636,6 +635,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
