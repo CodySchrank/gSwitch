@@ -35,10 +35,9 @@ and then build in xcode
 
 ## Roadmap
 
-*   Auto updates
-*   Localization
+*   Localization? (If you want a language make an issue)
 *   Polling for gpu vram and processor usage?
-*   A settable list of applications/processes that are allowed to use discrete gpu (when integrated only)?
+*   A settable list of applications/processes that are allowed to use discrete gpu when integrated only?
 
 ## Notes
 
