@@ -1,1 +1,3 @@
 github "SwiftyBeaver/SwiftyBeaver"
+github "sparkle-project/Sparkle" "ui-separation-and-xpc"
+

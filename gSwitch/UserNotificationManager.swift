@@ -52,7 +52,6 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
             let notification = NSUserNotification()
             notification.title = "External Display Connected"
             notification.informativeText = "Mode returned to Dynamic Switching"
-            notification.actionButtonTitle = "action"
             
             self.notificationCenter.deliver(notification)
             
@@ -102,10 +101,10 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
             log.info("Called the maid")
             
             DispatchQueue.main.async {
-                /** Removes notifications in approx 30 seconds */
+                /** Removes notifications in approx 15 mins */
                 self.isGoingToCleanNotifications = true
                 
-                Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: {
+                Timer.scheduledTimer(withTimeInterval: 60 * 15, repeats: false, block: {
                     (Timer) in
                     self.cleanUp()
                 })

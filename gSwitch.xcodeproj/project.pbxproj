@@ -21,6 +21,11 @@
 		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
 		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
+		823B2748208BFE4A00A7DFB6 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
+		823B274A208BFE7600A7DFB6 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		823B274B208BFE8F00A7DFB6 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */; };
+		823B274C208BFF6B00A7DFB6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B2744208BFE4100A7DFB6 /* Sparkle.framework */; };
+		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
 		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
@@ -65,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				823B274B208BFE8F00A7DFB6 /* Sparkle.framework.dSYM in CopyFiles */,
 				829553D020884F6200A29C49 /* SwiftyBeaver.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +82,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */,
+				823B274A208BFE7600A7DFB6 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +124,9 @@
 		8230418920882BB2006701CB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		82360C702088361700ADD0CE /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		82360C712088361700ADD0CE /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		823B2744208BFE4100A7DFB6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		823B274D208C0A2900A7DFB6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
@@ -134,6 +144,7 @@
 			files = (
 				8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */,
 				829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */,
+				823B274C208BFF6B00A7DFB6 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +210,7 @@
 				82233ECC20844ADF006C57E7 /* GSProcess.m */,
 				82233EA720844ACA006C57E7 /* Info.plist */,
 				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
+				823B274D208C0A2900A7DFB6 /* dsa_pub.pem */,
 				82233EA220844ACA006C57E7 /* Assets.xcassets */,
 			);
 			path = gSwitch;
@@ -233,6 +245,8 @@
 		8230418820882BB1006701CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				823B2744208BFE4100A7DFB6 /* Sparkle.framework */,
+				823B2747208BFE4A00A7DFB6 /* Sparkle.framework.dSYM */,
 				829553CA20884F4700A29C49 /* SwiftyBeaver.framework */,
 				829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */,
 				8230418920882BB2006701CB /* ServiceManagement.framework */,
@@ -364,11 +378,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */,
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
 				829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */,
 				829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */,
+				823B2748208BFE4A00A7DFB6 /* Sparkle.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

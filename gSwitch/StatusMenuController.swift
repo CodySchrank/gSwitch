@@ -39,7 +39,7 @@ class StatusMenuController: NSViewController {
         appDelegate = (NSApplication.shared.delegate as! AppDelegate)
         
         statusItem.menu = statusMenu
-        GPUViewLabel.view = GPUViewController
+        GPUViewLabel.view = GPUViewController  // hidden view
         
         preferencesWindow = PreferencesWindow(windowNibName: NSNib.Name(rawValue: "PreferencesWindow"))
         
@@ -69,6 +69,10 @@ class StatusMenuController: NSViewController {
     }
     
     
+    @IBAction func checkForUpdatesClicked(_ sender: NSMenuItem) {
+        appDelegate?.checkForUpdates()
+    }
+    
     @IBAction func intergratedOnlyClicked(_ sender: NSMenuItem) {
         if(appDelegate?.manager.requestedMode == .ForceIntergrated) {
             return  //already set
@@ -79,9 +83,14 @@ class StatusMenuController: NSViewController {
             How do i find out if the dgpu is still on? */
         let hungryProcesses = appDelegate?.processer.getHungryProcesses()
         if(hungryProcesses!.count > 0) {
-            /** TODO: Instead of showing warning present window with the offending processes and the option
-                        to delete them              */
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
+            
+            let alert = NSAlert.init()
+            alert.messageText = "Cannot change to Integrated Only"
+            alert.informativeText = "You have GPU Dependencies"
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            
             return
         }
         
@@ -206,7 +215,7 @@ class StatusMenuController: NSViewController {
             for process in hungry {
                 var title = "\t\(process.name)"
                 if process.pid != "" {
-                    title += "(\(process.pid))"
+                    title += " (\(process.pid))"
                 }
                 let newDependency = NSMenuItem(title: title, action: nil, keyEquivalent: "")
                 newDependency.isEnabled = false
@@ -239,4 +248,6 @@ class StatusMenuController: NSViewController {
             DiscreteOnlyItem.state = .on
         }
     }
+    
+    
 }

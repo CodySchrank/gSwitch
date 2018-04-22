@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyBeaver
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let listener = GPUListener()
     let processer = ProcessManager()
     let notifications = UserNotificationManager()
+    
+    var updater: SPUUpdater?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** Check if the launcher app is started */
@@ -83,6 +86,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
         log.verbose("Initial App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
+        
+        setupUpdater()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -96,5 +101,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         _ = manager.close()
     }
+    
+    func checkForUpdates() {
+        updater?.checkForUpdates()
+    }
+    
+    private func setupUpdater() {
+        let hostBundle = Bundle.main
+        let applicationBundle = hostBundle
+        var userDriver: SPUStandardUserDriverProtocol?
+        userDriver = SPUStandardUserDriver(hostBundle: hostBundle, delegate: nil)
+        
+        updater = SPUUpdater(hostBundle: hostBundle, applicationBundle: applicationBundle, userDriver: userDriver as! SPUUserDriver, delegate: nil)
+        
+        do {
+            try updater?.start()
+            log.info("Started updater")
+        } catch {
+            log.error(error)
+        }
+    }
 }
+
 

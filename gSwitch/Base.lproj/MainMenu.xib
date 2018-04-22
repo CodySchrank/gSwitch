@@ -34,6 +34,12 @@
                         <action selector="preferencesClicked:" target="P9x-zM-Cnz" id="jJD-qD-p3f"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Check for updates" id="v5Q-Wy-gJc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdatesClicked:" target="P9x-zM-Cnz" id="n3K-zZ-rZf"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="1Dc-nn-1x7"/>
                 <menuItem title="CurrentGPU" id="5y0-MT-yb1">
                     <modifierMask key="keyEquivalentModifierMask"/>
