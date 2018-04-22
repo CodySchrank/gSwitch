@@ -25,7 +25,7 @@ and then build in xcode
 
 ## FAQ
 
-**Why does the app go back to discrete when a display is plugged in?** Unfortunately your mac is designed such that in order to use an external display it has to use the dedicated graphics card. And since you plugged in the cable I'm assuming you want to use it. Unfortunately when you unplug the display, if you want to use a different mode than dynamic, you will have to manually set it (at this time).
+**Why does the app go back to _dynamic switching_ when a display is plugged in?** Unfortunately your mac is designed such that in order to use an external display it has to use the dedicated graphics card. And since you plugged in the cable I'm assuming you want to use the display. Unfortunately when you unplug the display, if you want to use a different mode, you will have to manually set it (at this time).
 
 **What is a dependent process vs a hungry process?** A dependent process is one that is currently using your dedicated gpu. A hungry process is one that wants to use the dedicated gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.
 
