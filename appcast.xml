@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.3 Disabled app sandbox</title>
+        <title>1.7.4 Fixed bug where connecting a display always changed mode back to dynamic</title>
         <description>
-          This isn't ideal but updates work now.  When sparkle 2.0 comes out I'll likely be able to turn it back on
+          Fixed bug where connecting a display always changed mode back to dynamic.  If discrete is on it should be allowed to stay on
         </description>
-        <pubDate>2018-04-21.23:05:31</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.3/gSwitch.zip" sparkle:version="1.7.3" length="10279068" type="application/octet-stream" sparkle:dsaSignature="MEUCIDYjUOEcjhF8jAEwcxX5wbJiDxlBE06dCBWXYQ/Shv1mAiEAj3Xq1m/q7+Eg
-+lmjcxIr4OkgoAQYDI9QozH+KC8F5eE=" />
+        <pubDate>2018-04-21.23:34:39</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.4/gSwitch.zip" sparkle:version="1.7.4" length="10279097" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDJWCMoBOLK7CzafAm5nJLxQRP/zArChPo9ktvCE4JlEAIgPiDXGJFudWdd
+1qMFAKM5ha666AMACdP8Y3JiA359HmA=" />
       </item>
   </channel>
 </rss>
