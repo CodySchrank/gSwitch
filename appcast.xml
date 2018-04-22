@@ -9,9 +9,9 @@
         <description>
           Moved check for updates button from the main menu to the preferences window because I thought it looks better
         </description>
-        <pubDate>2018-04-21.21:12:39</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.1/gSwitch.zip" sparkle:version="1.7.1" length="10043409" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCq96m2Ry1NuFKUkqOtvRRxOU5Q2qqN3612NIKdEjxhBAIgdsI/JCdIs6+h
-W5AnUYhG1c9YbMzUagcN0GwwT1Z31tc=" />
+        <pubDate>2018-04-21.22:03:58</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.1/gSwitch.zip" sparkle:version="1.7.1" length="10043485" type="application/octet-stream" sparkle:dsaSignature="MEQCIBbygOd90TIZbe1rRbzmsPFg8WngHetAmvAyAPKzBJ1rAiBfQrdGxJFnX6ya
+SoF/legEDl3RNEeuLw/X6czWK03BKg==" />
       </item>
   </channel>
 </rss>
