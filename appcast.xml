@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.0 Added auto updates</title>
+        <title>1.7.1 Moved check for updates button</title>
         <description>
-          The app now auto updates.  Also fixed a bug where integrated only would silently fail
+          Moved check for updates button from the main menu to the preferences window because I thought it looks better
         </description>
-        <pubDate>2018-04-21.19:30:43</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.0/gSwitch.zip" sparkle:version="1.7.0" length="10041479" type="application/octet-stream" sparkle:dsaSignature="MEUCIFUc/EzT6vKIDBbYJsIM6d0M3+rGJUKOW5XgjmwpR4FvAiEA1zajnHuy64lr
-bp6WkDZUtkXx1OKvqJdurEhs1m8BtDM=" />
+        <pubDate>2018-04-21.21:12:39</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.1/gSwitch.zip" sparkle:version="1.7.1" length="10043409" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCq96m2Ry1NuFKUkqOtvRRxOU5Q2qqN3612NIKdEjxhBAIgdsI/JCdIs6+h
+W5AnUYhG1c9YbMzUagcN0GwwT1Z31tc=" />
       </item>
   </channel>
 </rss>
