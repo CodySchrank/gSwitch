@@ -1,23 +1,17 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-    <channel>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
     <title>gSwitch App Changelog</title>
-    <link>
-        https://raw.githubusercontent.com/CodySchrank/gSwitch/master/appcast.xml
-    </link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
-        <item>
-            <title>1.7.0</title>
-            <description>
-                Added auto updates
-            </description>
-            <enclosure 
-                url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.0/gSwitch.zip"
-                sparkle:version="1.7.0" 
-                length="0" 
-                type="application/octet-stream" 
-                sparkle:dsaSignature="MCwCFCdoW13VBGJWIfIklKxQVyetgxE7AhQTVuY9uQT0KOV1UEk21epBsGZMPg=="
-            />
-        </item>
-    </channel>
+      <item>
+        <title>1.7.0 Added auto updates</title>
+        <description>
+          The app now auto updates.  Also fixed a bug where integrated only would silently fail
+        </description>
+        <pubDate>2018-04-21.19:11:34</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.0/gSwitch.zip" sparkle:version="1.7.0" length="12959187" type="application/octet-stream" sparkle:dsaSignature="MEYCIQC8kFsY7H4wtuZu4g49Inv77NYKsVidxWkpywFetRjfVwIhAMLE22Qvu41N
+DBrNosP+XCieh1Ti8CeK8JqRixnGk7Ax" />
+      </item>
+  </channel>
 </rss>
