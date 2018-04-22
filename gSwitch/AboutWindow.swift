@@ -9,9 +9,9 @@
 import Cocoa
 
 class AboutWindow: BossyWindow {
-    let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
-
     @IBOutlet weak var aboutText: NSTextField!
+    
+    private let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -25,5 +25,4 @@ class AboutWindow: BossyWindow {
         self.window?.orderedIndex = 0
         NSApp.activate(ignoringOtherApps: true)
     }
-    
 }

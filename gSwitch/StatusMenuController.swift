@@ -68,16 +68,10 @@ class StatusMenuController: NSViewController {
         aboutWindow.pushToFront()
     }
     
-    
-    @IBAction func checkForUpdatesClicked(_ sender: NSMenuItem) {
-        appDelegate?.checkForUpdates()
-    }
-    
     @IBAction func intergratedOnlyClicked(_ sender: NSMenuItem) {
         if(appDelegate?.manager.requestedMode == .ForceIntergrated) {
             return  //already set
         }
-        
         
         /** According to gfx we cant do this.  Idk in testing it seems like I can do force it.
             How do i find out if the dgpu is still on? */

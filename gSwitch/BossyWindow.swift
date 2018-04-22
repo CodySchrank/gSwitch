@@ -12,6 +12,7 @@ import SwiftyBeaver
 
 class BossyWindow: NSWindowController {
     internal let log = SwiftyBeaver.self
+    internal let appDelegate = (NSApplication.shared.delegate as! AppDelegate)
     
     public func pushToFront() {
         self.window?.center()

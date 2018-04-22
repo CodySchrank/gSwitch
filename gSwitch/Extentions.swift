@@ -26,3 +26,18 @@ class HyperlinkTextField: NSTextField {
         NSWorkspace.shared.open(URL(string: href)!)
     }
 }
+
+@IBDesignable
+class HyperlinkTextFieldNoURL: NSTextField {
+    @IBInspectable var href: String = ""
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let attributes: [NSAttributedStringKey: Any] = [
+            .foregroundColor: NSColor.blue,
+            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+        ]
+        self.attributedStringValue = NSAttributedString(string: self.stringValue, attributes: attributes)
+    }
+}
