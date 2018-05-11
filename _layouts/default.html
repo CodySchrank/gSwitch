@@ -41,9 +41,9 @@
     </section>
     <script>
         function clicked(res) {
-            console.log("clicked " + res.path[0].innerText);
             gtag('event', 'clicked', {
-                method: res.path[0].innerText
+                'event_category': 'general',
+                'event_label': res.path[0].innerText
             });
         }
 
