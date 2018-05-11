@@ -19,6 +19,7 @@
         gtag('config', 'UA-38518754-5');
 
         function clicked(res) {
+            console.log("clicked " + res.path[0].innerText);
             gtag('event', 'clicked', {
                 method: res.path[0].innerText
             });
