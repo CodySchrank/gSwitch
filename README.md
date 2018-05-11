@@ -41,6 +41,6 @@ and then build in xcode
 
 ## Notes
 
-Unless you have a 2013 Macbook Pro with a 750m consider yourself a guinea pig. Since this is so new it is untested on anything else. I'm especially unsure if this will work if you have a mac older than 2011.
+I'm especially unsure if this will work if you have a mac older than 2011. ([Let me know if it does!](https://github.com/CodySchrank/gSwitch/issues/12))
 
 Since I wrote this in about a week I'm sure there are going to be issues.
