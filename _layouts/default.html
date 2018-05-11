@@ -19,7 +19,9 @@
         gtag('config', 'UA-38518754-5');
 
         function clicked(res) {
-            ga('send', 'event', res.path[0].innerText, 'Clicked');
+            gtag('event', 'clicked', {
+                method: res.path[0].innerText
+            });
         }
 
         const btns = document.getElementsByClassName("btn");
