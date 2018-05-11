@@ -13,11 +13,21 @@
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-38518754-5');
-    </script>
 
+        function clicked(res) {
+            ga('send', 'event', res.path[0].innerText, 'Clicked');
+        }
+
+        const btns = document.getElementsByClassName("btn");
+
+        for (let btn of btns) {
+            btn.addEventListener('click', clicked);
+        }
+    </script>
 </head>
 
 <body>
