@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.4 Fixed bug where connecting a display always changed mode back to dynamic</title>
+        <title>1.7.5 Added terminal arguments for app launch</title>
         <description>
-          Fixed bug where connecting a display always changed mode back to dynamic.  If discrete is on it should be allowed to stay on
+          Small refactor to make code safer.  Added --integrated and --discrete that can be passed in to set the desired gpu mode.
         </description>
-        <pubDate>2018-04-21.23:34:39</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.4/gSwitch.zip" sparkle:version="1.7.4" length="10279097" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDJWCMoBOLK7CzafAm5nJLxQRP/zArChPo9ktvCE4JlEAIgPiDXGJFudWdd
-1qMFAKM5ha666AMACdP8Y3JiA359HmA=" />
+        <pubDate>2018-05-13.13:24:22</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.5/gSwitch.zip" sparkle:version="1.7.5" length="10279888" type="application/octet-stream" sparkle:dsaSignature="MEQCICya7OaKMGZ7l2gcilJiIDyaDNR5ukwWQhrlKfmHXn6iAiAxWUotm/yVen7f
+3WUdMgGjeXw7x60O1H2xe4XoV3bt2A==" />
       </item>
   </channel>
 </rss>
