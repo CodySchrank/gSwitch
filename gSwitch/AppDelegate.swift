@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var updater: SPUUpdater?
     var updaterDelegate: UpdaterDelegate?
+    var statusMenu: StatusMenuController?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {        
         /** Check if the launcher app is started */
@@ -42,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // q7epzszGSDoVnimkq9ckRd9wuaCwjdVh
         let console = ConsoleDestination()
         let file = FileDestination()
-        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")  //logs to container/*/swiftybeaver.log
+        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")
         log.addDestination(console)
         log.addDestination(file)
         
@@ -63,13 +64,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
         
-        /** Lets set dynamic on startup */
+        
+        //TODO: if else command line or desired state (default dynamic)
+        
+        /** Lets set dynamic on startup regardless of desired state */
         if(manager.GPUMode(mode: .SetDynamic)) {
-            log.info("Initially set as Dynamic")
-        } else {
-            //if it could connect but couldnt set idk if thats possible?
-            //if it is possible this should quit the program here and report error
-            log.error("Could not set dynamic")
+            log.info("Initially set as Dynamic!")
+        }
+        
+        /** Was a mode passed in? */
+        for argument in CommandLine.arguments {
+            switch argument {
+            case "--integrated":
+                log.info("Integrated passed in")
+                safeIntergratedOnly()
+                break
+                
+            case "--discrete":
+                log.info("Discrete passed in")
+                safeDiscreteOnly()
+                break
+                
+            default:
+                break
+            }
         }
         
         /** Get current state so current gpu name exists for use in menu */
@@ -83,11 +101,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Default prefs so shit works */
         UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : true])
-        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : false])
+        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : true])
         
+        /** What did the beaver say to the tree?  It's been nice gnawing you. */
         log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
         log.verbose("Initial App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
         
+        /** Checks for updates if selected */
         setupUpdater()
     }
 
@@ -103,7 +123,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = manager.close()
     }
     
-    func checkForUpdates() {
+    public func safeIntergratedOnly() {
+        if(manager.requestedMode == .ForceIntergrated) {
+            return  //already set
+        }
+        
+        /** According to gfx we cant do this. Further testing needed */
+        let hungryProcesses = processer.getHungryProcesses()
+        if(hungryProcesses.count > 0) {
+            log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
+            
+            let alert = NSAlert.init()
+            alert.messageText = "Cannot change to Integrated Only"
+            alert.informativeText = "You have GPU Dependencies"
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            
+            return
+        }
+        
+        statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
+        
+        _ = manager.GPUMode(mode: .ForceIntergrated)
+        log.info("Set Force Integrated")
+    }
+    
+    public func safeDiscreteOnly() {
+        if(manager.requestedMode == .ForceDiscrete) {
+            return  //already set
+        }
+        
+         statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
+        
+        _ = manager.GPUMode(mode: .ForceDiscrete)
+        log.info("Set Force Discrete")
+    }
+    
+    public func safeDynamicSwitching() {
+        if(manager.requestedMode == .SetDynamic) {
+            return  //already set
+        }
+        
+        statusMenu?.changeGPUButtonToCorrectState(state: .SetDynamic)
+        
+        _ = manager.GPUMode(mode: .SetDynamic)
+        log.info("Set Dynamic")
+    }
+    
+    public func checkForUpdates() {
         updater?.checkForUpdates()
     }
     

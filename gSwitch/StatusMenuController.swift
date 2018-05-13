@@ -33,10 +33,12 @@ class StatusMenuController: NSViewController {
     
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
-    private var appDelegate: AppDelegate?
+    weak private var appDelegate: AppDelegate?
     
     override func awakeFromNib() {
         appDelegate = (NSApplication.shared.delegate as! AppDelegate)
+        
+        appDelegate?.statusMenu = self
         
         statusItem.menu = statusMenu
         GPUViewLabel.view = GPUViewController  // hidden view
@@ -69,57 +71,39 @@ class StatusMenuController: NSViewController {
     }
     
     @IBAction func intergratedOnlyClicked(_ sender: NSMenuItem) {
-        if(appDelegate?.manager.requestedMode == .ForceIntergrated) {
-            return  //already set
-        }
-        
-        /** According to gfx we cant do this.  Idk in testing it seems like I can do force it.
-            How do i find out if the dgpu is still on? */
-        let hungryProcesses = appDelegate?.processer.getHungryProcesses()
-        if(hungryProcesses!.count > 0) {
-            log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
-            
-            let alert = NSAlert.init()
-            alert.messageText = "Cannot change to Integrated Only"
-            alert.informativeText = "You have GPU Dependencies"
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-            
-            return
-        }
-        
-        changeGPUButtonToCorrectState(state: .ForceIntergrated)
-        
-        _ = appDelegate?.manager.GPUMode(mode: .ForceIntergrated)
-        log.info("NOTIFY?:  Set Force Integrated")
+        appDelegate?.safeIntergratedOnly()
     }
     
     @IBAction func discreteOnlyClicked(_ sender: NSMenuItem) {
-        if(appDelegate?.manager.requestedMode == .ForceDiscrete) {
-            return  //already set
-        }
-        
-        changeGPUButtonToCorrectState(state: .ForceDiscrete)
-        
-        _ = appDelegate?.manager.GPUMode(mode: .ForceDiscrete)
-        log.info("NOTIFY?:  Set Force Discrete")
+        appDelegate?.safeDiscreteOnly()
     }
     
     @IBAction func dynamicSwitchingClicked(_ sender: NSMenuItem) {
-        if(appDelegate?.manager.requestedMode == .SetDynamic) {
-            return  //already set
-        }
-        
-        changeGPUButtonToCorrectState(state: .SetDynamic)
-        
-        _ = appDelegate?.manager.GPUMode(mode: .SetDynamic)
-        log.info("NOTIFY?:  Set Dynamic")
+        appDelegate?.safeDynamicSwitching()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
     
+    public func changeGPUButtonToCorrectState(state: SwitcherMode) {
+        switch state {
+        case .ForceIntergrated:
+            IntegratedOnlyItem.state = .on
+            DynamicSwitchingItem.state = .off
+            DiscreteOnlyItem.state = .off
+            
+        case .SetDynamic:
+            IntegratedOnlyItem.state = .off
+            DynamicSwitchingItem.state = .on
+            DiscreteOnlyItem.state = .off
+            
+        case .ForceDiscrete:
+            IntegratedOnlyItem.state = .off
+            DynamicSwitchingItem.state = .off
+            DiscreteOnlyItem.state = .on
+        }
+    }
     
     /**
         Originally this was designed to reflect the current state selected in the menu
@@ -145,7 +129,7 @@ class StatusMenuController: NSViewController {
         // this function always gets called from a non-main thread
         DispatchQueue.main.async {
             guard let currentGPU = self.appDelegate?.manager.currentGPU,
-                  let integratedName = self.appDelegate?.manager.integratedName
+                let integratedName = self.appDelegate?.manager.integratedName
             else {
                 self.log.warning("Can't change gpu name in menu, Current GPU Unknown")
                 return
@@ -223,25 +207,4 @@ class StatusMenuController: NSViewController {
             Dependencies.title = "Dependencies"
         }
     }
-    
-    private func changeGPUButtonToCorrectState(state: SwitcherMode) {
-        switch state {
-        case .ForceIntergrated:
-            IntegratedOnlyItem.state = .on
-            DynamicSwitchingItem.state = .off
-            DiscreteOnlyItem.state = .off
-        
-        case .SetDynamic:
-            IntegratedOnlyItem.state = .off
-            DynamicSwitchingItem.state = .on
-            DiscreteOnlyItem.state = .off
-
-        case .ForceDiscrete:
-            IntegratedOnlyItem.state = .off
-            DynamicSwitchingItem.state = .off
-            DiscreteOnlyItem.state = .on
-        }
-    }
-    
-    
 }
