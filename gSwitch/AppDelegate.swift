@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         //TODO: if else command line or desired state (default dynamic)
         
-        /** Lets set dynamic on startup regardless of desired state */
+        /** Lets set dynamic on startup */
         if(manager.GPUMode(mode: .SetDynamic)) {
             log.info("Initially set as Dynamic!")
         }
