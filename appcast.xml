@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.5 Added terminal arguments for app launch</title>
+        <title>1.7.6 Fixed bug with updater</title>
         <description>
-          Small refactor to make code safer.  Added --integrated and --discrete that can be passed in to set the desired gpu mode.
+          Updater occasionally fails, changed some settings
         </description>
-        <pubDate>2018-05-13.14:32:04</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.5/gSwitch.zip" sparkle:version="1.7.5" length="20575800" type="application/octet-stream" sparkle:dsaSignature="MEQCIEKKOsFxDe327cDgrHSnTGnwx6EnMN62X9LTJfJwr8V4AiAXEuG28jtaxrL7
-VGcyTzP2Ok74syHCReg8v0aiWc9zrQ==" />
+        <pubDate>2018-05-13.14:47:42</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.6/gSwitch.zip" sparkle:version="1.7.6" length="10273557" type="application/octet-stream" sparkle:dsaSignature="MEQCIE6v79fziXySmRjsNbj1j/8w+V4wP0vunPsyUX+gA226AiBDpOjSX37ky9Hu
+rNP+uhGGi9JC8VrgYXtymmsF6F/cig==" />
       </item>
   </channel>
 </rss>
