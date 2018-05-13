@@ -9,9 +9,9 @@
         <description>
           Small refactor to make code safer.  Added --integrated and --discrete that can be passed in to set the desired gpu mode.
         </description>
-        <pubDate>2018-05-13.13:24:22</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.5/gSwitch.zip" sparkle:version="1.7.5" length="10279888" type="application/octet-stream" sparkle:dsaSignature="MEQCICya7OaKMGZ7l2gcilJiIDyaDNR5ukwWQhrlKfmHXn6iAiAxWUotm/yVen7f
-3WUdMgGjeXw7x60O1H2xe4XoV3bt2A==" />
+        <pubDate>2018-05-13.13:27:05</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.5/gSwitch.zip" sparkle:version="1.7.5" length="20575766" type="application/octet-stream" sparkle:dsaSignature="MEQCIFiAjWr+RGZu+b3RaUFm3bA9fM4ELf7TdRubHIrn8nrUAiBhC+JnWS8oK12H
+jlX1SL/Ux9iM6K+OvaMhvEBEpf/FiA==" />
       </item>
   </channel>
 </rss>
