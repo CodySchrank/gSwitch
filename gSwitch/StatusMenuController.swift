@@ -108,6 +108,7 @@ class StatusMenuController: NSViewController {
     /**
         Originally this was designed to reflect the current state selected in the menu
         but it is undoubtedly more useful when it shows the current active gpu
+        So only force integrated and force discrete are used, the setDynamic case is never used.
     */
     private func changeMenuIcon(state: SwitcherMode) {
         let icon: NSImage?
@@ -136,9 +137,8 @@ class StatusMenuController: NSViewController {
             }
             
             self.CurrentGPU.title = "GPU: \(currentGPU)"
-            
-            
-            /** At the same time update the stars */
+        
+            /** At the same time update the gear */
             if(currentGPU == integratedName) {
                 self.changeMenuIcon(state: SwitcherMode.ForceIntergrated)
             } else {

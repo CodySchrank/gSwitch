@@ -60,7 +60,7 @@ enum DispatchSelectors: Int {
     kNumberOfMethods
 };
 
-enum SwitcherMode {
+enum SwitcherMode: Int {
     case
     ForceIntergrated,
     ForceDiscrete,
@@ -102,6 +102,8 @@ struct Constants {
     static let launcherApplicationIdentifier = "com.CodySchrank.gSwitchLauncher"
     static let GPU_CHANGE_NOTIFICATIONS = "gpuChangeNotifications"
     static let APP_LOGIN_START = "appLoginStart"
+    static let USE_LAST_STATE = "useLastState"
+    static let SAVED_GPU_STATE = "savedGPUState"
     static let STATUS_MENU_DEPENDENCY_APPEND_INDEX = 5
     static let STATUS_MENU_DEPENDENCY_TAG = 10
     static let HELP_URL = "https://codyschrank.github.io/gSwitch/#faq"

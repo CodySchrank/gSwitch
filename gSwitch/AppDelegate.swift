@@ -22,7 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var updaterDelegate: UpdaterDelegate?
     var statusMenu: StatusMenuController?
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {        
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
         /** Check if the launcher app is started */
         var startedAtLogin = false
         for app in NSWorkspace.shared.runningApplications {
@@ -36,14 +37,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().postNotificationName(.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
-        /** I like logs */
+        /** I like me dam logs! <-- get it, because beavers... its swiftybeaver... sorry */
         // if i ever want to use swiftybeaver cloud logging.. probably not
         // Okn11N
         // l4T8lQbvbvtfjoOndosh6msocjxqdyrl
         // q7epzszGSDoVnimkq9ckRd9wuaCwjdVh
         let console = ConsoleDestination()
         let file = FileDestination()
-        file.logFileURL = URL(fileURLWithPath: "swiftybeaver.log")
         log.addDestination(console)
         log.addDestination(file)
         
@@ -58,35 +58,62 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.shared.terminate(self)
         }
         
+        /** Default prefs so shit works */
+        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : true])
+        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : true])
+        UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
+        UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
+        
+        /** What did the beaver say to the tree?  It's been nice gnawing you.  Ok no more jokes */
+        log.verbose("App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
+        log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))")
+        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))")
+        log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
+        
         /** GPU Names are good */
         manager.setGPUNames()
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
         
-        
-        //TODO: if else command line or desired state (default dynamic)
-        
-        /** Lets set dynamic on startup */
-        if(manager.GPUMode(mode: .SetDynamic)) {
-            log.info("Initially set as Dynamic!")
-        }
-        
-        /** Was a mode passed in? */
+        /** Was a mode passed in? (If there was, the last gpu state is overridden and not used) */
         for argument in CommandLine.arguments {
             switch argument {
             case "--integrated":
-                log.info("Integrated passed in")
+                log.debug("Integrated passed in")
                 safeIntergratedOnly()
                 break
                 
             case "--discrete":
-                log.info("Discrete passed in")
+                log.debug("Discrete passed in")
                 safeDiscreteOnly()
+                break
+                
+            case "--dynamic":
+                log.debug("Dynamic passed in")
+                safeDynamicSwitching()
                 break
                 
             default:
                 break
+            }
+        }
+        
+        /** Lets set last state on startup if desired */
+        if(UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
+            switch UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE) {
+            case SwitcherMode.ForceDiscrete.rawValue:
+                safeDiscreteOnly()
+            case SwitcherMode.ForceIntergrated.rawValue:
+                safeIntergratedOnly()
+            case SwitcherMode.SetDynamic.rawValue:
+                safeDynamicSwitching()
+            default:
+                break;
+            }
+        } else {
+            if(manager.GPUMode(mode: .SetDynamic)) {
+                log.info("Initially set as Dynamic!")
             }
         }
         
@@ -99,14 +126,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** UserNotificationManager likes the gpu too */
         notifications.inject(manager: manager)
         
-        /** Default prefs so shit works */
-        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : true])
-        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : true])
-        
-        /** What did the beaver say to the tree?  It's been nice gnawing you. */
-        log.verbose("Initial GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
-        log.verbose("Initial App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
-        
         /** Checks for updates if selected */
         setupUpdater()
     }
@@ -115,7 +134,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Clean up gpu change notifications */
         notifications.cleanUp()
         
-        /** Lets go back to dynamic when exiting */
+        /** Lets go back to dynamic when exiting (but don't save it) */
         if(manager.GPUMode(mode: .SetDynamic)) {
             log.info("Set state to dynamic mode")
         }
@@ -144,8 +163,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
         
-        _ = manager.GPUMode(mode: .ForceIntergrated)
-        log.info("Set Force Integrated")
+        if(manager.GPUMode(mode: .ForceIntergrated)) {
+            log.info("Set Force Integrated")
+        } else {
+            // only fails at this point if already integrated (not really a failure)
+            log.warning("Failed to force Integrated (possibly because already on igpu, this is handled)")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.ForceIntergrated.rawValue, forKey: Constants.SAVED_GPU_STATE)
     }
     
     public func safeDiscreteOnly() {
@@ -155,8 +180,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
          statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
         
-        _ = manager.GPUMode(mode: .ForceDiscrete)
-        log.info("Set Force Discrete")
+        if(manager.GPUMode(mode: .ForceDiscrete)) {
+            log.info("Set Force Discrete")
+        } else {
+            // hopefully impossible?
+            log.warning("Failed to force Discrete")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.ForceDiscrete.rawValue, forKey: Constants.SAVED_GPU_STATE)
     }
     
     public func safeDynamicSwitching() {
@@ -166,8 +197,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusMenu?.changeGPUButtonToCorrectState(state: .SetDynamic)
         
-        _ = manager.GPUMode(mode: .SetDynamic)
-        log.info("Set Dynamic")
+        if(manager.GPUMode(mode: .SetDynamic)) {
+            log.info("Set Dynamic Switching")
+        } else {
+            // hopefully impossible?
+            log.warning("Failed to set Dynamic Switching")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.SetDynamic.rawValue, forKey: Constants.SAVED_GPU_STATE)
     }
     
     public func checkForUpdates() {

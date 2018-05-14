@@ -14,12 +14,16 @@ class PreferencesWindow: BossyWindow {
     
     @IBOutlet weak var toggleGPUChangeNotifications: NSButton!
     
+    @IBOutlet weak var useLastState: NSButton!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
         log.info("Preferences Opened")
         
         toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))
+        
+        useLastState.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))
         
         toggleGPUChangeNotifications.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))
     }
@@ -53,6 +57,13 @@ class PreferencesWindow: BossyWindow {
             }
         }
         
+    }
+    
+    @IBAction func useLastStateClicked(_ sender: NSButton) {
+        let status = sender.state.rawValue
+        
+        log.info("Successfully set useLastState item to be \(status)")
+        UserDefaults.standard.set(status, forKey: Constants.USE_LAST_STATE)
     }
     
     @IBAction func checkForUpdatesClicked(_ sender: NSButton) {
