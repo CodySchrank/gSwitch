@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.6 Fixed bug with updater</title>
+        <title>1.7.7 Added option to save last gpu state</title>
         <description>
-          Updater occasionally fails, changed some settings
+          The app can now save the last gpu state that was used when it is launched (defaults to dynamic).  This can be turned on or off.  Also added --dynamic option for launching from the terminal
         </description>
-        <pubDate>2018-05-13.14:47:42</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.6/gSwitch.zip" sparkle:version="1.7.6" length="10273557" type="application/octet-stream" sparkle:dsaSignature="MEQCIE6v79fziXySmRjsNbj1j/8w+V4wP0vunPsyUX+gA226AiBDpOjSX37ky9Hu
-rNP+uhGGi9JC8VrgYXtymmsF6F/cig==" />
+        <pubDate>2018-05-13.19:20:52</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.7/gSwitch.zip" sparkle:version="1.7.7" length="10276261" type="application/octet-stream" sparkle:dsaSignature="MEQCIFR/rCEiFgzRvALdTRFa5EGEjpLfvplunxZ6ZjvBVrs7AiAj5/B2dM0q1Q9X
+u1EOyiKnJwiY+lwonXpYbAl4kI8ovg==" />
       </item>
   </channel>
 </rss>
