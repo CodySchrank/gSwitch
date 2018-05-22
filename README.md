@@ -23,6 +23,12 @@ carthage bootstrap
 
 and then build in xcode
 
+## Usage
+
+The app is simple to control with _integrated only_, _discrete only_, and _dynamic switching_ in the menu.
+
+You can also launch it from the terminal and set the desired setting using `--integrated`, `--discrete`, and `--dynamic`.
+
 ## Roadmap
 
 *   Localization? (If you want a language make an issue)
