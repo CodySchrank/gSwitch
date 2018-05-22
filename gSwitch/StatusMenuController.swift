@@ -49,6 +49,8 @@ class StatusMenuController: NSViewController {
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
+        self.changeMenuIcon(state: .ForceIntergrated)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notification:)), name: .checkGPUState, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProcessList(notification:)), name: .updateProcessListInMenu, object: nil)

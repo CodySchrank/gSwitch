@@ -77,19 +77,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         listener.listen(manager: manager, processor: processer)
         
         /** Was a mode passed in? (If there was, the last gpu state is overridden and not used) */
+        var arg = false;
         for argument in CommandLine.arguments {
             switch argument {
             case "--integrated":
+                arg = true;
                 log.debug("Integrated passed in")
                 safeIntergratedOnly()
                 break
                 
             case "--discrete":
+                arg = true;
                 log.debug("Discrete passed in")
                 safeDiscreteOnly()
                 break
                 
             case "--dynamic":
+                arg = true;
                 log.debug("Dynamic passed in")
                 safeDynamicSwitching()
                 break
@@ -99,8 +103,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        /** Lets set last state on startup if desired */
-        if(UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
+        /**
+            Lets set last state on startup if desired (and no arg)
+         */
+        if(!arg && UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
             switch UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE) {
             case SwitcherMode.ForceDiscrete.rawValue:
                 safeDiscreteOnly()
@@ -111,9 +117,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             default:
                 break;
             }
-        } else {
+        } else if(!arg) {
             if(manager.GPUMode(mode: .SetDynamic)) {
-                log.info("Initially set as Dynamic!")
+                log.info("No default state, Initially set as Dynamic")
             }
         }
         
