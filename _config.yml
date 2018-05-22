@@ -2,5 +2,5 @@ theme: jekyll-theme-cayman
 title: gSwitch
 show_downloads: "true"
 github:
-  zip_url: "https://github.com/CodySchrank/gSwitch/releases/download/1.7.7/gSwitch.zip"
+  zip_url: "https://github.com/CodySchrank/gSwitch/releases/download/1.7.8/gSwitch.zip"
   issue_url: "https://github.com/CodySchrank/gSwitch/issues"
