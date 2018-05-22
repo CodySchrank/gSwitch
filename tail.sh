@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# log location ~/Library/Containers/com.CodySchrank.GSwitch/Data/
+# log location ~/Library/Caches/gSwitch/swiftybeaver.log
 
-tail -f ~/Library/Containers/com.CodySchrank.GSwitch/Data/swiftybeaver.log
+tail -f ~/Library/Caches/gSwitch/swiftybeaver.log
