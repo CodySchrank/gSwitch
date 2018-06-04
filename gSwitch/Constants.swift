@@ -94,6 +94,9 @@ struct Constants {
     static let DISPLAY_KEY = "display"
     static let MODEL_KEY = "model"
     static let INTEL_GPU_PREFIX = "Intel"
+    static let LEGACY_2009_DISCRETE_GPU = "NVIDIA GeForce 9600M GT"
+    static let LEGACY_2010_DISCRETE_GPU = "NVIDIA GeForce GT 330M"
+    static let LEGACY = [Constants.LEGACY_2009_DISCRETE_GPU, Constants.LEGACY_2010_DISCRETE_GPU]
     static let GRAPHICS_CONTROL = "AppleGraphicsControl"
     static let NOTIFICATION_QUEUE = "com.CodySchrank.GSwitch.GPUChangeNotificationQueue"
     static let kCGDisplaySetModeFlag = (1 << 3)

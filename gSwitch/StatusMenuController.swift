@@ -49,7 +49,7 @@ class StatusMenuController: NSViewController {
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
-        self.changeMenuIcon(state: .ForceIntergrated)
+        self.changeMenuIcon(state: .ForceIntergrated) // set default menu icon
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notification:)), name: .checkGPUState, object: nil)
         
