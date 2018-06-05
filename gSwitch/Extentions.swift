@@ -41,3 +41,17 @@ class HyperlinkTextFieldNoURL: NSTextField {
         self.attributedStringValue = NSAttributedString(string: self.stringValue, attributes: attributes)
     }
 }
+
+extension String {
+    func any(_ group: [String]) -> Bool {
+        var atLeastOneInGroup = false
+        
+        for str in group {
+            if self.contains(str) {
+                atLeastOneInGroup = true
+            }
+        }
+        
+        return atLeastOneInGroup
+    }
+}

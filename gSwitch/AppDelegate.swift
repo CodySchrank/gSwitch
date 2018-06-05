@@ -66,9 +66,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** What did the beaver say to the tree?  It's been nice gnawing you.  Ok no more jokes */
         log.verbose("App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
-        log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))")
-        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))")
         log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
+        log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))")
+        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) ie \(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!)")
         
         /** GPU Names are good */
         manager.setGPUNames()

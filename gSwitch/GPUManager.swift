@@ -31,15 +31,17 @@ class GPUManager {
         /**
          This only works if there are exactly 2 gpus
          and the integrated one is intel and the discrete
-         one is not intel (AMD or NVIDIA).
+         one is not intel (AMD or NVIDIA).  The exception
+         being the legacy machines that both used NVIDIA
+         cards which is handled
          
          If apple changes the status quo this will break
          */
         for gpu in gpus {
-            if gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) {
-                self.integratedName = gpu
-            } else {
+            if !gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) || gpu.any(Constants.LEGACY) {
                 self.discreteName = gpu
+            } else {
+                self.integratedName = gpu
             }
         }
         
