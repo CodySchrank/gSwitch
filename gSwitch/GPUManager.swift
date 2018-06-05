@@ -213,7 +213,7 @@ class GPUManager {
         );
 
         if kernResult == KERN_SUCCESS {
-            log.verbose("Modified state with \(state)")
+            log.verbose("SET: Modified state with \(state)")
         } else {
             log.error("ERROR: Set state returned \(kernResult)")
         }
@@ -247,13 +247,15 @@ class GPUManager {
             &outputCount
         );
         
+        let gpu_int = GPU_INT(rawValue: Int(output))!
+        
         if kernResult == KERN_SUCCESS {
-            log.verbose("Successfully got state, count \(outputCount), value \(output)")
+            log.verbose("GET: count \(outputCount), value \(output) (\(gpu_int))")
         } else {
             log.error("ERROR: Get state returned \(kernResult)")
         }
         
-        return GPU_INT(rawValue: Int(output))!
+        return gpu_int
     }
     
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {
