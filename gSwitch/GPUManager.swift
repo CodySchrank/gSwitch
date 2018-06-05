@@ -151,6 +151,9 @@ class GPUManager {
         return status
     }
     
+    /**
+        Returns the gpu name from a gpu_int
+    */
     public func resolveGPUName(gpu: GPU_INT) -> String? {
         return gpu == .Integrated ? self.integratedName : self.discreteName
     }

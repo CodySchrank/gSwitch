@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
         log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
         log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))")
-        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) ie \(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!)")
+        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
         
         /** GPU Names are good */
         manager.setGPUNames()
@@ -229,7 +229,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         do {
             try updater?.start()
-            log.info("Started updater")
+            log.info("Checking for updates..")
         } catch {
             log.error(error)
         }
