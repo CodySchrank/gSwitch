@@ -60,6 +60,12 @@ enum DispatchSelectors: Int {
     kNumberOfMethods
 };
 
+enum GPU_INT: Int {
+    case
+    Discrete = 0,
+    Integrated
+}
+
 enum SwitcherMode: Int {
     case
     ForceIntergrated,

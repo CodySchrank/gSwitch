@@ -149,6 +149,10 @@ class GPUManager {
         return status
     }
     
+    public func resolveGPUName(gpu: GPU_INT) -> String? {
+        return gpu == .Integrated ? self.integratedName : self.discreteName
+    }
+    
     /**
         We should never assume gpu state that is why we always check.
         Anytime we get state of gpu we might as well:
@@ -163,29 +167,21 @@ class GPUManager {
             return false  //probably need to throw or exit if lost connection?
         }
         
-        let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
+        let gpu = getGPUState(connect: self._connect, input: GPUState.GraphicsCard)
         
-        currentGPU = isIntegrated ? integratedName : discreteName
-        
-        NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
+        NotificationCenter.default.post(name: .checkGPUState, object: gpu)
         log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
-        return isIntegrated
+        return gpu == .Integrated
     }
     
-    public func isUsingDynamicSwitching() -> Bool {
-        if self._connect == IO_OBJECT_NULL {
-            return false
-        }
-        
-        return getGPUState(connect: self._connect, input: GPUState.GpuSelect) != 0
-    }
-    
-    /** Kind of a misnomer because it only sets it to integrated, ie. switch back from discrete */
+    /**
+        Kind of a misnomer because it only sets it to integrated (this is what its called for kernal mux)
+        ie. switch back from discrete (used to force integrated)
+     */
     private func SwitchGPU(connect: io_connect_t) -> Bool {
         let _ = setDynamicSwitching(connect: connect, enabled: false)
         
-        // Hold up a sec!
         sleep(1);
         
         return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
@@ -225,7 +221,7 @@ class GPUManager {
         return kernResult == KERN_SUCCESS
     }
     
-    private func getGPUState(connect: io_connect_t, input: GPUState) -> UInt64 {
+    private func getGPUState(connect: io_connect_t, input: GPUState) -> GPU_INT {
         var kernResult: kern_return_t = 0
         let scalar: [UInt64] = [ 1, UInt64(input.rawValue) ];
         var output: UInt64 = 0
@@ -257,7 +253,7 @@ class GPUManager {
             log.error("ERROR: Get state returned \(kernResult)")
         }
         
-        return output
+        return GPU_INT(rawValue: Int(output))!
     }
     
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {

@@ -173,7 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             log.info("Set Force Integrated")
         } else {
             // only fails at this point if already integrated (not really a failure)
-            log.warning("Failed to force Integrated (possibly because already on igpu, this is handled)")
+            log.warning("Failed to force igpu (probably because already on igpu)")
         }
         
         UserDefaults.standard.set(SwitcherMode.ForceIntergrated.rawValue, forKey: Constants.SAVED_GPU_STATE)
