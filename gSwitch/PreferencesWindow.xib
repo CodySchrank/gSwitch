@@ -82,9 +82,9 @@
                         </connections>
                     </button>
                     <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-EX-UET">
-                        <rect key="frame" x="36" y="132" width="131" height="18"/>
+                        <rect key="frame" x="36" y="132" width="106" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Launch at Startup" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="MkE-JC-o7C">
+                        <buttonCell key="cell" type="check" title="Start At Login" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="MkE-JC-o7C">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -97,7 +97,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="141" y="117"/>
+            <point key="canvasLocation" x="140.5" y="117"/>
         </window>
     </objects>
 </document>

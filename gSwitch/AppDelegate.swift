@@ -23,7 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusMenu: StatusMenuController?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         /** Check if the launcher app is started */
         var startedAtLogin = false
         for app in NSWorkspace.shared.runningApplications {
@@ -69,6 +68,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
+        
+        /** UserNotificationManager likes the manager too */
+        notifications.inject(manager: manager)
+        
+        /** Gets the updates kicking */
+        setupUpdater()
+        
+        /** What did the beaver say to the tree?  It's been nice gnawing you. */
+        deforestation()
         
         /** Was a mode passed in? (If there was, the last gpu state is overridden and not used) */
         var arg = false;
@@ -122,15 +130,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
-        
-        /** UserNotificationManager likes the gpu too */
-        notifications.inject(manager: manager)
-        
-        /** Checks for updates if selected */
-        setupUpdater()
-        
-        /** What did the beaver say to the tree?  It's been nice gnawing you. */
-        deforestation()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -145,12 +144,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = manager.close()
     }
     
+    public func unsafeIntegratedOnly() {
+        statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
+        
+        if(manager.GPUMode(mode: .ForceIntergrated)) {
+            log.info("Set Force Integrated")
+        } else {
+            // only fails at this point if already integrated (not really a failure)
+            log.warning("Failed to force igpu (probably because already on igpu)")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.ForceIntergrated.rawValue, forKey: Constants.SAVED_GPU_STATE)
+    }
+    
+    public func unsafeDiscreteOnly() {
+        statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
+        
+        if(manager.GPUMode(mode: .ForceDiscrete)) {
+            log.info("Set Force Discrete")
+        } else {
+            // hopefully impossible?
+            log.warning("Failed to force Discrete")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.ForceDiscrete.rawValue, forKey: Constants.SAVED_GPU_STATE)
+    }
+    
+    public func unsafeDynamicSwitching() {
+        statusMenu?.changeGPUButtonToCorrectState(state: .SetDynamic)
+        
+        if(manager.GPUMode(mode: .SetDynamic)) {
+            log.info("Set Dynamic Switching")
+        } else {
+            // hopefully impossible?
+            log.warning("Failed to set Dynamic Switching")
+        }
+        
+        UserDefaults.standard.set(SwitcherMode.SetDynamic.rawValue, forKey: Constants.SAVED_GPU_STATE)
+    }
+    
     public func safeIntergratedOnly() {
         if(manager.requestedMode == .ForceIntergrated) {
             return  //already set
         }
         
-        /** According to gfx we cant do this. Further testing needed */
+        /**
+            This potentially causes both gpus to be on so we check for hungry processes.
+            Further testing needed
+         */
         let hungryProcesses = processer.getHungryProcesses()
         if(hungryProcesses.count > 0) {
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
@@ -164,16 +205,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
-        
-        if(manager.GPUMode(mode: .ForceIntergrated)) {
-            log.info("Set Force Integrated")
-        } else {
-            // only fails at this point if already integrated (not really a failure)
-            log.warning("Failed to force igpu (probably because already on igpu)")
-        }
-        
-        UserDefaults.standard.set(SwitcherMode.ForceIntergrated.rawValue, forKey: Constants.SAVED_GPU_STATE)
+        unsafeIntegratedOnly()
     }
     
     public func safeDiscreteOnly() {
@@ -181,16 +213,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return  //already set
         }
         
-        statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
-        
-        if(manager.GPUMode(mode: .ForceDiscrete)) {
-            log.info("Set Force Discrete")
-        } else {
-            // hopefully impossible?
-            log.warning("Failed to force Discrete")
-        }
-        
-        UserDefaults.standard.set(SwitcherMode.ForceDiscrete.rawValue, forKey: Constants.SAVED_GPU_STATE)
+        unsafeDiscreteOnly()
     }
     
     public func safeDynamicSwitching() {
@@ -198,16 +221,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return  //already set
         }
         
-        statusMenu?.changeGPUButtonToCorrectState(state: .SetDynamic)
-        
-        if(manager.GPUMode(mode: .SetDynamic)) {
-            log.info("Set Dynamic Switching")
-        } else {
-            // hopefully impossible?
-            log.warning("Failed to set Dynamic Switching")
-        }
-        
-        UserDefaults.standard.set(SwitcherMode.SetDynamic.rawValue, forKey: Constants.SAVED_GPU_STATE)
+        unsafeDynamicSwitching()
     }
     
     public func checkForUpdates() {
@@ -236,14 +250,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func deforestation() {
         log.verbose("Launch at Login set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START) == 1)")
         
-        if let updates = updater?.automaticallyChecksForUpdates {
-            log.verbose("Automatically update set as \(updates)")
-        } else {
-            log.verbose("Automatically update set as Unknown")
-        }
+        log.verbose("Automatically update set as \(updater?.automaticallyChecksForUpdates ?? false)")
         
         log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 1)")
+        
         log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE) == 1)")
+        
         log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
     }
 }
