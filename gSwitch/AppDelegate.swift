@@ -64,12 +64,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
         UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
         
-        /** What did the beaver say to the tree?  It's been nice gnawing you.  Ok no more jokes */
-        log.verbose("App Startup set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))")
-        log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))")
-        log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))")
-        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
-        
         /** GPU Names are good */
         manager.setGPUNames()
         
@@ -134,6 +128,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Checks for updates if selected */
         setupUpdater()
+        
+        /** What did the beaver say to the tree?  It's been nice gnawing you. */
+        deforestation()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -184,7 +181,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return  //already set
         }
         
-         statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
+        statusMenu?.changeGPUButtonToCorrectState(state: .ForceDiscrete)
         
         if(manager.GPUMode(mode: .ForceDiscrete)) {
             log.info("Set Force Discrete")
@@ -229,10 +226,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         do {
             try updater?.start()
-            log.info("Checking for updates..")
+            
+            log.info("Updater setup")
         } catch {
             log.error(error)
         }
+    }
+    
+    private func deforestation() {
+        log.verbose("Launch at Login set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START) == 1)")
+        
+        if let updates = updater?.automaticallyChecksForUpdates {
+            log.verbose("Automatically update set as \(updates)")
+        } else {
+            log.verbose("Automatically update set as Unknown")
+        }
+        
+        log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 1)")
+        log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE) == 1)")
+        log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
     }
 }
 

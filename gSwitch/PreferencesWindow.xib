@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow" customModule="gSwitch" customModuleProvider="target">
             <connections>
+                <outlet property="automaticallyUpdate" destination="m9Z-Ru-mM2" id="WJX-pp-Gfs"/>
                 <outlet property="toggleGPUChangeNotifications" destination="Pwe-TZ-SpL" id="WQy-XJ-XOg"/>
-                <outlet property="toggleOpenAppLogin" destination="VdX-b8-dTZ" id="9JL-Rg-k8E"/>
+                <outlet property="toggleOpenAppLogin" destination="S2l-EX-UET" id="JEv-et-VSJ"/>
                 <outlet property="useLastState" destination="CyM-MM-TRS" id="Ilm-AY-SM8"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -17,29 +18,18 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="298" height="159"/>
+            <rect key="contentRect" x="196" y="240" width="381" height="180"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="298" height="159"/>
+            <view key="contentView" wantsLayer="YES" focusRingType="none" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdX-b8-dTZ">
-                        <rect key="frame" x="18" y="108" width="139" height="25"/>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-TZ-SpL">
+                        <rect key="frame" x="36" y="54" width="217" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Launch at Startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mIt-Wo-pgi">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="loginItemPressed:" target="-2" id="A6e-5r-TeR"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-TZ-SpL">
-                        <rect key="frame" x="18" y="61" width="217" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show GPU Change Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gou-CF-jiG">
+                        <buttonCell key="cell" type="check" title="Show GPU Change Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="gou-CF-jiG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -47,10 +37,10 @@
                             <action selector="gpuChangeNotificationsPressed:" target="-2" id="rY3-VO-Xav"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-MM-TRS">
-                        <rect key="frame" x="18" y="86" width="186" height="18"/>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-MM-TRS">
+                        <rect key="frame" x="36" y="80" width="186" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Remember Last GPU Mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bFW-cw-Q0d">
+                        <buttonCell key="cell" type="check" title="Remember Last GPU Mode" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="bFW-cw-Q0d">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -58,10 +48,10 @@
                             <action selector="useLastStateClicked:" target="-2" id="ceo-Nc-rcQ"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkg-eH-1Jx">
-                        <rect key="frame" x="71" y="13" width="157" height="32"/>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkg-eH-1Jx">
+                        <rect key="frame" x="21" y="9" width="157" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Check For Updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RkS-5e-LJU">
+                        <buttonCell key="cell" type="push" title="Check For Updates" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="RkS-5e-LJU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -69,12 +59,45 @@
                             <action selector="checkForUpdatesClicked:" target="-2" id="Ldc-iV-Skn"/>
                         </connections>
                     </button>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-W6-aDj">
+                        <rect key="frame" x="191" y="9" width="170" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Open Advanced Pane" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0Kj-h1-2n7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openAdvancedPaneClicked:" target="-2" id="T11-oO-jIr"/>
+                        </connections>
+                    </button>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-Ru-mM2">
+                        <rect key="frame" x="36" y="106" width="152" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Automatically Update" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="DeE-7M-miq">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="automaticallyUpdateClicked:" target="-2" id="u3H-Jq-Vf4"/>
+                        </connections>
+                    </button>
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-EX-UET">
+                        <rect key="frame" x="36" y="132" width="131" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Launch at Startup" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="MkE-JC-o7C">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="loginItemPressed:" target="-2" id="Tg4-8z-rFf"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="48" y="106.5"/>
+            <point key="canvasLocation" x="141" y="117"/>
         </window>
     </objects>
 </document>
