@@ -27,7 +27,6 @@ class GPUManager {
     
     public func setGPUNames() {
         let gpus = getGpuNames()
-        
         /**
          This only works if there are exactly 2 gpus
          and the integrated one is intel and the discrete
@@ -48,8 +47,11 @@ class GPUManager {
         log.verbose("Integrated: \(integratedName ?? "Unknown")")
         log.verbose("Discrete: \(discreteName ?? "Unknown")")
         
-        if self.discreteName == nil || self.integratedName == nil {
-            log.error("There was an error finding the gpus.. \(gpus.description)")
+        if  self.discreteName == nil ||
+            self.integratedName == nil ||
+            self.discreteName == "Unknown" ||
+            self.integratedName == "Unknown" {
+                log.error("There was an error finding the gpus.. \(gpus.description)")
         }
     }
     
