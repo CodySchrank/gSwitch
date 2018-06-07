@@ -47,6 +47,10 @@ class GPUManager {
         
         log.verbose("Integrated: \(integratedName ?? "Unknown")")
         log.verbose("Discrete: \(discreteName ?? "Unknown")")
+        
+        if self.discreteName == nil || self.integratedName == nil {
+            log.error("There was an error finding the gpus.. \(gpus.description)")
+        }
     }
     
     public func connect() throws {
@@ -104,6 +108,9 @@ class GPUManager {
         return true
     }
     
+    /**
+        Instead of calling this directly use the methods in appDelegate because they provide safegaurds
+    **/
     public func GPUMode(mode: SwitcherMode) -> Bool {
         let connect = self._connect
         
@@ -172,27 +179,19 @@ class GPUManager {
             return false  //probably need to throw or exit if lost connection?
         }
         
-        let gpu = getGPUState(connect: self._connect, input: GPUState.GraphicsCard)
+        let gpu_int = GPU_INT(rawValue: Int(getGPUState(connect: self._connect, input: GPUState.GraphicsCard)))
         
-        NotificationCenter.default.post(name: .checkGPUState, object: gpu)
+        NotificationCenter.default.post(name: .checkGPUState, object: gpu_int)
         log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
-        return gpu == .Integrated
+        return gpu_int == .Integrated
     }
     
-    /**
-        Kind of a misnomer because it only sets it to integrated (this is what its called for kernal mux)
-        ie. switch back from discrete (used to force integrated)
-     */
-    private func SwitchGPU(connect: io_connect_t) -> Bool {
-        let _ = setDynamicSwitching(connect: connect, enabled: false)
-        
-        sleep(1);
-        
-        return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
+    public func setGPUState(state: GPUState, arg: UInt64) -> Bool {
+        return self.setGPUState(connect: self._connect, state: state, arg: arg)
     }
     
-    private func setGPUState(connect: io_connect_t ,state: GPUState, arg: UInt64) -> Bool {
+    private func setGPUState(connect: io_connect_t, state: GPUState, arg: UInt64) -> Bool {
         var kernResult: kern_return_t = 0
         
         let scalar: [UInt64] = [ 1, UInt64(state.rawValue), arg ];
@@ -220,13 +219,17 @@ class GPUManager {
         if kernResult == KERN_SUCCESS {
             log.verbose("SET: Modified state with \(state)")
         } else {
-            log.error("ERROR: Set state returned \(kernResult)")
+            log.error("Set state returned \(kernResult)")
         }
             
         return kernResult == KERN_SUCCESS
     }
     
-    private func getGPUState(connect: io_connect_t, input: GPUState) -> GPU_INT {
+    public func getGPUState(input: GPUState) -> UInt64 {
+        return self.getGPUState(connect: self._connect, input: input)
+    }
+    
+    private func getGPUState(connect: io_connect_t, input: GPUState) -> UInt64 {
         var kernResult: kern_return_t = 0
         let scalar: [UInt64] = [ 1, UInt64(input.rawValue) ];
         var output: UInt64 = 0
@@ -252,15 +255,85 @@ class GPUManager {
             &outputCount
         );
         
-        let gpu_int = GPU_INT(rawValue: Int(output))!
+        var successMessage = "GET: count \(outputCount), value \(output)"
         
-        if kernResult == KERN_SUCCESS {
-            log.verbose("GET: count \(outputCount), value \(output) (\(gpu_int))")
-        } else {
-            log.error("ERROR: Get state returned \(kernResult)")
+        if(input == .GraphicsCard) {
+            let gpu_int = GPU_INT(rawValue: Int(output))!
+            successMessage += " (\(gpu_int))"
         }
         
-        return gpu_int
+        if kernResult == KERN_SUCCESS {
+            log.verbose(successMessage)
+        } else {
+            log.error("Get state returned \(kernResult)")
+        }
+        
+        return output
+    }
+    
+    struct StateStruct {
+        var field = [uint32](repeating: 0, count: 25) // State Struct has to be 100 bytes long
+    }
+    
+    public func dumpState() -> StateStruct {
+        return self.dumpState(connect: self._connect)
+    }
+    
+    private func dumpState(connect: io_connect_t) -> StateStruct {
+        var kernResult: kern_return_t = 0
+        var stateStruct = StateStruct()
+        var structSize = MemoryLayout<StateStruct>.stride
+        
+        kernResult = IOConnectCallMethod(
+            // an io_connect_t returned from IOServiceOpen().
+            connect,
+            
+            // selector of the function to be called via the user client.
+            UInt32(DispatchSelectors.kDumpState.rawValue),
+            
+            // array of scalar (64-bit) input values.
+            nil,
+            
+            // the number of scalar input values.
+            0,
+            
+            // a pointer to the struct input parameter.
+            nil,
+            
+            // the size of the input structure parameter.
+            0,
+            
+            // array of scalar (64-bit) output values.
+            nil,
+            
+            // pointer to the number of scalar output values.
+            nil,
+            
+            // pointer to the struct output parameter.
+            &stateStruct,
+            
+            // pointer to the size of the output structure parameter.
+            &structSize)
+        
+        if kernResult == KERN_SUCCESS {
+            log.info("Dumped state")
+        } else {
+            log.error("Did not dump state")
+        }
+        
+        return stateStruct
+    }
+    
+    /**
+     Kind of a misnomer because it only sets it to integrated (this is what its called for kernal mux)
+     ie. switch back from discrete (used to force integrated)
+     */
+    private func SwitchGPU(connect: io_connect_t) -> Bool {
+        let _ = setDynamicSwitching(connect: connect, enabled: false)
+        
+        sleep(1);
+        
+        return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
     }
     
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {

@@ -18,8 +18,12 @@ class PreferencesWindow: BossyWindow {
     
     @IBOutlet weak var automaticallyUpdate: NSButton!
     
+    private var advancedWindow: AdvancedWindow!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        advancedWindow = AdvancedWindow(windowNibName: NSNib.Name(rawValue: "AdvancedWindow"))
         
         log.info("Preferences Opened")
         
@@ -84,6 +88,8 @@ class PreferencesWindow: BossyWindow {
     }
     
     @IBAction func openAdvancedPaneClicked(_ sender: NSButton) {
-        log.info("advancedClicked")
+        advancedWindow.showWindow(nil)
+        advancedWindow.pushToFront()
+        self.close()
     }
 }
