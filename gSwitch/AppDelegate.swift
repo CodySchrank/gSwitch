@@ -45,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let file = FileDestination()
         log.addDestination(console)
         log.addDestination(file)
+        log.verbose("gSwtich \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
         
         /** If we cant connect to gpu there is no point in continuing */
         do {
