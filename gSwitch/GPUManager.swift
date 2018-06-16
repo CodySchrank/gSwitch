@@ -36,11 +36,22 @@ class GPUManager {
          
          If apple changes the status quo this will break
          */
-        for gpu in gpus {
-            if !gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) || gpu.any(Constants.LEGACY) {
-                self.discreteName = gpu
+        
+        let legacy = gpus.any(Constants.LEGACY)
+        
+        for gpu in gpus { 
+            if legacy {
+                if gpu.any(Constants.LEGACY) {
+                    self.discreteName = gpu
+                } else {
+                    self.integratedName = gpu
+                }
             } else {
-                self.integratedName = gpu
+                if gpu.contains(Constants.INTEL_GPU_PREFIX) {
+                    self.integratedName = gpu
+                } else {
+                    self.discreteName = gpu
+                }
             }
         }
         

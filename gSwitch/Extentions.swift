@@ -56,6 +56,20 @@ extension String {
     }
 }
 
+extension Array where Element == String {
+    func any(_ group: [String]) -> Bool {
+        var anyInGroup = false
+        
+        for str in group {
+            if str.any(self) {
+                anyInGroup = true
+            }
+        }
+        
+        return anyInGroup
+    }
+}
+
 class OnlyIntegerValueFormatter: NumberFormatter {
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
         

@@ -116,7 +116,7 @@ class AdvancedWindow: BossyWindow {
     
     @IBAction func setGPUStateHelpClicked(_ sender: NSButton) {
         let message = """
-            These are testes state and arg values
+            These are tested state and arg values
             
             2: ForceSwitch
             force Graphics Switch regardless of arg
@@ -151,9 +151,6 @@ class AdvancedWindow: BossyWindow {
     @IBAction func setGPUFeatureRunClicked(_ sender: NSButton) {
         
     }
-    
-    
-    
 }
 
 
