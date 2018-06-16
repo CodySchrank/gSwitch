@@ -37,8 +37,6 @@ class AdvancedWindow: BossyWindow {
         setGPUStateArg.formatter = numberOnlyFormatter
         
         log.info("Advanced was opened")
-
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
     @IBAction func unsafeIntegratedOnlyClicked(_ sender: NSButton) {
@@ -140,7 +138,12 @@ class AdvancedWindow: BossyWindow {
     }
     
     @IBAction func dumpStateClicked(_ sender: NSButton) {
+        let state = appDelegate.manager.dumpState()
         
+        let message = state.field.map { String($0) }
+        
+        alert.messageText = message.description
+        alert.runModal()
     }
     
     @IBAction func setGPUFeatureHelpClicked(_ sender: NSButton) {
