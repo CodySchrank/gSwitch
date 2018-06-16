@@ -123,7 +123,7 @@ class GPUManager {
     
     /**
         Instead of calling this directly use the methods in appDelegate because they provide safegaurds
-    **/
+    */
     public func GPUMode(mode: SwitcherMode) -> Bool {
         let connect = self._connect
         

@@ -106,9 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        /**
-            Lets set last state on startup if desired (and no arg)
-         */
+        /** Lets set last state on startup if desired (and no arg) */
         if(!arg && UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
             switch UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE) {
             case SwitcherMode.ForceDiscrete.rawValue:
