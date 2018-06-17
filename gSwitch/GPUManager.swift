@@ -349,6 +349,10 @@ class GPUManager {
         return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
     }
     
+    public func setFeatureInfo(feature: Features, enabled: Bool) -> Bool {
+        return self.setFeatureInfo(connect: self._connect, feature: feature, enabled: enabled)
+    }
+    
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {
         return setGPUState(
             connect: connect,

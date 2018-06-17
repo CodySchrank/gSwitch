@@ -76,8 +76,7 @@ class AdvancedWindow: BossyWindow {
             always returns 0xdeadbeef
             
             3: PowerGPU
-            maybe returns powered on graphics cards, 0x8 = integrated, 0x88 = discrete
-            (or probably both, since integrated never gets powered down?)
+            returns powered on graphics cards, 0x8 = integrated, 0x88 = discrete
             
             4: GpuSelect
             Dynamic Switching on/off
@@ -147,12 +146,41 @@ class AdvancedWindow: BossyWindow {
     }
     
     @IBAction func setGPUFeatureHelpClicked(_ sender: NSButton) {
+        let message = """
+            Tested Features
+
+            Policy = 0,
+            Auto_PowerDown_GPU = 1,
+            Dynamic_Switching = 2,
+            GPU_Powerpolling = 3 (Inverted),
+            Defer_Policy = 4,
+            Synchronous_Launch = 5,
+            Backlight_Control = 8,
+            Recovery_Timeouts = 9,
+            Power_Switch_Debounce = 10,
+            Logging = 16,
+            Display_Capture_Switch = 17,
+            No_GL_HDA_busy_idle_registration = 18,
+            muxFeaturesCount = 19
+        """
         
+        helpWindow.showWindow(nil)
+        helpWindow.helpText.stringValue = message
+        helpWindow.pushToFront()
     }
     
     
     @IBAction func setGPUFeatureRunClicked(_ sender: NSButton) {
+        let boolean = setGPUFeatureBool.intValue == 1
+        let feature = setGPUStateArg.intValue
         
+        let success = appDelegate.manager
+            .setFeatureInfo(feature: Features(rawValue: Int(feature))!, enabled: boolean)
+
+        let message = success ? "Successfully set feature: \(Features(rawValue: Int(feature))!) to \(boolean)" : "Did not set feature: \(Features(rawValue: Int(feature))!) to \(boolean)"
+
+        alert.messageText = message
+        alert.runModal()
     }
 }
 
