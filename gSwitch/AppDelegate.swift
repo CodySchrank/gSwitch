@@ -258,5 +258,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
     }
 }
-
-
