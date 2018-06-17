@@ -41,3 +41,66 @@ class HyperlinkTextFieldNoURL: NSTextField {
         self.attributedStringValue = NSAttributedString(string: self.stringValue, attributes: attributes)
     }
 }
+
+/*
+Checks to see if the string is contained in the group of strings
+ 
+ - returns:
+true if the string was in the group, else false
+ 
+*/
+extension String {
+    func any(_ group: [String]) -> Bool {
+        var atLeastOneInGroup = false
+        
+        for str in group {
+            if self.contains(str) {
+                atLeastOneInGroup = true
+            }
+        }
+        
+        return atLeastOneInGroup
+    }
+}
+
+/*
+ Checks to see if any string is contained in the group of strings
+ 
+ - returns:
+ true if any string was in the group, else false
+ 
+ */
+extension Array where Element == String {
+    func any(_ group: [String]) -> Bool {
+        var anyInGroup = false
+        
+        for str in group {
+            if str.any(self) {
+                anyInGroup = true
+            }
+        }
+        
+        return anyInGroup
+    }
+}
+
+class OnlyIntegerValueFormatter: NumberFormatter {
+    override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        
+        // Ability to reset your field (otherwise you can't delete the content)
+        // You can check if the field is empty later
+        if partialString.isEmpty {
+            return true
+        }
+        
+        // Optional: limit input length
+        /*
+         if partialString.characters.count>3 {
+         return false
+         }
+         */
+        
+        // Actual check
+        return Int(partialString) != nil
+    }
+}

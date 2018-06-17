@@ -49,7 +49,7 @@ class StatusMenuController: NSViewController {
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
-        self.changeMenuIcon(state: .ForceIntergrated)
+        self.changeMenuIcon(currentGPU: .Integrated) // set default menu icon
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeGPUNameInMenu(notification:)), name: .checkGPUState, object: nil)
         
@@ -108,19 +108,15 @@ class StatusMenuController: NSViewController {
     }
     
     /**
-        Originally this was designed to reflect the current state selected in the menu
-        but it is undoubtedly more useful when it shows the current active gpu
-        So only force integrated and force discrete are used, the setDynamic case is never used.
+        shows the current active gpu
     */
-    private func changeMenuIcon(state: SwitcherMode) {
+    private func changeMenuIcon(currentGPU: GPU_INT) {
         let icon: NSImage?
         
-        switch state {
-        case .ForceIntergrated:
+        switch currentGPU {
+        case .Integrated:
             icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_low"))
-        case .SetDynamic:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_auto"))
-        case .ForceDiscrete:
+        case .Discrete:
             icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_high"))
         }
 
@@ -131,21 +127,21 @@ class StatusMenuController: NSViewController {
     @objc private func changeGPUNameInMenu(notification: NSNotification) {
         // this function always gets called from a non-main thread
         DispatchQueue.main.async {
-            guard let currentGPU = self.appDelegate?.manager.currentGPU,
-                let integratedName = self.appDelegate?.manager.integratedName
-            else {
+            guard let gpu = notification.object as? GPU_INT else {
+                self.log.warning("Failed to convert to GPU object")
+                return
+            }
+            
+            guard let currentGPU = self.appDelegate?.manager.resolveGPUName(gpu: gpu) else {
                 self.log.warning("Can't change gpu name in menu, Current GPU Unknown")
                 return
             }
             
+            /** Update the menu icon and text in dropdown */
+            self.changeMenuIcon(currentGPU: gpu)
+            
             self.CurrentGPU.title = "GPU: \(currentGPU)"
-        
-            /** At the same time update the gear */
-            if(currentGPU == integratedName) {
-                self.changeMenuIcon(state: SwitcherMode.ForceIntergrated)
-            } else {
-                self.changeMenuIcon(state: SwitcherMode.ForceDiscrete)
-            }
+
         }
     }
     

@@ -27,24 +27,43 @@ class GPUManager {
     
     public func setGPUNames() {
         let gpus = getGpuNames()
-        
         /**
          This only works if there are exactly 2 gpus
          and the integrated one is intel and the discrete
-         one is not intel (AMD or NVIDIA).
+         one is not intel (AMD or NVIDIA).  The exception
+         being the legacy machines that both used NVIDIA
+         cards which is handled
          
          If apple changes the status quo this will break
          */
-        for gpu in gpus {
-            if gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) {
-                self.integratedName = gpu
+        
+        let legacy = gpus.any(Constants.LEGACY)
+        
+        for gpu in gpus { 
+            if legacy {
+                if gpu.any(Constants.LEGACY) {
+                    self.discreteName = gpu
+                } else {
+                    self.integratedName = gpu
+                }
             } else {
-                self.discreteName = gpu
+                if gpu.contains(Constants.INTEL_GPU_PREFIX) {
+                    self.integratedName = gpu
+                } else {
+                    self.discreteName = gpu
+                }
             }
         }
         
         log.verbose("Integrated: \(integratedName ?? "Unknown")")
         log.verbose("Discrete: \(discreteName ?? "Unknown")")
+        
+        if  self.discreteName == nil ||
+            self.integratedName == nil ||
+            self.discreteName == "Unknown" ||
+            self.integratedName == "Unknown" {
+                log.error("There was an error finding the gpus.. \(gpus.description)")
+        }
     }
     
     public func connect() throws {
@@ -102,6 +121,9 @@ class GPUManager {
         return true
     }
     
+    /**
+        Instead of calling this directly use the methods in appDelegate because they provide safegaurds
+    */
     public func GPUMode(mode: SwitcherMode) -> Bool {
         let connect = self._connect
         
@@ -150,6 +172,13 @@ class GPUManager {
     }
     
     /**
+        Returns the gpu name from a gpu_int
+    */
+    public func resolveGPUName(gpu: GPU_INT) -> String? {
+        return gpu == .Integrated ? self.integratedName : self.discreteName
+    }
+    
+    /**
         We should never assume gpu state that is why we always check.
         Anytime we get state of gpu we might as well:
      
@@ -163,35 +192,19 @@ class GPUManager {
             return false  //probably need to throw or exit if lost connection?
         }
         
-        let isIntegrated = getGPUState(connect: self._connect, input: GPUState.GraphicsCard) != 0
+        let gpu_int = GPU_INT(rawValue: Int(getGPUState(connect: self._connect, input: GPUState.GraphicsCard)))
         
-        currentGPU = isIntegrated ? integratedName : discreteName
-        
-        NotificationCenter.default.post(name: .checkGPUState, object: currentGPU)
+        NotificationCenter.default.post(name: .checkGPUState, object: gpu_int)
         log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
-        return isIntegrated
+        return gpu_int == .Integrated
     }
     
-    public func isUsingDynamicSwitching() -> Bool {
-        if self._connect == IO_OBJECT_NULL {
-            return false
-        }
-        
-        return getGPUState(connect: self._connect, input: GPUState.GpuSelect) != 0
+    public func setGPUState(state: GPUState, arg: UInt64) -> Bool {
+        return self.setGPUState(connect: self._connect, state: state, arg: arg)
     }
     
-    /** Kind of a misnomer because it only sets it to integrated, ie. switch back from discrete */
-    private func SwitchGPU(connect: io_connect_t) -> Bool {
-        let _ = setDynamicSwitching(connect: connect, enabled: false)
-        
-        // Hold up a sec!
-        sleep(1);
-        
-        return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
-    }
-    
-    private func setGPUState(connect: io_connect_t ,state: GPUState, arg: UInt64) -> Bool {
+    private func setGPUState(connect: io_connect_t, state: GPUState, arg: UInt64) -> Bool {
         var kernResult: kern_return_t = 0
         
         let scalar: [UInt64] = [ 1, UInt64(state.rawValue), arg ];
@@ -217,12 +230,16 @@ class GPUManager {
         );
 
         if kernResult == KERN_SUCCESS {
-            log.verbose("Modified state with \(state)")
+            log.verbose("SET: Modified state with \(state)")
         } else {
-            log.error("ERROR: Set state returned \(kernResult)")
+            log.error("Set state returned \(kernResult)")
         }
             
         return kernResult == KERN_SUCCESS
+    }
+    
+    public func getGPUState(input: GPUState) -> UInt64 {
+        return self.getGPUState(connect: self._connect, input: input)
     }
     
     private func getGPUState(connect: io_connect_t, input: GPUState) -> UInt64 {
@@ -251,13 +268,89 @@ class GPUManager {
             &outputCount
         );
         
+        var successMessage = "GET: count \(outputCount), value \(output)"
+        
+        if(input == .GraphicsCard) {
+            let gpu_int = GPU_INT(rawValue: Int(output))!
+            successMessage += " (\(gpu_int))"
+        }
+        
         if kernResult == KERN_SUCCESS {
-            log.verbose("Successfully got state, count \(outputCount), value \(output)")
+            log.verbose(successMessage)
         } else {
-            log.error("ERROR: Get state returned \(kernResult)")
+            log.error("Get state returned \(kernResult)")
         }
         
         return output
+    }
+    
+    struct StateStruct {
+        var field = [uint32](repeating: 0, count: 25) // State Struct has to be 100 bytes long
+    }
+    
+    public func dumpState() -> StateStruct {
+        return self.dumpState(connect: self._connect)
+    }
+    
+    private func dumpState(connect: io_connect_t) -> StateStruct {
+        var kernResult: kern_return_t = 0
+        var stateStruct = StateStruct()
+        var structSize = MemoryLayout<StateStruct>.stride
+        
+        kernResult = IOConnectCallMethod(
+            // an io_connect_t returned from IOServiceOpen().
+            connect,
+            
+            // selector of the function to be called via the user client.
+            UInt32(DispatchSelectors.kDumpState.rawValue),
+            
+            // array of scalar (64-bit) input values.
+            nil,
+            
+            // the number of scalar input values.
+            0,
+            
+            // a pointer to the struct input parameter.
+            nil,
+            
+            // the size of the input structure parameter.
+            0,
+            
+            // array of scalar (64-bit) output values.
+            nil,
+            
+            // pointer to the number of scalar output values.
+            nil,
+            
+            // pointer to the struct output parameter.
+            &stateStruct,
+            
+            // pointer to the size of the output structure parameter.
+            &structSize)
+        
+        if kernResult == KERN_SUCCESS {
+            log.info("Dumped state")
+        } else {
+            log.error("Did not dump state")
+        }
+        
+        return stateStruct
+    }
+    
+    /**
+     Kind of a misnomer because it only sets it to integrated (this is what its called for kernal mux)
+     ie. switch back from discrete (used to force integrated)
+     */
+    private func SwitchGPU(connect: io_connect_t) -> Bool {
+        let _ = setDynamicSwitching(connect: connect, enabled: false)
+        
+        sleep(1);
+        
+        return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
+    }
+    
+    public func setFeatureInfo(feature: Features, enabled: Bool) -> Bool {
+        return self.setFeatureInfo(connect: self._connect, feature: feature, enabled: enabled)
     }
     
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {

@@ -27,6 +27,10 @@
 		82556533208C5BA900A6807F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8255652F208C5B9300A6807F /* Sparkle.framework */; };
 		82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8255652F208C5B9300A6807F /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82556535208C5BB200A6807F /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
+		828D681220C897D200A41DD9 /* AdvancedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681020C897D200A41DD9 /* AdvancedWindow.swift */; };
+		828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681120C897D200A41DD9 /* AdvancedWindow.xib */; };
+		828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681620C8BCFF00A41DD9 /* HelpWindow.swift */; };
+		828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681720C8BCFF00A41DD9 /* HelpWindow.xib */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
 		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
@@ -129,6 +133,10 @@
 		82556517208C505900A6807F /* UpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterDelegate.swift; sourceTree = "<group>"; };
 		8255652F208C5B9300A6807F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		82556530208C5B9300A6807F /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		828D681020C897D200A41DD9 /* AdvancedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedWindow.swift; sourceTree = "<group>"; };
+		828D681120C897D200A41DD9 /* AdvancedWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedWindow.xib; sourceTree = "<group>"; };
+		828D681620C8BCFF00A41DD9 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
+		828D681720C8BCFF00A41DD9 /* HelpWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpWindow.xib; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
@@ -199,13 +207,17 @@
 				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
 				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
 				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
+				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
 				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
 				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
-				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
-				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
 				829553C520884BFA00A29C49 /* AboutWindow.swift */,
+				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
+				828D681620C8BCFF00A41DD9 /* HelpWindow.swift */,
+				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
 				82556517208C505900A6807F /* UpdaterDelegate.swift */,
 				829553C620884BFA00A29C49 /* AboutWindow.xib */,
+				828D681720C8BCFF00A41DD9 /* HelpWindow.xib */,
+				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
 				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
 				82233EA420844ACA006C57E7 /* MainMenu.xib */,
 				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
@@ -387,6 +399,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */,
+				828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */,
+				828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */,
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
@@ -429,6 +443,8 @@
 				82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */,
 				829553D220884FC200A29C49 /* Extentions.swift in Sources */,
 				82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */,
+				828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */,
+				828D681220C897D200A41DD9 /* AdvancedWindow.swift in Sources */,
 				82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */,
 				82233ED420844ADF006C57E7 /* GSProcess.m in Sources */,
 			);
