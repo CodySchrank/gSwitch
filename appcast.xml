@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.8 Fixed bug with icon</title>
+        <title>1.7.9 Fixed GPU detection for legacy machines, added advanced pane, added option for auto updates, fixed visual bugs</title>
         <description>
-          Fixed bug that prevent the status menu icon from showing (it now has a default state)
+          Fixed multiple bugs with legacy gpu detection.  Added advanced pane that allows the user to perform gpu switching without any checks, as well as using the setGPUState, setGPUFeature, getGPUState functions.  Also added checkbox to change auto updates preference.  Added in app version log. Fixed multiple visual bugs with inputs.  General code cleanup
         </description>
-        <pubDate>2018-05-21.17:25:17</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.8/gSwitch.zip" sparkle:version="1.7.8" length="10282649" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCxABrVhLXNgpgTiPeBy3+00gcplLlW1gOcxfi4sfzirwIgK2RcnECWWTq9
-EJm0VO0GvyEQD6loU9GI3VXo/8EHupY=" />
+        <pubDate>2018-06-16.18:20:29</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.9/gSwitch.zip" sparkle:version="1.7.9" length="10319313" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCqEAelayKFEsr3OMaBg+7Dg/hNEU45ZD8v4eCAWgEQigIgdUfJ7Zfi8K4h
+Q16G6w+/tkbKF4Ufj1lF4LKyTBI5OAo=" />
       </item>
   </channel>
 </rss>
