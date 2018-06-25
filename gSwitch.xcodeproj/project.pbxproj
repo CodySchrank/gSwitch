@@ -201,28 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				82233EA020844AC9006C57E7 /* AppDelegate.swift */,
-				82233ECB20844ADF006C57E7 /* Constants.swift */,
-				829553D120884FC200A29C49 /* Extentions.swift */,
-				82233ED020844ADF006C57E7 /* GPUListener.swift */,
-				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
-				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
-				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
-				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
-				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
-				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
-				829553C520884BFA00A29C49 /* AboutWindow.swift */,
-				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
-				828D681620C8BCFF00A41DD9 /* HelpWindow.swift */,
-				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
-				82556517208C505900A6807F /* UpdaterDelegate.swift */,
-				829553C620884BFA00A29C49 /* AboutWindow.xib */,
-				828D681720C8BCFF00A41DD9 /* HelpWindow.xib */,
-				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
-				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
-				82233EA420844ACA006C57E7 /* MainMenu.xib */,
+				8224270620E0721E00C4865F /* Util */,
+				8224270420E071E500C4865F /* Core */,
+				8224270720E0726600C4865F /* Views */,
 				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
-				82233ECD20844ADF006C57E7 /* GSProcess.h */,
-				82233ECC20844ADF006C57E7 /* GSProcess.m */,
 				82233EA720844ACA006C57E7 /* Info.plist */,
 				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
 				823B274D208C0A2900A7DFB6 /* dsa_pub.pem */,
@@ -247,6 +229,88 @@
 				82233EBE20844ACA006C57E7 /* Info.plist */,
 			);
 			path = gSwitchUITests;
+			sourceTree = "<group>";
+		};
+		8224270420E071E500C4865F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				82233ED020844ADF006C57E7 /* GPUListener.swift */,
+				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
+				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
+				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
+				82233ECD20844ADF006C57E7 /* GSProcess.h */,
+				82233ECC20844ADF006C57E7 /* GSProcess.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8224270620E0721E00C4865F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				82233ECB20844ADF006C57E7 /* Constants.swift */,
+				829553D120884FC200A29C49 /* Extentions.swift */,
+				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
+				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
+				82556517208C505900A6807F /* UpdaterDelegate.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8224270720E0726600C4865F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8224270820E0734C00C4865F /* MainMenu */,
+				8224270920E0735B00C4865F /* About */,
+				8224270A20E0736700C4865F /* Help */,
+				8224270B20E0737A00C4865F /* Advanced */,
+				8224270C20E0738900C4865F /* Preferences */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8224270820E0734C00C4865F /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
+				82233EA420844ACA006C57E7 /* MainMenu.xib */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		8224270920E0735B00C4865F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				829553C520884BFA00A29C49 /* AboutWindow.swift */,
+				829553C620884BFA00A29C49 /* AboutWindow.xib */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		8224270A20E0736700C4865F /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				828D681620C8BCFF00A41DD9 /* HelpWindow.swift */,
+				828D681720C8BCFF00A41DD9 /* HelpWindow.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		8224270B20E0737A00C4865F /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
+				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		8224270C20E0738900C4865F /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
+				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		8230418320882B3F006701CB /* Products */ = {
