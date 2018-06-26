@@ -32,7 +32,6 @@
 		828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681620C8BCFF00A41DD9 /* HelpWindow.swift */; };
 		828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681720C8BCFF00A41DD9 /* HelpWindow.xib */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
-		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
 		829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829553CA20884F4700A29C49 /* SwiftyBeaver.framework */; };
 		829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 829553CA20884F4700A29C49 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -42,6 +41,7 @@
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
 		82EB58F520882E5F00747BAF /* gSwitchLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8230418720882B40006701CB /* gSwitchLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3298D20897EA0000E34B3 /* BossyWindow.swift */; };
+		AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC7195720E2D04E009862FB /* AboutWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +138,6 @@
 		828D681620C8BCFF00A41DD9 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
 		828D681720C8BCFF00A41DD9 /* HelpWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpWindow.xib; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
-		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
 		829553CA20884F4700A29C49 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		829553D120884FC200A29C49 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -148,6 +147,10 @@
 		AA08261420E29C61009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261520E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261720E2A536009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		AAC7195620E2D04E009862FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindow.xib; sourceTree = "<group>"; };
+		AAC7195A20E2D05A009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		AAC7195C20E2D05C009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		AAC7195E20E2D05D009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AboutWindow.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,7 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				829553C520884BFA00A29C49 /* AboutWindow.swift */,
-				829553C620884BFA00A29C49 /* AboutWindow.xib */,
+				AAC7195720E2D04E009862FB /* AboutWindow.xib */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -431,6 +434,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				fr,
 			);
 			mainGroup = 82233E9420844AC9006C57E7;
 			productRefGroup = 82233E9E20844AC9006C57E7 /* Products */;
@@ -471,7 +476,7 @@
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
-				829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */,
+				AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */,
 				82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */,
 				829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */,
 			);
@@ -558,6 +563,17 @@
 				AA08261720E2A536009862FB /* fr */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AAC7195720E2D04E009862FB /* AboutWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAC7195620E2D04E009862FB /* Base */,
+				AAC7195A20E2D05A009862FB /* en */,
+				AAC7195C20E2D05C009862FB /* de */,
+				AAC7195E20E2D05D009862FB /* fr */,
+			);
+			name = AboutWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
