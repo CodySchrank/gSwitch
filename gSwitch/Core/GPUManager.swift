@@ -36,11 +36,22 @@ class GPUManager {
          
          If apple changes the status quo this will break
          */
-        for gpu in gpus {
-            if !gpu.hasPrefix(Constants.INTEL_GPU_PREFIX) || gpu.any(Constants.LEGACY) {
-                self.discreteName = gpu
+        
+        let legacy = gpus.any(Constants.LEGACY)
+        
+        for gpu in gpus { 
+            if legacy {
+                if gpu.any(Constants.LEGACY) {
+                    self.discreteName = gpu
+                } else {
+                    self.integratedName = gpu
+                }
             } else {
-                self.integratedName = gpu
+                if gpu.contains(Constants.INTEL_GPU_PREFIX) {
+                    self.integratedName = gpu
+                } else {
+                    self.discreteName = gpu
+                }
             }
         }
         
@@ -112,7 +123,7 @@ class GPUManager {
     
     /**
         Instead of calling this directly use the methods in appDelegate because they provide safegaurds
-    **/
+    */
     public func GPUMode(mode: SwitcherMode) -> Bool {
         let connect = self._connect
         
@@ -336,6 +347,10 @@ class GPUManager {
         sleep(1);
         
         return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
+    }
+    
+    public func setFeatureInfo(feature: Features, enabled: Bool) -> Bool {
+        return self.setFeatureInfo(connect: self._connect, feature: feature, enabled: enabled)
     }
     
     private func setFeatureInfo(connect: io_connect_t, feature: Features, enabled: Bool) -> Bool {

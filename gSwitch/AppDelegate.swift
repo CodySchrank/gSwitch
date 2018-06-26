@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let file = FileDestination()
         log.addDestination(console)
         log.addDestination(file)
-        log.verbose("gSwtich \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
+        log.verbose("gSwitch \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
         
         /** If we cant connect to gpu there is no point in continuing */
         do {
@@ -106,9 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        /**
-            Lets set last state on startup if desired (and no arg)
-         */
+        /** Lets set last state on startup if desired (and no arg) */
         if(!arg && UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
             switch UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE) {
             case SwitcherMode.ForceDiscrete.rawValue:
@@ -260,5 +258,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
     }
 }
-
-

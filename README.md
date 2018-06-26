@@ -31,7 +31,6 @@ You can also launch it from the terminal and set the desired setting using `--in
 
 ## Roadmap
 
-*   Localization? (If you want a language make an issue)
 *   Polling for gpu vram and processor usage?
 *   A settable list of applications/processes that are allowed to use discrete gpu when integrated only?
 
@@ -48,5 +47,3 @@ You can also launch it from the terminal and set the desired setting using `--in
 ## Notes
 
 I'm especially unsure if this will work if you have a mac older than 2011. ([Let me know if it does!](https://github.com/CodySchrank/gSwitch/issues/12))
-
-Since I wrote this in about a week I'm sure there are going to be issues.

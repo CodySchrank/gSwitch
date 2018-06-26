@@ -42,6 +42,13 @@ class HyperlinkTextFieldNoURL: NSTextField {
     }
 }
 
+/*
+Checks to see if the string is contained in the group of strings
+ 
+ - returns:
+true if the string was in the group, else false
+ 
+*/
 extension String {
     func any(_ group: [String]) -> Bool {
         var atLeastOneInGroup = false
@@ -49,10 +56,33 @@ extension String {
         for str in group {
             if self.contains(str) {
                 atLeastOneInGroup = true
+                break
             }
         }
         
         return atLeastOneInGroup
+    }
+}
+
+/*
+ Checks to see if any string is contained in the group of strings
+ 
+ - returns:
+ true if any string was in the group, else false
+ 
+ */
+extension Array where Element == String {
+    func any(_ group: [String]) -> Bool {
+        var anyInGroup = false
+        
+        for str in group {
+            if str.any(self) {
+                anyInGroup = true
+                break
+            }
+        }
+        
+        return anyInGroup
     }
 }
 
