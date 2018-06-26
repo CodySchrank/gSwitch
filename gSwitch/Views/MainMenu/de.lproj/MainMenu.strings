@@ -1,0 +1,44 @@
+
+/* Class = "NSTextFieldCell"; title = "HEADER CELL"; ObjectID = "1V0-Am-epe"; */
+"1V0-Am-epe.title" = "HEADER CELL";
+
+/* Class = "NSMenuItem"; title = "CurrentGPU"; ObjectID = "5y0-MT-yb1"; */
+"5y0-MT-yb1.title" = "CurrentGPU";
+
+/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "EvT-ge-HB2"; */
+"EvT-ge-HB2.title" = "Einstellungen …";
+
+/* Class = "NSMenuItem"; title = "GPUVIEW"; ObjectID = "Fwf-ff-0Lg"; */
+"Fwf-ff-0Lg.title" = "GPUVIEW";
+
+/* Class = "NSMenuItem"; title = "Integrated Only"; ObjectID = "HoZ-EA-5Lv"; */
+"HoZ-EA-5Lv.title" = "Nur integrierte";
+
+/* Class = "NSMenuItem"; title = "Dynamic Switching"; ObjectID = "Jk4-qm-LJU"; */
+"Jk4-qm-LJU.title" = "Dynamisches Umschalten";
+
+/* Class = "NSMenuItem"; title = "About"; ObjectID = "Sbj-bN-UUm"; */
+"Sbj-bN-UUm.title" = "Über gSwitch";
+
+/* Class = "NSMenu"; title = "gSwitch"; ObjectID = "YiV-UP-01K"; */
+"YiV-UP-01K.title" = "gSwitch";
+
+/* Class = "NSMenuItem"; title = "Dependencies"; ObjectID = "a8k-Wf-oZ4"; */
+"a8k-Wf-oZ4.title" = "Abhängigkeiten";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "bKp-qZ-uQ2"; */
+"bKp-qZ-uQ2.title" = "Hilfe";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "gZe-7v-L4S"; */
+"gZe-7v-L4S.title" = "gSwitch beenden";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "l6t-wb-KjS"; */
+"l6t-wb-KjS.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Discrete Only"; ObjectID = "mM1-8I-1jF"; */
+/* Translated according to Apple's own localization terminology, discrete = eigenständig, */
+/* c.f. https://support.apple.com/de-de/ht202053 */
+"mM1-8I-1jF.title" = "Nur eigenständige";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "nLJ-IF-Q39"; */
+"nLJ-IF-Q39.title" = "Table View Cell";
