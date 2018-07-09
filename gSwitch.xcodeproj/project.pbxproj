@@ -308,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
-				AA20D30020EC1B60009862FB /* AdvancedWindow.xib */,
+				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
 			);
 			path = Advanced;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */,
-				AA20D2FE20EC1B60009862FB /* AdvancedWindow.xib in Resources */,
+				828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */,
 				828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */,
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */,
@@ -566,17 +566,6 @@
 				AA08261720E2A536009862FB /* fr */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		AA20D30020EC1B60009862FB /* AdvancedWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA20D2FF20EC1B60009862FB /* Base */,
-				AA20D30320EC1B69009862FB /* en */,
-				AA20D30520EC1B6D009862FB /* de */,
-				AA20D30720EC1B6F009862FB /* fr */,
-			);
-			name = AdvancedWindow.xib;
 			sourceTree = "<group>";
 		};
 		AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */ = {
