@@ -27,6 +27,7 @@
 		82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8255652F208C5B9300A6807F /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82556535208C5BB200A6807F /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
 		828D681220C897D200A41DD9 /* AdvancedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681020C897D200A41DD9 /* AdvancedWindow.swift */; };
+		828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681120C897D200A41DD9 /* AdvancedWindow.xib */; };
 		828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681620C8BCFF00A41DD9 /* HelpWindow.swift */; };
 		828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681720C8BCFF00A41DD9 /* HelpWindow.xib */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
@@ -39,7 +40,6 @@
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
 		82EB58F520882E5F00747BAF /* gSwitchLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8230418720882B40006701CB /* gSwitchLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3298D20897EA0000E34B3 /* BossyWindow.swift */; };
-		AA20D2FE20EC1B60009862FB /* AdvancedWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20D30020EC1B60009862FB /* AdvancedWindow.xib */; };
 		AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */; };
 		AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC7195720E2D04E009862FB /* AboutWindow.xib */; };
 /* End PBXBuildFile section */
@@ -133,6 +133,7 @@
 		8255652F208C5B9300A6807F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		82556530208C5B9300A6807F /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		828D681020C897D200A41DD9 /* AdvancedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedWindow.swift; sourceTree = "<group>"; };
+		828D681120C897D200A41DD9 /* AdvancedWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedWindow.xib; sourceTree = "<group>"; };
 		828D681620C8BCFF00A41DD9 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
 		828D681720C8BCFF00A41DD9 /* HelpWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpWindow.xib; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
@@ -145,10 +146,6 @@
 		AA08261420E29C61009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261520E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261720E2A536009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		AA20D2FF20EC1B60009862FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedWindow.xib; sourceTree = "<group>"; };
-		AA20D30320EC1B69009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AdvancedWindow.strings; sourceTree = "<group>"; };
-		AA20D30520EC1B6D009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AdvancedWindow.strings; sourceTree = "<group>"; };
-		AA20D30720EC1B6F009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AdvancedWindow.strings; sourceTree = "<group>"; };
 		AA20D30920EC2D6B009862FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		AA20D30C20EC2D6E009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
 		AA20D30E20EC2D71009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
