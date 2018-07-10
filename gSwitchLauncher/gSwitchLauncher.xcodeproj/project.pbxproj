@@ -19,6 +19,8 @@
 		8230417920882B3F006701CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8230417B20882B3F006701CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8230417C20882B3F006701CB /* gSwitchLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gSwitchLauncher.entitlements; sourceTree = "<group>"; };
+		AA08261620E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		AA08261820E2A536009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8230417920882B3F006701CB /* Base */,
+				AA08261620E2A52E009862FB /* de */,
+				AA08261820E2A536009862FB /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
