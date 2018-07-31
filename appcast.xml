@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.7.9 Fixed GPU detection for legacy machines, added advanced pane, added option for auto updates, fixed visual bugs</title>
+        <title>1.7.10 Added French And German Translation</title>
         <description>
-          Fixed multiple bugs with legacy gpu detection.  Added advanced pane that allows the user to perform gpu switching without any checks, as well as using the setGPUState, setGPUFeature, getGPUState functions.  Also added checkbox to change auto updates preference.  Added in app version log. Fixed multiple visual bugs with inputs.  General code cleanup
+          The app is now setup to be localized.  French and German translations provdided by HackintoshHD.
         </description>
-        <pubDate>2018-06-16.18:20:29</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.9/gSwitch.zip" sparkle:version="1.7.9" length="10319313" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCqEAelayKFEsr3OMaBg+7Dg/hNEU45ZD8v4eCAWgEQigIgdUfJ7Zfi8K4h
-Q16G6w+/tkbKF4Ufj1lF4LKyTBI5OAo=" />
+        <pubDate>2018-07-31.14:01:05</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.7.10/gSwitch.zip" sparkle:version="1.7.10" length="10334913" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDMv1t70aQDLwqPIEcHEvrMc2Wl7N8VsCcwee5SxSEmlgIgAlWdrsqbEjVY
+sB4P1gICdKJ8mnpwB6kCim/4LzEjPUw=" />
       </item>
   </channel>
 </rss>
