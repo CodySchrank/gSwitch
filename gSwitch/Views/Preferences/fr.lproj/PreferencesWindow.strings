@@ -1,0 +1,23 @@
+
+/* Localisation française par Hackintosh HD, https://github.com/HackintoshHD */
+
+/* Class = "NSButtonCell"; title = "Open Advanced Pane"; ObjectID = "0Kj-h1-2n7"; */
+"0Kj-h1-2n7.title" = "Ouvrir la sous-fenêtre Avancé";
+
+/* Class = "NSButtonCell"; title = "Automatically Update"; ObjectID = "DeE-7M-miq"; */
+"DeE-7M-miq.title" = "Mettre à jour automatiquement";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Préférences";
+
+/* Class = "NSButtonCell"; title = "Start At Login"; ObjectID = "MkE-JC-o7C"; */
+"MkE-JC-o7C.title" = "Ouverture à l'ouverture de session";
+
+/* Class = "NSButtonCell"; title = "Check For Updates"; ObjectID = "RkS-5e-LJU"; */
+"RkS-5e-LJU.title" = "Rechercher les mises à jour";
+
+/* Class = "NSButtonCell"; title = "Remember Last GPU Mode"; ObjectID = "bFW-cw-Q0d"; */
+"bFW-cw-Q0d.title" = "Mémoriser le dernier état GPU";
+
+/* Class = "NSButtonCell"; title = "Show GPU Change Notifications"; ObjectID = "gou-CF-jiG"; */
+"gou-CF-jiG.title" = "Afficher les notifications ";

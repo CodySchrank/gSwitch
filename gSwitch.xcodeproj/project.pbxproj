@@ -20,7 +20,6 @@
 		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
 		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
-		82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82360C712088361700ADD0CE /* PreferencesWindow.xib */; };
 		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
 		82556518208C505900A6807F /* UpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82556517208C505900A6807F /* UpdaterDelegate.swift */; };
 		82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
@@ -32,16 +31,17 @@
 		828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D681620C8BCFF00A41DD9 /* HelpWindow.swift */; };
 		828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828D681720C8BCFF00A41DD9 /* HelpWindow.xib */; };
 		829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553C520884BFA00A29C49 /* AboutWindow.swift */; };
-		829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829553C620884BFA00A29C49 /* AboutWindow.xib */; };
 		829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
 		829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829553CA20884F4700A29C49 /* SwiftyBeaver.framework */; };
 		829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 829553CA20884F4700A29C49 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		829553D020884F6200A29C49 /* SwiftyBeaver.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */; };
 		829553D220884FC200A29C49 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553D120884FC200A29C49 /* Extentions.swift */; };
-		82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUViewController.swift */; };
+		82AD4BE92087F335003375C1 /* GPUView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUView.swift */; };
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
 		82EB58F520882E5F00747BAF /* gSwitchLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8230418720882B40006701CB /* gSwitchLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3298D20897EA0000E34B3 /* BossyWindow.swift */; };
+		AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */; };
+		AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC7195720E2D04E009862FB /* AboutWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,7 +128,6 @@
 		8230418220882B3F006701CB /* gSwitchLauncher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gSwitchLauncher.xcodeproj; path = gSwitchLauncher/gSwitchLauncher.xcodeproj; sourceTree = "<group>"; };
 		8230418920882BB2006701CB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		82360C702088361700ADD0CE /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
-		82360C712088361700ADD0CE /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		823B274D208C0A2900A7DFB6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		82556517208C505900A6807F /* UpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterDelegate.swift; sourceTree = "<group>"; };
 		8255652F208C5B9300A6807F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
@@ -138,13 +137,23 @@
 		828D681620C8BCFF00A41DD9 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
 		828D681720C8BCFF00A41DD9 /* HelpWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpWindow.xib; sourceTree = "<group>"; };
 		829553C520884BFA00A29C49 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
-		829553C620884BFA00A29C49 /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyBeaver.framework.dSYM; path = Carthage/Build/Mac/SwiftyBeaver.framework.dSYM; sourceTree = "<group>"; };
 		829553CA20884F4700A29C49 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/Mac/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		829553D120884FC200A29C49 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
-		82AD4BE82087F335003375C1 /* GPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUViewController.swift; sourceTree = "<group>"; };
+		82AD4BE82087F335003375C1 /* GPUView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUView.swift; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 		82F3298D20897EA0000E34B3 /* BossyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossyWindow.swift; sourceTree = "<group>"; };
+		AA08261420E29C61009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		AA08261520E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		AA08261720E2A536009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		AA20D30920EC2D6B009862FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		AA20D30C20EC2D6E009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
+		AA20D30E20EC2D71009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
+		AA20D31020EC2D74009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
+		AAC7195620E2D04E009862FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindow.xib; sourceTree = "<group>"; };
+		AAC7195A20E2D05A009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		AAC7195C20E2D05C009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		AAC7195E20E2D05D009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AboutWindow.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,28 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				82233EA020844AC9006C57E7 /* AppDelegate.swift */,
-				82233ECB20844ADF006C57E7 /* Constants.swift */,
-				829553D120884FC200A29C49 /* Extentions.swift */,
-				82233ED020844ADF006C57E7 /* GPUListener.swift */,
-				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
-				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
-				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
-				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
-				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
-				82AD4BE82087F335003375C1 /* GPUViewController.swift */,
-				829553C520884BFA00A29C49 /* AboutWindow.swift */,
-				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
-				828D681620C8BCFF00A41DD9 /* HelpWindow.swift */,
-				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
-				82556517208C505900A6807F /* UpdaterDelegate.swift */,
-				829553C620884BFA00A29C49 /* AboutWindow.xib */,
-				828D681720C8BCFF00A41DD9 /* HelpWindow.xib */,
-				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
-				82360C712088361700ADD0CE /* PreferencesWindow.xib */,
-				82233EA420844ACA006C57E7 /* MainMenu.xib */,
+				8224270620E0721E00C4865F /* Util */,
+				8224270420E071E500C4865F /* Core */,
+				8224270720E0726600C4865F /* Views */,
 				82233ECA20844ADE006C57E7 /* gSwitch-Bridging-Header.h */,
-				82233ECD20844ADF006C57E7 /* GSProcess.h */,
-				82233ECC20844ADF006C57E7 /* GSProcess.m */,
 				82233EA720844ACA006C57E7 /* Info.plist */,
 				82233EA820844ACA006C57E7 /* gSwitch.entitlements */,
 				823B274D208C0A2900A7DFB6 /* dsa_pub.pem */,
@@ -247,6 +238,88 @@
 				82233EBE20844ACA006C57E7 /* Info.plist */,
 			);
 			path = gSwitchUITests;
+			sourceTree = "<group>";
+		};
+		8224270420E071E500C4865F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				82233ED020844ADF006C57E7 /* GPUListener.swift */,
+				82233ECE20844ADF006C57E7 /* GPUManager.swift */,
+				82C7028020859AB600EB6B85 /* UserNotificationManager.swift */,
+				82233ED120844ADF006C57E7 /* ProcessManager.swift */,
+				82233ECD20844ADF006C57E7 /* GSProcess.h */,
+				82233ECC20844ADF006C57E7 /* GSProcess.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8224270620E0721E00C4865F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				82233ECB20844ADF006C57E7 /* Constants.swift */,
+				829553D120884FC200A29C49 /* Extentions.swift */,
+				82AD4BE82087F335003375C1 /* GPUView.swift */,
+				82F3298D20897EA0000E34B3 /* BossyWindow.swift */,
+				82556517208C505900A6807F /* UpdaterDelegate.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8224270720E0726600C4865F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8224270820E0734C00C4865F /* MainMenu */,
+				8224270920E0735B00C4865F /* About */,
+				8224270A20E0736700C4865F /* Help */,
+				8224270B20E0737A00C4865F /* Advanced */,
+				8224270C20E0738900C4865F /* Preferences */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8224270820E0734C00C4865F /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				82233ECF20844ADF006C57E7 /* StatusMenuController.swift */,
+				82233EA420844ACA006C57E7 /* MainMenu.xib */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		8224270920E0735B00C4865F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				829553C520884BFA00A29C49 /* AboutWindow.swift */,
+				AAC7195720E2D04E009862FB /* AboutWindow.xib */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		8224270A20E0736700C4865F /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				828D681620C8BCFF00A41DD9 /* HelpWindow.swift */,
+				828D681720C8BCFF00A41DD9 /* HelpWindow.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		8224270B20E0737A00C4865F /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				828D681020C897D200A41DD9 /* AdvancedWindow.swift */,
+				828D681120C897D200A41DD9 /* AdvancedWindow.xib */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		8224270C20E0738900C4865F /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				82360C702088361700ADD0CE /* PreferencesWindow.swift */,
+				AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		8230418320882B3F006701CB /* Products */ = {
@@ -364,6 +437,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				fr,
 			);
 			mainGroup = 82233E9420844AC9006C57E7;
 			productRefGroup = 82233E9E20844AC9006C57E7 /* Products */;
@@ -402,9 +477,9 @@
 				828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */,
 				828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */,
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
-				82360C732088361700ADD0CE /* PreferencesWindow.xib in Resources */,
+				AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
-				829553C820884BFA00A29C49 /* AboutWindow.xib in Resources */,
+				AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */,
 				82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */,
 				829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */,
 			);
@@ -442,7 +517,7 @@
 				829553C720884BFA00A29C49 /* AboutWindow.swift in Sources */,
 				82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */,
 				829553D220884FC200A29C49 /* Extentions.swift in Sources */,
-				82AD4BE92087F335003375C1 /* GPUViewController.swift in Sources */,
+				82AD4BE92087F335003375C1 /* GPUView.swift in Sources */,
 				828D681820C8BCFF00A41DD9 /* HelpWindow.swift in Sources */,
 				828D681220C897D200A41DD9 /* AdvancedWindow.swift in Sources */,
 				82233ED520844ADF006C57E7 /* GPUManager.swift in Sources */,
@@ -486,8 +561,33 @@
 			isa = PBXVariantGroup;
 			children = (
 				82233EA520844ACA006C57E7 /* Base */,
+				AA08261420E29C61009862FB /* en */,
+				AA08261520E2A52E009862FB /* de */,
+				AA08261720E2A536009862FB /* fr */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA20D30920EC2D6B009862FB /* Base */,
+				AA20D30C20EC2D6E009862FB /* en */,
+				AA20D30E20EC2D71009862FB /* de */,
+				AA20D31020EC2D74009862FB /* fr */,
+			);
+			name = PreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
+		AAC7195720E2D04E009862FB /* AboutWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAC7195620E2D04E009862FB /* Base */,
+				AAC7195A20E2D05A009862FB /* en */,
+				AAC7195C20E2D05C009862FB /* de */,
+				AAC7195E20E2D05D009862FB /* fr */,
+			);
+			name = AboutWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -497,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -557,6 +658,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

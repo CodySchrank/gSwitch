@@ -56,6 +56,7 @@ extension String {
         for str in group {
             if self.contains(str) {
                 atLeastOneInGroup = true
+                break
             }
         }
         
@@ -77,6 +78,7 @@ extension Array where Element == String {
         for str in group {
             if str.any(self) {
                 anyInGroup = true
+                break
             }
         }
         
