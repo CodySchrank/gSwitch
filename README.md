@@ -10,14 +10,14 @@ To build from the source
 
 You must have Carthage installed:
 
-```
+```bash
 brew update
 brew install carthage
 ```
 
 And then bootstrap the frameworks:
 
-```
+```bash
 carthage bootstrap
 ```
 
@@ -31,8 +31,8 @@ You can also launch it from the terminal and set the desired setting using `--in
 
 ## Roadmap
 
-*   Polling for gpu vram and processor usage?
-*   A settable list of applications/processes that are allowed to use discrete gpu when integrated only?
+* Polling for gpu vram and processor usage?
+* A settable list of applications/processes that are allowed to use discrete gpu when integrated only?
 
 ## FAQ
 
@@ -42,8 +42,6 @@ You can also launch it from the terminal and set the desired setting using `--in
 
 **Why can't I change to _integrated only_ when there is a dependent process?** You can not change to _integrated only_ when there is a dependency, because your dedicated gpu stays powered on. To prevent both gpus being power on the app prevents you from switching until you quit all dependent processes. (this is still being tested and might change in the future)
 
-**Why create this when the amazing [gfxCardStatus](https://github.com/codykrieger/gfxCardStatus) exists?** Well its no longer actively maintained and it has some problems on high sierra, so I rewrote the program in swift and made a bunch of changes. I'm also considering adding more features. Regardless, big shoutout to [cody](https://github.com/codykrieger) this project wouldn't have been possible without his gpu mux code.
-
 ## Notes
 
-I'm especially unsure if this will work if you have a mac older than 2011. ([Let me know if it does!](https://github.com/CodySchrank/gSwitch/issues/12))
+At this time it seems like gSwitch will not work on macbooks older than 2011. It appears that apple has removed the nessecery API's from these macbooks.  However there could be others that could work, I just can't find any. As GPU MUX is mostly guess work since there isn't any documentation, ([If anyone finds anything let me know here!](https://github.com/CodySchrank/gSwitch/issues/12))
