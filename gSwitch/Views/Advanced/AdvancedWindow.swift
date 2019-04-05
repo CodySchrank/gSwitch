@@ -27,7 +27,7 @@ class AdvancedWindow: BossyWindow {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        helpWindow = HelpWindow(windowNibName: NSNib.Name(rawValue: "HelpWindow"))
+        helpWindow = HelpWindow(windowNibName: "HelpWindow")
         
         alert.addButton(withTitle: "OK")
         

@@ -9,7 +9,7 @@
 #import "SUPipedUnarchiver.h"
 #import "SUUnarchiverNotifier.h"
 #import "SULog.h"
-#import "SUErrors.h"
+#import <Sparkle/SUErrors.h>
 
 
 #include "AppKitPrevention.h"
@@ -100,7 +100,7 @@
         
         // Get the file size.
         NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.archivePath error:nil];
-        NSUInteger expectedLength = [[attributes objectForKey:NSFileSize] unsignedIntegerValue];
+        NSUInteger expectedLength = [(NSNumber *)[attributes objectForKey:NSFileSize] unsignedIntegerValue];
         if (expectedLength > 0) {
             NSFileHandle *archiveInput = [NSFileHandle fileHandleForReadingAtPath:self.archivePath];
             

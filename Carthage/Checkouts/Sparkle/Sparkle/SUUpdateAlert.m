@@ -18,10 +18,10 @@
 #import "SUConstants.h"
 #import "SULog.h"
 #import "SULocalizations.h"
-#import "SUAppcastItem.h"
-#import "SPUDownloadData.h"
+#import <Sparkle/SUAppcastItem.h>
+#import <Sparkle/SPUDownloadData.h>
 #import "SUApplicationInfo.h"
-#import "SPUUpdaterSettings.h"
+#import <Sparkle/SPUUpdaterSettings.h>
 #import "SUSystemUpdateInfo.h"
 #import "SUTouchBarForwardDeclarations.h"
 #import "SUTouchBarButtonGroup.h"
@@ -50,13 +50,16 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
 @property (strong) NSProgressIndicator *releaseNotesSpinner;
 @property (assign) BOOL webViewFinishedLoading;
 
-@property (weak) IBOutlet WebView *releaseNotesView;
+@property (strong) IBOutlet WebView *releaseNotesView;
 @property (weak) IBOutlet NSView *releaseNotesContainerView;
 @property (weak) IBOutlet NSTextField *descriptionField;
 @property (weak) IBOutlet NSButton *automaticallyInstallUpdatesButton;
 @property (weak) IBOutlet NSButton *installButton;
 @property (weak) IBOutlet NSButton *skipButton;
 @property (weak) IBOutlet NSButton *laterButton;
+
+@property (strong) NSBox *darkBackgroundView;
+@property (assign) BOOL observingAppearance;
 
 @end
 
@@ -82,6 +85,9 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
 @synthesize installButton;
 @synthesize skipButton;
 @synthesize laterButton;
+
+@synthesize darkBackgroundView = _darkBackgroundView;
+@synthesize observingAppearance;
 
 - (instancetype)initWithAppcastItem:(SUAppcastItem *)item host:(SUHost *)aHost versionDisplayer:(id <SUVersionDisplay>)aVersionDisplayer
 {
@@ -214,6 +220,16 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
     // "-apple-system-font" is a reference to the system UI font. "-apple-system" is the new recommended token, but for backward compatibility we can't use it.
     prefs.standardFontFamily = @"-apple-system-font";
     prefs.defaultFontSize = (int)[NSFont systemFontSize];
+    [self adaptReleaseNotesAppearance];
+
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101400
+    if (@available(macOS 10.14, *)) {
+        if (!self.observingAppearance) {
+            [self.releaseNotesView addObserver:self forKeyPath:@"effectiveAppearance" options:0 context:nil];
+            self.observingAppearance = YES;
+        }
+    }
+#endif
     
     // Stick a nice big spinner in the middle of the web view until the page is loaded.
     NSRect frame = [[self.releaseNotesView superview] frame];
@@ -229,6 +245,70 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
 	{
         [[self.releaseNotesView mainFrame] loadHTMLString:[self.updateItem itemDescription] baseURL:nil];
     }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(__attribute__((unused)) NSDictionary<NSKeyValueChangeKey,id> *)change context:(__attribute__((unused)) void *)context {
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101400
+    if (@available(macOS 10.14, *)) {
+        if (object == self.releaseNotesView && [keyPath isEqualToString:@"effectiveAppearance"]) {
+            [self adaptReleaseNotesAppearance];
+        }
+    }
+#endif
+}
+
+- (void)dealloc {
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101400
+    if (@available(macOS 10.14, *)) {
+        if (self.observingAppearance) {
+            [self.releaseNotesView removeObserver:self forKeyPath:@"effectiveAppearance"];
+            self.observingAppearance = NO;
+        }
+    }
+#endif
+}
+
+- (void)adaptReleaseNotesAppearance
+{
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101400
+    if (@available(macOS 10.14, *))
+    {
+        WebPreferences *prefs = [self.releaseNotesView preferences];
+        NSAppearanceName bestAppearance = [self.releaseNotesView.effectiveAppearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
+        if ([bestAppearance isEqualToString:NSAppearanceNameDarkAqua])
+        {
+            // Set user stylesheet adapted to light on dark
+            prefs.userStyleSheetEnabled = YES;
+            prefs.userStyleSheetLocation = [[NSBundle bundleForClass:[self class]] URLForResource:@"DarkAqua" withExtension:@"css"];
+            
+            // Remove web view background...
+            self.releaseNotesView.drawsBackground = NO;
+            // ... and use NSBox to get the dynamically colored background
+            if (self.darkBackgroundView == nil)
+            {
+                self.darkBackgroundView = [[NSBox alloc] initWithFrame:self.releaseNotesView.frame];
+                self.darkBackgroundView.boxType = NSBoxCustom;
+                self.darkBackgroundView.fillColor = [NSColor textBackgroundColor];
+                self.darkBackgroundView.borderColor = [NSColor clearColor];
+                // Using auto-resizing mask instead of contraints works well enough
+                self.darkBackgroundView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+                [self.releaseNotesView.superview addSubview:self.darkBackgroundView positioned:NSWindowBelow relativeTo:self.releaseNotesView];
+                
+                // The release note user stylesheet will not adjust to the user changing the theme until adaptReleaseNoteAppearance is called again.
+                // So lock the appearance of the background to keep the text readable if the system theme changes.
+                self.darkBackgroundView.appearance = self.darkBackgroundView.effectiveAppearance;
+            }
+        }
+        else
+        {
+            // Restore standard dark on light appearance
+            [self.darkBackgroundView removeFromSuperview];
+            self.darkBackgroundView = nil;
+            prefs.userStyleSheetEnabled = NO;
+            self.releaseNotesView.drawsBackground = YES;
+        }
+    }
+#endif
 }
 
 - (void)showUpdateReleaseNotesWithDownloadData:(SPUDownloadData *)downloadData
@@ -386,7 +466,7 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
     return finalString;
 }
 
-- (void)webView:(WebView *)sender didFinishLoadForFrame:frame
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     if ([frame parentFrame] == nil) {
         [self stopReleaseNotesSpinner];
@@ -452,7 +532,7 @@ static NSString *const SUUpdateAlertTouchBarIndentifier = @"" SPARKLE_BUNDLE_IDE
 
 - (NSTouchBar *)makeTouchBar
 {
-    NSTouchBar *touchBar = [[NSClassFromString(@"NSTouchBar") alloc] init];
+    NSTouchBar *touchBar = [(NSTouchBar *)[NSClassFromString(@"NSTouchBar") alloc] init];
     touchBar.defaultItemIdentifiers = @[SUUpdateAlertTouchBarIndentifier,];
     touchBar.principalItemIdentifier = SUUpdateAlertTouchBarIndentifier;
     touchBar.delegate = self;

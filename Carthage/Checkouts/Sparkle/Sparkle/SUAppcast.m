@@ -6,16 +6,17 @@
 //  Copyright 2006 Andy Matuschak. All rights reserved.
 //
 
-#import "SUAppcast.h"
-#import "SUAppcastItem.h"
-#import "SUVersionComparisonProtocol.h"
+#import <Sparkle/SUExport.h>
+#import <Sparkle/SUAppcast.h>
+#import <Sparkle/SUAppcastItem.h>
+#import <Sparkle/SUVersionComparisonProtocol.h>
 #import "SUConstants.h"
 #import "SULog.h"
-#import "SUErrors.h"
+#import <Sparkle/SUErrors.h>
 #import "SULocalizations.h"
 #import "SPUXPCServiceInfo.h"
 #import "SPUURLDownload.h"
-#import "SPUDownloadData.h"
+#import <Sparkle/SPUDownloadData.h>
 
 
 #include "AppKitPrevention.h"
@@ -146,6 +147,14 @@
 }
 
 -(NSArray *)parseAppcastItemsFromXMLData:(NSData *)appcastData error:(NSError *__autoreleasing*)errorp {
+    if (errorp) {
+        *errorp = nil;
+    }
+
+    if (!appcastData) {
+        return nil;
+    }
+
     NSUInteger options = NSXMLNodeLoadExternalEntitiesNever; // Prevent inclusion from file://
     NSXMLDocument *document = [[NSXMLDocument alloc] initWithData:appcastData options:options error:errorp];
 	if (nil == document) {

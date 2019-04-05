@@ -14,10 +14,10 @@
 #else
 #import <Cocoa/Cocoa.h>
 #endif
-#import "SUExport.h"
-#import "SUVersionComparisonProtocol.h"
-#import "SUVersionDisplayProtocol.h"
-#import "SUUpdaterDelegate.h"
+#import <Sparkle/SUExport.h>
+#import <Sparkle/SUVersionComparisonProtocol.h>
+#import <Sparkle/SUVersionDisplayProtocol.h>
+#import <Sparkle/SUUpdaterDelegate.h>
 
 @class SUAppcastItem, SUAppcast, NSMenuItem;
 
@@ -162,11 +162,7 @@ SU_EXPORT @interface SUUpdater : NSObject
 
  The keys of this dictionary are HTTP header fields (NSString) and values are corresponding values (NSString)
  */
-#if __has_feature(objc_generics)
 @property (copy) NSDictionary<NSString *, NSString *> *httpHeaders;
-#else
-@property (copy) NSDictionary *httpHeaders;
-#endif
 
 /*!
  A property indicating whether or not the user's system profile information is sent when checking for updates.

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="341" height="156"/>
@@ -23,18 +22,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="341" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1L-m9-W4j">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i1L-m9-W4j">
                         <rect key="frame" x="91" y="41" width="159" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Created by Cody Schrank" id="G3V-eP-9mf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7t-Z0-nGa" customClass="HyperlinkTextField" customModule="gSwitch" customModuleProvider="target">
-                        <rect key="frame" x="115" y="16" width="110" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7t-Z0-nGa" customClass="HyperlinkTextField" customModule="gSwitch" customModuleProvider="target">
+                        <rect key="frame" x="116" y="16" width="110" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Report a problem" id="Tgz-jQ-mJJ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -44,14 +41,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/CodySchrank/gSwitch/issues"/>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAL-uh-FJz">
-                        <rect key="frame" x="151" y="98" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAL-uh-FJz">
+                        <rect key="frame" x="152" y="98" width="38" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="38" id="MMD-PX-nZS"/>
+                            <constraint firstAttribute="width" constant="38" id="ddL-ko-Hcp"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="appicon" id="yLp-E9-I7m"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-Uj-I2d">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-Uj-I2d">
                         <rect key="frame" x="127" y="66" width="87" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="gSwitch 0.0.0" id="EHw-NS-fD9">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -59,6 +58,17 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="top" secondItem="i1L-m9-W4j" secondAttribute="bottom" constant="8" id="3vp-JG-ZwW"/>
+                    <constraint firstItem="IAL-uh-FJz" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="69S-DR-jhu"/>
+                    <constraint firstItem="i1L-m9-W4j" firstAttribute="top" secondItem="QOd-Uj-I2d" secondAttribute="bottom" constant="8" id="BHt-9S-pdA"/>
+                    <constraint firstItem="i1L-m9-W4j" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Ix5-j3-AsX"/>
+                    <constraint firstAttribute="bottom" secondItem="h7t-Z0-nGa" secondAttribute="bottom" constant="16" id="Qiv-Rs-zh4"/>
+                    <constraint firstItem="IAL-uh-FJz" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Vdd-yH-8AC"/>
+                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="aIy-yO-pL1"/>
+                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="top" secondItem="IAL-uh-FJz" secondAttribute="bottom" constant="15" id="icL-pT-YUM"/>
+                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="kse-mt-W6r"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

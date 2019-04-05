@@ -90,6 +90,15 @@ static NSDictionary *infoForFile(FTSENT *ent)
               INFO_SIZE_KEY: @(size) };
 }
 
+static bool isSymLink(const FTSENT *ent)
+{
+    if (ent->fts_info == FTS_SL)
+    {
+        return (true);
+    }
+    return false;
+}
+
 static bool aclExists(const FTSENT *ent)
 {
     // macOS does not currently support ACLs for symlinks
@@ -156,7 +165,7 @@ static NSString *temporaryPatchFile(NSString *patchFile)
 
 static BOOL shouldSkipDeltaCompression(NSDictionary *originalInfo, NSDictionary *newInfo)
 {
-    unsigned long long fileSize = [newInfo[INFO_SIZE_KEY] unsignedLongLongValue];
+    unsigned long long fileSize = [(NSNumber *)newInfo[INFO_SIZE_KEY] unsignedLongLongValue];
     if (fileSize < MIN_FILE_SIZE_FOR_CREATING_DELTA) {
         return YES;
     }
@@ -165,11 +174,11 @@ static BOOL shouldSkipDeltaCompression(NSDictionary *originalInfo, NSDictionary 
         return YES;
     }
 
-    if ([originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
+    if ([(NSNumber *)originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [(NSNumber *)newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
         return YES;
     }
 
-    if ([originalInfo[INFO_HASH_KEY] isEqual:newInfo[INFO_HASH_KEY]]) {
+    if ([(NSData *)originalInfo[INFO_HASH_KEY] isEqual:(NSData *)newInfo[INFO_HASH_KEY]]) {
         // this is possible if just the permissions have changed
         return YES;
     }
@@ -183,7 +192,7 @@ static BOOL shouldDeleteThenExtract(NSDictionary *originalInfo, NSDictionary *ne
         return NO;
     }
 
-    if ([originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
+    if ([(NSNumber *)originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [(NSNumber *)newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
         return YES;
     }
 
@@ -196,11 +205,11 @@ static BOOL shouldSkipExtracting(NSDictionary *originalInfo, NSDictionary *newIn
         return NO;
     }
 
-    if ([originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
+    if ([(NSNumber *)originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [(NSNumber *)newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
         return NO;
     }
 
-    if (![originalInfo[INFO_HASH_KEY] isEqual:newInfo[INFO_HASH_KEY]]) {
+    if (![(NSData *)originalInfo[INFO_HASH_KEY] isEqual:(NSData *)newInfo[INFO_HASH_KEY]]) {
         return NO;
     }
 
@@ -213,11 +222,11 @@ static BOOL shouldChangePermissions(NSDictionary *originalInfo, NSDictionary *ne
         return NO;
     }
 
-    if ([originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
+    if ([(NSNumber *)originalInfo[INFO_TYPE_KEY] unsignedShortValue] != [(NSNumber *)newInfo[INFO_TYPE_KEY] unsignedShortValue]) {
         return NO;
     }
 
-    if ([originalInfo[INFO_PERMISSIONS_KEY] unsignedShortValue] == [newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]) {
+    if ([(NSNumber *)originalInfo[INFO_PERMISSIONS_KEY] unsignedShortValue] == [(NSNumber *)newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]) {
         return NO;
     }
 
@@ -254,7 +263,7 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
 
     if (verbose) {
         fprintf(stderr, "Creating version %u.%u patch...\n", majorVersion, minorVersion);
-        fprintf(stderr, "Processing %s...", [source fileSystemRepresentation]);
+        fprintf(stderr, "Processing source, %s...", [source fileSystemRepresentation]);
     }
 
     FTSENT *ent = 0;
@@ -320,7 +329,7 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
     }
 
     if (verbose) {
-        fprintf(stderr, "\nProcessing %s...", [destination fileSystemRepresentation]);
+        fprintf(stderr, "\nProcessing destination, %s...", [destination fileSystemRepresentation]);
     }
 
     pathBuffer[0] = 0;
@@ -370,8 +379,8 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
         // We should also not allow files with code signed extended attributes since Apple doesn't recommend inserting these
         // inside an application, and since we don't preserve extended attribitutes anyway
 
-        mode_t permissions = [info[INFO_PERMISSIONS_KEY] unsignedShortValue];
-        if (!IS_VALID_PERMISSIONS(permissions)) {
+        mode_t permissions = [(NSNumber*)info[INFO_PERMISSIONS_KEY] unsignedShortValue];
+        if (!isSymLink(ent) && !IS_VALID_PERMISSIONS(permissions)) {
             if (verbose) {
                 fprintf(stderr, "\n");
             }
@@ -408,7 +417,7 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
         } else {
             newTreeState[key] = info;
 
-            if (oldInfo && [oldInfo[INFO_TYPE_KEY] unsignedShortValue] == FTS_D && [info[INFO_TYPE_KEY] unsignedShortValue] != FTS_D) {
+            if (oldInfo && [(NSNumber *)oldInfo[INFO_TYPE_KEY] unsignedShortValue] == FTS_D && [(NSNumber *)info[INFO_TYPE_KEY] unsignedShortValue] != FTS_D) {
                 NSArray *parentPathComponents = key.pathComponents;
 
                 for (NSString *childPath in originalTreeState) {
@@ -439,6 +448,9 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
     }
 
     NSString *temporaryFile = temporaryPatchFile(patchFile);
+    if (verbose) {
+        fprintf(stderr, "\nWriting to temporary file %s...", [temporaryFile fileSystemRepresentation]);
+    }
     xar_t x = xar_open([temporaryFile fileSystemRepresentation], WRITE);
     if (!x) {
         if (verbose) {
@@ -480,7 +492,7 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
     for (NSString *key in keys) {
         id value = [newTreeState valueForKey:key];
 
-        if ([value isEqual:[NSNull null]]) {
+        if ([(NSObject *)value isEqual:[NSNull null]]) {
             xar_file_t newFile = xar_add_frombuffer(x, 0, [key fileSystemRepresentation], (char *)"", 1);
             assert(newFile);
             xar_prop_set(newFile, DELETE_KEY, "true");
@@ -498,10 +510,10 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
                 if (shouldChangePermissions(originalInfo, newInfo)) {
                     xar_file_t newFile = xar_add_frombuffer(x, 0, [key fileSystemRepresentation], (char *)"", 1);
                     assert(newFile);
-                    xar_prop_set(newFile, MODIFY_PERMISSIONS_KEY, [[NSString stringWithFormat:@"%u", [newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]] UTF8String]);
+                    xar_prop_set(newFile, MODIFY_PERMISSIONS_KEY, [[NSString stringWithFormat:@"%u", [(NSNumber *)newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]] UTF8String]);
 
                     if (verbose) {
-                        fprintf(stderr, "\n👮  %s %s (0%o -> 0%o)", VERBOSE_MODIFIED, [key fileSystemRepresentation], [originalInfo[INFO_PERMISSIONS_KEY] unsignedShortValue], [newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]);
+                        fprintf(stderr, "\n👮  %s %s (0%o -> 0%o)", VERBOSE_MODIFIED, [key fileSystemRepresentation], [(NSNumber *)originalInfo[INFO_PERMISSIONS_KEY] unsignedShortValue], [(NSNumber *)newInfo[INFO_PERMISSIONS_KEY] unsignedShortValue]);
                     }
                 }
             } else {
@@ -574,13 +586,19 @@ BOOL createBinaryDelta(NSString *source, NSString *destination, NSString *patchF
 
     xar_close(x);
 
-    unlink([patchFile fileSystemRepresentation]);
-    link([temporaryFile fileSystemRepresentation], [patchFile fileSystemRepresentation]);
-    unlink([temporaryFile fileSystemRepresentation]);
-
+    NSFileManager *filemgr;
+    filemgr = [NSFileManager defaultManager];
+    
+    [filemgr removeItemAtPath: patchFile error: NULL];
+    if ([filemgr moveItemAtPath: temporaryFile toPath: patchFile error: NULL]  != YES)
+    {
+        if (verbose) {
+            fprintf(stderr, "Failed to move temporary file, %s, to %s!\n", [temporaryFile fileSystemRepresentation], [patchFile fileSystemRepresentation]);
+        }
+        return NO;
+    }
     if (verbose) {
         fprintf(stderr, "\nDone!\n");
     }
-
     return YES;
 }

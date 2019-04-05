@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +16,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="381" height="180"/>
@@ -26,9 +25,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="381" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-TZ-SpL">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-TZ-SpL">
                         <rect key="frame" x="36" y="54" width="217" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Show GPU Change Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="gou-CF-jiG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -37,9 +35,8 @@
                             <action selector="gpuChangeNotificationsPressed:" target="-2" id="rY3-VO-Xav"/>
                         </connections>
                     </button>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-MM-TRS">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-MM-TRS">
                         <rect key="frame" x="36" y="80" width="186" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Remember Last GPU Mode" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="bFW-cw-Q0d">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -48,9 +45,8 @@
                             <action selector="useLastStateClicked:" target="-2" id="ceo-Nc-rcQ"/>
                         </connections>
                     </button>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkg-eH-1Jx">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lkg-eH-1Jx">
                         <rect key="frame" x="21" y="9" width="157" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Check For Updates" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="RkS-5e-LJU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -59,9 +55,8 @@
                             <action selector="checkForUpdatesClicked:" target="-2" id="Ldc-iV-Skn"/>
                         </connections>
                     </button>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-W6-aDj">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-W6-aDj">
                         <rect key="frame" x="191" y="9" width="170" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Open Advanced Pane" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0Kj-h1-2n7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -70,9 +65,8 @@
                             <action selector="openAdvancedPaneClicked:" target="-2" id="T11-oO-jIr"/>
                         </connections>
                     </button>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-Ru-mM2">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-Ru-mM2">
                         <rect key="frame" x="36" y="106" width="152" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Automatically Update" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="DeE-7M-miq">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -81,9 +75,8 @@
                             <action selector="automaticallyUpdateClicked:" target="-2" id="u3H-Jq-Vf4"/>
                         </connections>
                     </button>
-                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-EX-UET">
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-EX-UET">
                         <rect key="frame" x="36" y="132" width="106" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Start At Login" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="MkE-JC-o7C">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -93,6 +86,25 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="m9Z-Ru-mM2" firstAttribute="leading" secondItem="CyM-MM-TRS" secondAttribute="leading" id="1A9-Et-exM"/>
+                    <constraint firstItem="f5E-W6-aDj" firstAttribute="leading" secondItem="lkg-eH-1Jx" secondAttribute="trailing" constant="25" id="2pM-4N-EeA"/>
+                    <constraint firstItem="Pwe-TZ-SpL" firstAttribute="top" secondItem="CyM-MM-TRS" secondAttribute="bottom" constant="12" id="5ut-nl-K26"/>
+                    <constraint firstItem="S2l-EX-UET" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="32" id="8pc-2m-BU2"/>
+                    <constraint firstAttribute="trailing" secondItem="Pwe-TZ-SpL" secondAttribute="trailing" priority="250" constant="130" id="9VG-gJ-jRq"/>
+                    <constraint firstAttribute="trailing" secondItem="CyM-MM-TRS" secondAttribute="trailing" priority="250" constant="161" id="A6M-cb-Lj7"/>
+                    <constraint firstItem="lkg-eH-1Jx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="27" id="FFg-0S-fCI"/>
+                    <constraint firstItem="lkg-eH-1Jx" firstAttribute="top" secondItem="Pwe-TZ-SpL" secondAttribute="bottom" constant="19" id="FbB-1K-ow8"/>
+                    <constraint firstItem="lkg-eH-1Jx" firstAttribute="baseline" secondItem="f5E-W6-aDj" secondAttribute="baseline" id="FrS-2w-Wg9"/>
+                    <constraint firstAttribute="trailing" secondItem="S2l-EX-UET" secondAttribute="trailing" priority="250" constant="241" id="Fwg-yF-9x1"/>
+                    <constraint firstAttribute="trailing" secondItem="m9Z-Ru-mM2" secondAttribute="trailing" priority="250" constant="195" id="PvY-OW-CYF"/>
+                    <constraint firstItem="m9Z-Ru-mM2" firstAttribute="top" secondItem="S2l-EX-UET" secondAttribute="bottom" constant="12" id="U5z-Gm-JVP"/>
+                    <constraint firstItem="S2l-EX-UET" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="38" id="VXU-Ja-s63"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f5E-W6-aDj" secondAttribute="trailing" constant="26" id="Wep-Pd-c63"/>
+                    <constraint firstItem="CyM-MM-TRS" firstAttribute="leading" secondItem="Pwe-TZ-SpL" secondAttribute="leading" id="hMp-qF-53L"/>
+                    <constraint firstItem="S2l-EX-UET" firstAttribute="leading" secondItem="m9Z-Ru-mM2" secondAttribute="leading" id="tjl-Mf-AP4"/>
+                    <constraint firstItem="CyM-MM-TRS" firstAttribute="top" secondItem="m9Z-Ru-mM2" secondAttribute="bottom" constant="12" id="tp3-CA-cjA"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

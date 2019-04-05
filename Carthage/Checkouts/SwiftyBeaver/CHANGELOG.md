@@ -6,7 +6,55 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ----
 <br/>
 
-## 1.5.2 (2018-05-05)
+## 1.7.0 (2019-03-26)
+
+##### Added
+
+- Support for Swift 5 and Xcode 10.2 by [@lgaches](https://github.com/lgaches)
+- Support for CircleCI 2.0 by [@lgaches](https://github.com/lgaches)
+
+
+<br/>
+
+## 1.6.2 (2019-02-11)
+
+##### Added
+
+- Improved SPM support for Swift 4.2 by [@heyzooi ](https://github.com/heyzooi)
+- Improved Carthage support for Swift 4.2 by [@iachievedit ](https://github.com/iachievedit)
+- Swift type inference by [@rafalmq ](https://github.com/rafalmq)
+
+
+<br/>
+
+## 1.6.1 (2018-09-18)
+
+##### Added
+
+- Optional sync after each file write by [@crspybits ](https://github.com/crspybits)
+- Execute methods to run in dest queue by [@keeshux ](https://github.com/keeshux)
+- Padded format option (see [PR for details](https://github.com/SwiftyBeaver/SwiftyBeaver/pull/298)) by [@htb ](https://github.com/htb)
+
+
+##### Fixed
+- Warning caused by iOS 12 by [@lgaches](https://github.com/lgaches)
+- Issues with formating by [@htb ](https://github.com/htb)
+
+<br/>
+
+## 1.6.0 (2018-05-23)
+
+##### Added
+
+- Custom filters by [@Mordil ](https://github.com/Mordil )
+- App uptime format variable `$U` by [@LordNali ](https://github.com/LordNali )
+
+##### Changed
+- Filter behavior which requires now at least one passing non-required filter by [@cconway](https://github.com/cconway)
+
+<br/>
+
+## 1.5.2 (2018-04-05)
 
 ##### Added
 

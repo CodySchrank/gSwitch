@@ -15,9 +15,9 @@ class HyperlinkTextField: NSTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: NSColor.blue,
-            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+            .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         self.attributedStringValue = NSAttributedString(string: self.stringValue, attributes: attributes)
     }
@@ -34,9 +34,9 @@ class HyperlinkTextFieldNoURL: NSTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: NSColor.blue,
-            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+            .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         self.attributedStringValue = NSAttributedString(string: self.stringValue, attributes: attributes)
     }

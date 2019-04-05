@@ -10,8 +10,8 @@
 #import "SPUUpdaterDelegate.h"
 #import "SPUUpdaterSettings.h"
 #import "SUHost.h"
-#import "SPUUpdatePermissionRequest.h"
-#import "SUUpdatePermissionResponse.h"
+#import <Sparkle/SPUUpdatePermissionRequest.h>
+#import <Sparkle/SUUpdatePermissionResponse.h>
 #import "SPUUpdateDriver.h"
 #import "SUConstants.h"
 #import "SULog.h"
@@ -24,7 +24,7 @@
 #import "SPUProbeInstallStatus.h"
 #import "SUAppcastItem.h"
 #import "SPUInstallationInfo.h"
-#import "SUErrors.h"
+#import <Sparkle/SUErrors.h>
 #import "SPUXPCServiceInfo.h"
 #import "SPUUpdaterCycle.h"
 #import "SPUUpdaterTimer.h"
@@ -727,7 +727,7 @@ static NSString *escapeURLComponent(NSString *str) {
     const NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
     sendingSystemProfile &= (-[lastSubmitDate timeIntervalSinceNow] >= oneWeek);
 
-    NSArray *parameters = @[];
+    NSArray<NSDictionary<NSString *, NSString *> *> *parameters = @[];
     if ([self.delegate respondsToSelector:@selector(feedParametersForUpdater:sendingSystemProfile:)]) {
         NSArray *feedParameters = [self.delegate feedParametersForUpdater:self sendingSystemProfile:sendingSystemProfile];
         if (feedParameters != nil) {
@@ -743,7 +743,7 @@ static NSString *escapeURLComponent(NSString *str) {
 
     // Build up the parameterized URL.
     NSMutableArray *parameterStrings = [NSMutableArray array];
-    for (NSDictionary *currentProfileInfo in parameters) {
+    for (NSDictionary<NSString *, NSString *> *currentProfileInfo in parameters) {
         [parameterStrings addObject:[NSString stringWithFormat:@"%@=%@", escapeURLComponent([[currentProfileInfo objectForKey:@"key"] description]), escapeURLComponent([[currentProfileInfo objectForKey:@"value"] description])]];
     }
 

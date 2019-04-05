@@ -413,7 +413,7 @@
 				TargetAttributes = {
 					82233E9C20844AC9006C57E7 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -422,10 +422,12 @@
 					};
 					82233EAC20844ACA006C57E7 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1020;
 						TestTargetID = 82233E9C20844AC9006C57E7;
 					};
 					82233EB720844ACA006C57E7 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1020;
 						TestTargetID = 82233E9C20844AC9006C57E7;
 					};
 				};
@@ -726,12 +728,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -753,11 +755,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -777,7 +779,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gSwitch.app/Contents/MacOS/gSwitch";
 			};
 			name = Debug;
@@ -798,7 +800,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gSwitch.app/Contents/MacOS/gSwitch";
 			};
 			name = Release;
@@ -818,7 +820,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = gSwitch;
 			};
 			name = Debug;
@@ -838,7 +840,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = gSwitch;
 			};
 			name = Release;

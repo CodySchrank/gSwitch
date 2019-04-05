@@ -72,10 +72,19 @@ open class BaseDestination: Hashable, Equatable {
 
     var filters = [FilterType]()
     let formatter = DateFormatter()
+    let startDate = Date()
 
     // each destination class must have an own hashValue Int
+    #if swift(>=4.2)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(defaultHashValue)
+    }
+    #else
     lazy public var hashValue: Int = self.defaultHashValue
+    #endif
+
     open var defaultHashValue: Int {return 0}
+
 
     // each destination instance must have an own serial queue to ensure serial output
     // GCD gives it a prioritization between User Initiated and Utility
@@ -104,76 +113,139 @@ open class BaseDestination: Hashable, Equatable {
         }
     }
 
+    public func execute(synchronously: Bool, block: @escaping () -> Void) {
+        guard let queue = queue else {
+            fatalError("Queue not set")
+        }
+        if synchronously {
+            queue.sync(execute: block)
+        } else {
+            queue.async(execute: block)
+        }
+    }
+    
+    public func executeSynchronously<T>(block: @escaping () throws -> T) rethrows -> T {
+        guard let queue = queue else {
+            fatalError("Queue not set")
+        }
+        return try queue.sync(execute: block)
+    }
+
     ////////////////////////////////
     // MARK: Format
     ////////////////////////////////
 
+    /// returns (padding length value, offset in string after padding info)
+    private func parsePadding(_ text: String) -> (Int, Int)
+    {
+        // look for digits followed by a alpha character
+        var s: String!
+        var sign: Int = 1
+        if text.firstChar == "-" {
+            sign = -1
+            s = String(text.suffix(from: text.index(text.startIndex, offsetBy: 1)))
+        } else {
+            s = text
+        }
+        let numStr = s.prefix { $0 >= "0" && $0 <= "9" }
+        if let num = Int(String(numStr)) {
+            return (sign * num, (sign == -1 ? 1 : 0) + numStr.count)
+        } else {
+            return (0, 0)
+        }
+    }
+    
+    private func paddedString(_ text: String, _ toLength: Int, truncating: Bool = false) -> String {
+        if toLength > 0 {
+            // Pad to the left of the string
+            if text.count > toLength {
+                // Hm... better to use suffix or prefix?
+                return truncating ? String(text.suffix(toLength)) : text
+            } else {
+                return "".padding(toLength: toLength - text.count, withPad: " ", startingAt: 0) + text
+            }
+        } else if toLength < 0 {
+            // Pad to the right of the string
+            let maxLength = truncating ? -toLength : max(-toLength, text.count)
+            return text.padding(toLength: maxLength, withPad: " ", startingAt: 0)
+        } else {
+            return text
+        }
+    }
+    
     /// returns the log message based on the format pattern
     func formatMessage(_ format: String, level: SwiftyBeaver.Level, msg: String, thread: String,
         file: String, function: String, line: Int, context: Any? = nil) -> String {
 
         var text = ""
-        let phrases: [String] = format.components(separatedBy: "$")
+        // Prepend a $I for 'ignore' or else the first character is interpreted as a format character
+        // even if the format string did not start with a $.
+        let phrases: [String] = ("$I" + format).components(separatedBy: "$")
 
         for phrase in phrases where !phrase.isEmpty {
-                let firstChar = phrase[phrase.startIndex]
-                let rangeAfterFirstChar = phrase.index(phrase.startIndex, offsetBy: 1)..<phrase.endIndex
-                let remainingPhrase = phrase[rangeAfterFirstChar]
-
-                switch firstChar {
-                case "L":
-                    text += levelWord(level) + remainingPhrase
-                case "M":
-                    text += msg + remainingPhrase
-                case "T":
-                    text += thread + remainingPhrase
-                case "N":
-                    // name of file without suffix
-                    text += fileNameWithoutSuffix(file) + remainingPhrase
-                case "n":
-                    // name of file with suffix
-                    text += fileNameOfFile(file) + remainingPhrase
-                case "F":
-                    text += function + remainingPhrase
-                case "l":
-                    text += String(line) + remainingPhrase
-                case "D":
-                    // start of datetime format
-                    #if swift(>=3.2)
-                    text += formatDate(String(remainingPhrase))
-                    #else
-                    text += formatDate(remainingPhrase)
-                    #endif
-                case "d":
-                    text += remainingPhrase
-                case "Z":
-                    // start of datetime format in UTC timezone
-                    #if swift(>=3.2)
-                    text += formatDate(String(remainingPhrase), timeZone: "UTC")
-                    #else
-                    text += formatDate(remainingPhrase, timeZone: "UTC")
-                    #endif
-                case "z":
-                    text += remainingPhrase
-                case "C":
-                    // color code ("" on default)
-                    text += escape + colorForLevel(level) + remainingPhrase
-                case "c":
-                    text += reset + remainingPhrase
-                case "X":
-                    // add the context
-                    if let cx = context {
-                        text += String(describing: cx).trimmingCharacters(in: .whitespacesAndNewlines) + remainingPhrase
-                    }
-                    /*
-                    if let contextString = context as? String {
-                        text += contextString + remainingPhrase
-                    }*/
-                default:
-                    text += phrase
+            let (padding, offset) = parsePadding(phrase)
+            let formatCharIndex = phrase.index(phrase.startIndex, offsetBy: offset)
+            let formatChar = phrase[formatCharIndex]
+            let rangeAfterFormatChar = phrase.index(formatCharIndex, offsetBy: 1)..<phrase.endIndex
+            let remainingPhrase = phrase[rangeAfterFormatChar]
+            
+            switch formatChar {
+            case "I":  // ignore
+                text += remainingPhrase
+            case "L":
+                text += paddedString(levelWord(level), padding) + remainingPhrase
+            case "M":
+                text += paddedString(msg, padding) + remainingPhrase
+            case "T":
+                text += paddedString(thread, padding) + remainingPhrase
+            case "N":
+                // name of file without suffix
+                text += paddedString(fileNameWithoutSuffix(file), padding) + remainingPhrase
+            case "n":
+                // name of file with suffix
+                text += paddedString(fileNameOfFile(file), padding) + remainingPhrase
+            case "F":
+                text += paddedString(function, padding) + remainingPhrase
+            case "l":
+                text += paddedString(String(line), padding) + remainingPhrase
+            case "D":
+                // start of datetime format
+                #if swift(>=3.2)
+                text += paddedString(formatDate(String(remainingPhrase)), padding)
+                #else
+                text += paddedString(formatDate(remainingPhrase), padding)
+                #endif
+            case "d":
+                text += remainingPhrase
+            case "U":
+                text += paddedString(uptime(), padding) + remainingPhrase
+            case "Z":
+                // start of datetime format in UTC timezone
+                #if swift(>=3.2)
+                text += paddedString(formatDate(String(remainingPhrase), timeZone: "UTC"), padding)
+                #else
+                text += paddedString(formatDate(remainingPhrase, timeZone: "UTC"), padding)
+                #endif
+            case "z":
+                text += remainingPhrase
+            case "C":
+                // color code ("" on default)
+                text += escape + colorForLevel(level) + remainingPhrase
+            case "c":
+                text += reset + remainingPhrase
+            case "X":
+                // add the context
+                if let cx = context {
+                    text += paddedString(String(describing: cx).trimmingCharacters(in: .whitespacesAndNewlines), padding) + remainingPhrase
+                } else {
+                    text += paddedString("", padding) + remainingPhrase
                 }
+            default:
+                text += phrase
+            }
         }
-        return text.trimmingCharacters(in: .whitespacesAndNewlines)
+        // right trim only
+        return text.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
     }
 
     /// returns the log payload as optional JSON string
@@ -200,16 +272,16 @@ open class BaseDestination: Hashable, Equatable {
         var str = ""
 
         switch level {
-        case SwiftyBeaver.Level.debug:
+        case .debug:
             str = levelString.debug
 
-        case SwiftyBeaver.Level.info:
+        case .info:
             str = levelString.info
 
-        case SwiftyBeaver.Level.warning:
+        case .warning:
             str = levelString.warning
 
-        case SwiftyBeaver.Level.error:
+        case .error:
             str = levelString.error
 
         default:
@@ -224,16 +296,16 @@ open class BaseDestination: Hashable, Equatable {
         var color = ""
 
         switch level {
-        case SwiftyBeaver.Level.debug:
+        case .debug:
             color = levelColor.debug
 
-        case SwiftyBeaver.Level.info:
+        case .info:
             color = levelColor.info
 
-        case SwiftyBeaver.Level.warning:
+        case .warning:
             color = levelColor.warning
 
-        case SwiftyBeaver.Level.error:
+        case .error:
             color = levelColor.error
 
         default:
@@ -274,6 +346,18 @@ open class BaseDestination: Hashable, Equatable {
         //let dateStr = formatter.string(from: NSDate() as Date)
         let dateStr = formatter.string(from: Date())
         return dateStr
+    }
+    
+    /// returns a uptime string
+    func uptime() -> String {
+        let interval = Date().timeIntervalSince(startDate)
+        
+        let hours = Int(interval) / 3600
+        let minutes = Int(interval / 60) - Int(hours * 60)
+        let seconds = Int(interval) - (Int(interval / 60) * 60)
+        let milliseconds = Int(interval.truncatingRemainder(dividingBy: 1) * 1000)
+        
+        return String(format: "%0.2d:%0.2d:%0.2d.%03d", arguments: [hours, minutes, seconds, milliseconds])
     }
 
     /// returns the json-encoded string value
@@ -320,9 +404,15 @@ open class BaseDestination: Hashable, Equatable {
 
     /// Remove a filter from the list of filters
     public func removeFilter(_ filter: FilterType) {
+        #if swift(>=5)
+        let index = filters.firstIndex {
+            return ObjectIdentifier($0) == ObjectIdentifier(filter)
+        }
+        #else
         let index = filters.index {
             return ObjectIdentifier($0) == ObjectIdentifier(filter)
         }
+        #endif
 
         guard let filterIndex = index else {
             return
@@ -378,9 +468,11 @@ open class BaseDestination: Hashable, Equatable {
         }
 
         // If a non-required filter matches, the log is validated
-        if allNonRequired > 0 && matchedNonRequired > 0 {
-            return true
-        }
+		if allNonRequired > 0 {  // Non-required filters exist
+
+			if matchedNonRequired > 0 { return true }  // At least one non-required filter matched
+			else { return false }  // No non-required filters matched
+		}
 
         if level.rawValue < minLevel.rawValue {
             if debugPrint {

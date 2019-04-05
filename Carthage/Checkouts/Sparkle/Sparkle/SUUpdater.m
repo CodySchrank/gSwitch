@@ -6,11 +6,11 @@
 //  Copyright 2006 Andy Matuschak. All rights reserved.
 //
 
-#import "SUUpdater.h"
-#import "SPUUpdater.h"
-#import "SPUStandardUserDriver.h"
-#import "SPUStandardUserDriverDelegate.h"
-#import "SPUUpdaterDelegate.h"
+#import <Sparkle/SUUpdater.h>
+#import <Sparkle/SPUUpdater.h>
+#import <Sparkle/SPUStandardUserDriver.h>
+#import <Sparkle/SPUStandardUserDriverDelegate.h>
+#import <Sparkle/SPUUpdaterDelegate.h>
 #import "SULog.h"
 
 @interface SUUpdater () <SPUUpdaterDelegate, SPUStandardUserDriverDelegate>
@@ -51,7 +51,7 @@ static NSMutableDictionary *sharedUpdaters = nil;
     if (bundle == nil) bundle = [NSBundle mainBundle];
     id updater = [sharedUpdaters objectForKey:[NSValue valueWithNonretainedObject:bundle]];
     if (updater == nil) {
-        updater = [[[self class] alloc] initForBundle:bundle];
+        updater = [(SUUpdater *)[[self class] alloc] initForBundle:bundle];
     }
     return updater;
 }

@@ -43,9 +43,9 @@ class StatusMenuController: NSViewController {
         statusItem.menu = statusMenu
         GPUViewLabel.view = GPUViewController  // hidden view
         
-        preferencesWindow = PreferencesWindow(windowNibName: NSNib.Name(rawValue: "PreferencesWindow"))
+        preferencesWindow = PreferencesWindow(windowNibName: "PreferencesWindow")
         
-        aboutWindow = AboutWindow(windowNibName: NSNib.Name(rawValue: "AboutWindow"))
+        aboutWindow = AboutWindow(windowNibName: "AboutWindow")
         
         CurrentGPU.title = "GPU: \(appDelegate?.manager.currentGPU ?? "Unknown")"
         
@@ -115,13 +115,13 @@ class StatusMenuController: NSViewController {
         
         switch currentGPU {
         case .Integrated:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_low"))
+            icon = NSImage(named: "ic_brightness_low")
         case .Discrete:
-            icon = NSImage(named: NSImage.Name(rawValue: "ic_brightness_high"))
+            icon = NSImage(named: "ic_brightness_high")
         }
 
         icon?.isTemplate = true // best for dark mode
-        statusItem.image = icon
+        statusItem.button?.image = icon
     }
     
     @objc private func changeGPUNameInMenu(notification: NSNotification) {

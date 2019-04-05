@@ -23,7 +23,7 @@ class PreferencesWindow: BossyWindow {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        advancedWindow = AdvancedWindow(windowNibName: NSNib.Name(rawValue: "AdvancedWindow"))
+        advancedWindow = AdvancedWindow(windowNibName: "AdvancedWindow")
         
         log.info("Preferences Opened")
         

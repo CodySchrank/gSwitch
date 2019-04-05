@@ -12,9 +12,9 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#import "SPUUserDriver.h"
-#import "SPUStandardUserDriverProtocol.h"
-#import "SUExport.h"
+#import <Sparkle/SPUUserDriver.h>
+#import <Sparkle/SPUStandardUserDriverProtocol.h>
+#import <Sparkle/SUExport.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,6 +32,11 @@ SU_EXPORT @interface SPUStandardUserDriver : NSObject <SPUUserDriver, SPUStandar
  @param delegate The delegate to this user driver. Pass nil if you don't want to provide one.
  */
 - (instancetype)initWithHostBundle:(NSBundle *)hostBundle delegate:(nullable id<SPUStandardUserDriverDelegate>)delegate;
+
+/*!
+ * Enable or disable hideOnDeactivate for standard update window.
+ */
+@property (nonatomic) BOOL hideOnDeactivate;
 
 @end
 

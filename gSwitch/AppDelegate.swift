@@ -246,6 +246,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    /**
+        Just Logging
+    */
     private func deforestation() {
         log.verbose("Launch at Login set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START) == 1)")
         
