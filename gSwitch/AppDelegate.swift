@@ -144,7 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = manager.close()
     }
     
-    @objc public func unsafeIntegratedOnly() {
+    public func unsafeIntegratedOnly() {
         statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
         
         if(manager.GPUMode(mode: .ForceIntergrated)) {
