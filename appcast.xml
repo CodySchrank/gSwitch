@@ -5,19 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.8.0 Fixed multiple bugs, added support for dark mode, added override mode</title>
+        <title>1.8.1 Build for correct target SDK</title>
         <description>
-          - Added support for dark mode
-- Fixed truncated labels (namely for german translations)
-- Updated Sparkle to 1.21.3
-- Updated SwiftyBeaver to 1.7.0
-- Built on Swift 5
-- Changed target SDK to 10.14
-- Added mode to allow integrated only even if there are gpu dependencies
+          Accidentally left 10.14 selected, but I'm still supporting 10.12
         </description>
-        <pubDate>2019-04-05.15:22:25</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.0/gSwitch.zip" sparkle:version="1.8.0" length="10537486" type="application/octet-stream" sparkle:dsaSignature="MEYCIQC7MsCg45LvARuuIsbMU7VaGsoXLPwzJVGryJGGTdgQRQIhAM3Z3fbgE4vq
-RTbwpqyK0PAI5G9xOHSLitv/vnIUL7rb" />
+        <pubDate>2019-04-05.16:23:10</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.1/gSwitch.zip" sparkle:version="1.8.1" length="10781739" type="application/octet-stream" sparkle:dsaSignature="MEQCICnbWB75XBbZ6Rm7146lLiA7oj+WmKlQcSj9TRUIRbhvAiAoIJ1tsKUYuDPK
+SKL1M12BFEwF3v8bRrJBMz5RaW+hLw==" />
       </item>
   </channel>
 </rss>
