@@ -6,6 +6,10 @@
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
 
+/**
+     gSwitch 1.8.0
+*/
+
 import Cocoa
 import SwiftyBeaver
 import Sparkle
