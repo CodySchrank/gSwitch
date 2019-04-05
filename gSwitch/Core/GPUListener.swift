@@ -58,6 +58,7 @@ class GPUListener {
                 _ = this._processor?.getHungryProcesses()
 
                 this.notificationQueue?.async(execute: {
+                    //let gpu change
                     sleep(1)
                     
                     // calls .checkGPUState

@@ -36,12 +36,10 @@ You can also launch it from the terminal and set the desired setting using `--in
 
 ## FAQ
 
-**Why does the app go back to _dynamic switching_ when a display is plugged in?** Unfortunately your mac is designed such that in order to use an external display it has to use the dedicated graphics card. And since you plugged in the cable I'm assuming you want to use the display. Unfortunately when you unplug the display, if you want to use a different mode, you will have to manually set it (at this time).
+**Why does the app go back to _dynamic switching_ when a display is plugged in?** Unfortunately your mac is designed such that in order to use an external display, it has to use the dedicated graphics card. And since you plugged in the cable I'm assuming you want to use the display.  When you unplug the display, if you want to use a different mode, you will have to manually set it (at this time).
 
 **What is a dependent process vs a hungry process?** A dependent process is one that is currently using your dedicated gpu. A hungry process is one that wants to use the dedicated gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.
 
-**Why can't I change to _integrated only_ when there is a dependent process?** You can not change to _integrated only_ when there is a dependency, because your dedicated gpu stays powered on. To prevent both gpus being power on the app prevents you from switching until you quit all dependent processes. (this is still being tested and might change in the future)
-
 ## Notes
 
-At this time it seems like gSwitch will not work on macbooks older than 2011. It appears that apple has removed the nessecery API's from these macbooks.  However there could be others that could work, I just can't find any. As GPU MUX is mostly guess work since there isn't any documentation, ([If anyone finds anything let me know here!](https://github.com/CodySchrank/gSwitch/issues/12))
+At this time it seems like gSwitch will not work on macbooks older than 2011. It appears that apple has removed the necessary API's from these macbooks on the modern macOS.  However there could be other API's that could work, I just can't find any.  GPU MUX is mostly guess work since there isn't any documentation, so, ([If anyone finds anything let me know here!](https://github.com/CodySchrank/gSwitch/issues/12))

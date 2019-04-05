@@ -344,7 +344,7 @@ class GPUManager {
     private func SwitchGPU(connect: io_connect_t) -> Bool {
         let _ = setDynamicSwitching(connect: connect, enabled: false)
         
-        sleep(1);
+        sleep(1)
         
         return setGPUState(connect: connect, state: GPUState.ForceSwitch, arg: 0)
     }

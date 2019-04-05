@@ -109,6 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /** Lets set last state on startup if desired (and no arg) */
         if(!arg && UserDefaults.standard.bool(forKey: Constants.USE_LAST_STATE)) {
             switch UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE) {
+            //Checking for dependencies could offer a better start up experience here
             case SwitcherMode.ForceDiscrete.rawValue:
                 safeDiscreteOnly()
             case SwitcherMode.ForceIntergrated.rawValue:
@@ -143,7 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = manager.close()
     }
     
-    public func unsafeIntegratedOnly() {
+    @objc public func unsafeIntegratedOnly() {
         statusMenu?.changeGPUButtonToCorrectState(state: .ForceIntergrated)
         
         if(manager.GPUMode(mode: .ForceIntergrated)) {
@@ -188,23 +189,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         /**
-            This potentially causes both gpus to be on so we check for hungry processes.
-            Further testing needed
+            Check for hungry processes because it could cause a crash
          */
         let hungryProcesses = processer.getHungryProcesses()
         if(hungryProcesses.count > 0) {
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             
             let alert = NSAlert.init()
-            alert.messageText = "Cannot change to Integrated Only"
-            alert.informativeText = "You have GPU Dependencies"
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
             
-            return
+            alert.messageText = "Warning!  Are you sure you want to change to integrated only?"
+            alert.informativeText = "You currently have GPU Dependencies. Changing the mode now could cause these processes to crash."
+
+            alert.addButton(withTitle: "Do it anyway").setAccessibilityFocused(true)
+            alert.addButton(withTitle: "Never mind")
+            
+            let modalResult = alert.runModal()
+            
+            switch modalResult {
+            case .alertFirstButtonReturn:
+                log.info("Override clicked!")
+                unsafeIntegratedOnly();
+            default:
+                break;
+            }
         }
-        
-        unsafeIntegratedOnly()
     }
     
     public func safeDiscreteOnly() {
