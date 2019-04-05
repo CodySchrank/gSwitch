@@ -185,6 +185,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     public func safeIntergratedOnly() {
         if(manager.requestedMode == .ForceIntergrated) {
+            log.info("Already Force Integrated");
             return  //already set
         }
         
@@ -212,11 +213,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             default:
                 break;
             }
+        } else {
+            unsafeIntegratedOnly();
         }
     }
     
     public func safeDiscreteOnly() {
         if(manager.requestedMode == .ForceDiscrete) {
+            log.info("Already Force Discrete");
             return  //already set
         }
         
@@ -225,6 +229,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     public func safeDynamicSwitching() {
         if(manager.requestedMode == .SetDynamic) {
+            log.info("Already Dynamic");
             return  //already set
         }
         
