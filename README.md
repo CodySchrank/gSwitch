@@ -1,6 +1,6 @@
 # gSwitch
 
-gSwitch allows control over the gpu on dual gpu macbooks.  gSwitch stops your macbook from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some older macbooks with glitchy and buggy  graphics card drivers that apple still hasn't fixed!
+gSwitch allows control over the gpu on dual gpu macbooks.  gSwitch lets you set which graphics card it can use to prevent it from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some older macbooks with glitchy and buggy  graphics card drivers that apple still hasn't fixed!
 
 ## Install
 
