@@ -10,11 +10,9 @@ The easiest way to install is to use brew ([homebrew](https://brew.sh/) required
 brew cask install gswitch
 ```
 
-thats it!
-
 **OR**
 
-You can [Download the most recent release](https://codyschrank.github.io/gSwitch/) (click download .zip).
+You can [download the most recent release](https://codyschrank.github.io/gSwitch/) (click download .zip).
 
 Then after unzipping just move the gSwitch.app file to your applications folder.
 
