@@ -63,7 +63,7 @@ A dependent process is one that is currently using your discrete gpu. A hungry p
 
 ## Legacy
 
-At this time it seems like gSwitch will not work on macbooks older than 2011. It appears that apple has removed the necessary API's from these macbooks on the modern macOS.  However there could be other API's that could work, I just can't find any.  GPU MUX is mostly guess work since there isn't any documentation, so, [If anyone finds anything let me know here!](https://github.com/CodySchrank/gSwitch/issues/12)
+At this time it seems like gSwitch will not work on macbooks older than 2011. It appears that apple has removed the necessary API's from these macbooks on the modern macOS.  However there could be other API's that could work, I just can't find any.  GPU control with apple is mostly guess work since there isn't any documentation, so, [If anyone finds anything let me know here!](https://github.com/CodySchrank/gSwitch/issues/12)
 
 ## Notes
 
