@@ -197,6 +197,12 @@ class GPUManager {
         NotificationCenter.default.post(name: .checkGPUState, object: gpu_int)
         log.info("NOTIFY: checkGPUState ~ Checking GPU...")
         
+        if gpu_int == .Integrated {
+            currentGPU = self.integratedName
+        } else {
+            currentGPU = self.discreteName
+        }
+        
         return gpu_int == .Integrated
     }
     

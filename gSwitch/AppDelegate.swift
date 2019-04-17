@@ -7,7 +7,7 @@
 //
 
 /**
-     gSwitch 1.8.1
+     gSwitch 1.8.2
 */
 
 import Cocoa
@@ -41,10 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         /** I like me dam logs! <-- get it, because beavers... its swiftybeaver... sorry */
-        // if i ever want to use swiftybeaver cloud logging.. probably not
-        // Okn11N
-        // l4T8lQbvbvtfjoOndosh6msocjxqdyrl
-        // q7epzszGSDoVnimkq9ckRd9wuaCwjdVh
         let console = ConsoleDestination()
         let file = FileDestination()
         log.addDestination(console)
@@ -73,9 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Lets listen to changes! */
         listener.listen(manager: manager, processor: processer)
-        
-        /** UserNotificationManager likes the manager too */
-        notifications.inject(manager: manager)
         
         /** Gets the updates kicking */
         setupUpdater()
@@ -134,6 +127,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /** Are there any hungry processes off the bat?  Updates menu if so */
         processer.updateProcessMenuList()
+        
+        /** UserNotificationManager likes the manager too. Done last so that the currentGPU is updated and there are no unnessecary notifications on startup */
+        notifications.inject(manager: manager)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -203,7 +199,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let alert = NSAlert.init()
             
             alert.messageText = "Warning!  Are you sure you want to change to integrated only?"
-            alert.informativeText = "You currently have GPU Dependencies. Changing the mode now could cause these processes to crash."
+            alert.informativeText = "You currently have GPU dependencies. Changing the mode now could cause these processes to crash.  If there is currently an external display plugged in you cannot change to integrated only."
 
             alert.addButton(withTitle: "Do it anyway").setAccessibilityFocused(true)
             alert.addButton(withTitle: "Never mind")

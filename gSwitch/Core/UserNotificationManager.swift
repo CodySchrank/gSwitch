@@ -64,6 +64,8 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
             return
         }
         
+        log.info("Showing GPU Change Notification")
+        
         let notification = NSUserNotification()
         notification.title = "GPU Changed"
         notification.informativeText = currentGPU ?? ""
@@ -89,7 +91,6 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
         }
         
         if(currentGPU != lastGPU) {
-            log.info("GPU did change")
             self.lastGPU = currentGPU
             
             showNotification(currentGPU: currentGPU)
@@ -101,10 +102,10 @@ class UserNotificationManager : NSObject, NSUserNotificationCenterDelegate {
             log.info("Called the maid")
             
             DispatchQueue.main.async {
-                /** Removes notifications in approx 15 mins */
+                /** Removes notifications in approx 5 mins */
                 self.isGoingToCleanNotifications = true
                 
-                Timer.scheduledTimer(withTimeInterval: 60 * 15, repeats: false, block: {
+                Timer.scheduledTimer(withTimeInterval: 60 * 5, repeats: false, block: {
                     (Timer) in
                     self.cleanUp()
                 })
