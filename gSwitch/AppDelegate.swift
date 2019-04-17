@@ -52,10 +52,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             try manager.connect()
         } catch RuntimeError.CanNotConnect(let errorMessage) {
             log.error(errorMessage)
-            NSApplication.shared.terminate(self)
+            appFailure()
         } catch {
             log.error("Unknown error occured")
-            NSApplication.shared.terminate(self)
+            appFailure()
         }
         
         /** Default prefs so shit works */
@@ -272,5 +272,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE) == 1)")
         
         log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
+    }
+    
+    
+    /** Warning for not finding multiple gpus */
+    private func appFailure() {
+        let alert = NSAlert.init()
+        
+        alert.messageText = "Error!  Failed to find multiple GPUs"
+        alert.informativeText = "There are a few reasons this could have happened, but the most likely is that your hardware is not supported at this time.  Please notify us on the gSwitch issue page on github about your current setup and we will let you know why this happened!"
+        
+        alert.addButton(withTitle: "Quit").setAccessibilityFocused(true)
+        alert.addButton(withTitle: "Continue Anyway (App will not function properly)")
+        
+        let modalResult = alert.runModal()
+        
+        switch modalResult {
+        case .alertFirstButtonReturn:
+            NSApplication.shared.terminate(self)
+            break;
+        default:
+            break;
+        }
     }
 }
