@@ -1,6 +1,6 @@
 # gSwitch
 
-gSwitch lets you set which graphics card your computer can use, mainly to prevent it from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some macbooks with glitchy and buggy graphics card drivers that apple still hasn't fixed!
+gSwitch lets you set which graphics card your macbook pro can use, mainly to prevent it from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some macbooks with glitchy and buggy graphics card drivers that apple still hasn't fixed!
 
 ## Install
 
@@ -60,6 +60,12 @@ Unfortunately your mac is designed such that in order to use an external display
 **What is a dependent process vs a hungry process?**
 
 A dependent process is one that is currently using your discrete gpu. A hungry process is one that wants to use the discrete gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.
+
+**How do I disable my discrete GPU?**
+
+The short answer: You can't, your macbook was designed to use both, but gSwitch can trick it into using the integrated one most of the time.  However gSwitch cannot prevent your discrete gpu from being accessed by the operating system, and it will be accessed for a short period of time when a process requests the use of it.  gSwitch just switches back to the integrated one as fast as it can.
+
+The long answer:  Ok I lied you technically can but I DO NOT RECOMMEND IT.  I know there were alot of problems with the 2012/2013 macbook pro models with GPU's that would start to artifact or even fail entirely and cause the computer to crash when used.  The only time I would recommend disabling the discrete gpu is if you are affected by this.  However, this procedure is not for the faint of heart and you can brick your computer if you do it wrong!  There are also some downsides, like you will never be able to connect an external monitor and you will probably be stuck on an older operating system.  Still want to do it?  ok.. but, I STILL DONT RECOMMEND THIS AND DONT BLAME ME IF YOU BREAK YOUR COMPUTER [https://apple.stackexchange.com/questions/166876/macbook-pro-how-to-disable-discrete-gpu-permanently-from-efi/285896#285896](https://apple.stackexchange.com/questions/166876/macbook-pro-how-to-disable-discrete-gpu-permanently-from-efi/285896#285896)
 
 ## Legacy
 
