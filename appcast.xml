@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.8.4-experimental 1.8.4-experimental</title>
+        <title>1.8.5-experimental 1.8.5-experimental</title>
         <description>
-          Removed gSwitchLauncher and replaced it with StartAtLogin
+          Fixed sparkle bugs - app is now sandboxed
         </description>
-        <pubDate>2019-05-12.22:40:44</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.4-experimental/gSwitch.zip" sparkle:version="1.8.4-experimental" length="10308265" type="application/octet-stream" sparkle:dsaSignature="MEQCIDMMhhg0jZ9ePCEAaEWUyu9SQt0Sb7cy0FQX/Y0SoznIAiAJ6OKFqTONgi5/
-jr1iBpnGZ2TLWggmQxzf7e+0Qcar/A==" />
+        <pubDate>2019-05-13.00:01:16</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.5-experimental/gSwitch.zip" sparkle:version="1.8.5-experimental" length="11345317" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCsRYGf1LjliFUFx4xJHIRtQVK40N40w/FP2Nr7ypMp9wIgdm05kwFljZjX
+D4JYuxsNWJPN5QzuC9atRUjfaSaxf/0=" />
       </item>
   </channel>
 </rss>
