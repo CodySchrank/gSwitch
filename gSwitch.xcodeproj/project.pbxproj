@@ -18,8 +18,17 @@
 		82233ED620844ADF006C57E7 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECF20844ADF006C57E7 /* StatusMenuController.swift */; };
 		82233ED720844ADF006C57E7 /* GPUListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED020844ADF006C57E7 /* GPUListener.swift */; };
 		82233ED820844ADF006C57E7 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ED120844ADF006C57E7 /* ProcessManager.swift */; };
-		8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8230418920882BB2006701CB /* ServiceManagement.framework */; };
 		82360C722088361700ADD0CE /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360C702088361700ADD0CE /* PreferencesWindow.swift */; };
+		823960BE228949BC0014D7CD /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 823960BD228949BC0014D7CD /* LaunchAtLogin.framework.dSYM */; };
+		823960C422894B000014D7CD /* org.sparkle-project.Downloader.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 823960C322894B000014D7CD /* org.sparkle-project.Downloader.xpc */; };
+		823960C622894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 823960C522894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc */; };
+		823960C822894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 823960C722894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc */; };
+		823960CA22894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 823960C922894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc */; };
+		823960CB22894B240014D7CD /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823960C922894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		823960CC22894B2D0014D7CD /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823960C722894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		823960CD22894B310014D7CD /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823960C522894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		823960CE22894B350014D7CD /* org.sparkle-project.Downloader.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 823960C322894B000014D7CD /* org.sparkle-project.Downloader.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		823960D122894B820014D7CD /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823960D022894B820014D7CD /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 823B274D208C0A2900A7DFB6 /* dsa_pub.pem */; };
 		82556518208C505900A6807F /* UpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82556517208C505900A6807F /* UpdaterDelegate.swift */; };
 		82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 82556530208C5B9300A6807F /* Sparkle.framework.dSYM */; };
@@ -38,8 +47,6 @@
 		829553D220884FC200A29C49 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553D120884FC200A29C49 /* Extentions.swift */; };
 		82AD4BE92087F335003375C1 /* GPUView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUView.swift */; };
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
-		82CCB3B122892B8700D6C05D /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		82CCB3B322892B9900D6C05D /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */; };
 		82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3298D20897EA0000E34B3 /* BossyWindow.swift */; };
 		AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */; };
 		AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC7195720E2D04E009862FB /* AboutWindow.xib */; };
@@ -63,6 +70,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		821E10A0228943D900A73B04 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				823960CE22894B350014D7CD /* org.sparkle-project.Downloader.xpc in CopyFiles */,
+				823960CD22894B310014D7CD /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */,
+				823960CC22894B2D0014D7CD /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */,
+				823960CB22894B240014D7CD /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		824BA5BC2085C4B800A5261B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,7 +100,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				82CCB3B122892B8700D6C05D /* LaunchAtLogin.framework in Embed Frameworks */,
+				823960D122894B820014D7CD /* LaunchAtLogin.framework in Embed Frameworks */,
 				829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */,
 				82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */,
 			);
@@ -119,8 +139,13 @@
 		82233ECF20844ADF006C57E7 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		82233ED020844ADF006C57E7 /* GPUListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUListener.swift; sourceTree = "<group>"; };
 		82233ED120844ADF006C57E7 /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
-		8230418920882BB2006701CB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		82360C702088361700ADD0CE /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		823960BD228949BC0014D7CD /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = "<group>"; };
+		823960C322894B000014D7CD /* org.sparkle-project.Downloader.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.Downloader.xpc"; sourceTree = "<group>"; };
+		823960C522894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
+		823960C722894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
+		823960C922894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
+		823960D022894B820014D7CD /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		823B274D208C0A2900A7DFB6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		82556517208C505900A6807F /* UpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterDelegate.swift; sourceTree = "<group>"; };
 		8255652F208C5B9300A6807F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
@@ -135,8 +160,6 @@
 		829553D120884FC200A29C49 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		82AD4BE82087F335003375C1 /* GPUView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUView.swift; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
-		82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LaunchAtLogin.framework; sourceTree = "<group>"; };
-		82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = "<group>"; };
 		82F3298D20897EA0000E34B3 /* BossyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossyWindow.swift; sourceTree = "<group>"; };
 		AA08261420E29C61009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261520E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -156,7 +179,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8230418A20882BB2006701CB /* ServiceManagement.framework in Frameworks */,
 				82556533208C5BA900A6807F /* Sparkle.framework in Frameworks */,
 				829553CD20884F5400A29C49 /* SwiftyBeaver.framework in Frameworks */,
 			);
@@ -182,6 +204,7 @@
 		82233E9420844AC9006C57E7 = {
 			isa = PBXGroup;
 			children = (
+				823960BA228949140014D7CD /* XPC */,
 				82233E9F20844AC9006C57E7 /* gSwitch */,
 				82233EB020844ACA006C57E7 /* gSwitchTests */,
 				82233EBB20844ACA006C57E7 /* gSwitchUITests */,
@@ -319,15 +342,25 @@
 		8230418820882BB1006701CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */,
-				82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */,
+				823960D022894B820014D7CD /* LaunchAtLogin.framework */,
+				823960BD228949BC0014D7CD /* LaunchAtLogin.framework.dSYM */,
 				8255652F208C5B9300A6807F /* Sparkle.framework */,
 				82556530208C5B9300A6807F /* Sparkle.framework.dSYM */,
 				829553CA20884F4700A29C49 /* SwiftyBeaver.framework */,
 				829553C920884F4700A29C49 /* SwiftyBeaver.framework.dSYM */,
-				8230418920882BB2006701CB /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		823960BA228949140014D7CD /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				823960C922894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc */,
+				823960C722894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc */,
+				823960C522894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc */,
+				823960C322894B000014D7CD /* org.sparkle-project.Downloader.xpc */,
+			);
+			path = XPC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +376,7 @@
 				824BA5BC2085C4B800A5261B /* CopyFiles */,
 				82EB58F320882E1B00747BAF /* CopyFiles */,
 				829553CF20884F5400A29C49 /* Embed Frameworks */,
+				821E10A0228943D900A73B04 /* CopyFiles */,
 				82CCB3AF228928A400D6C05D /* ShellScript */,
 			);
 			buildRules = (
@@ -451,15 +485,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82CCB3B322892B9900D6C05D /* LaunchAtLogin.framework.dSYM in Resources */,
+				823960BE228949BC0014D7CD /* LaunchAtLogin.framework.dSYM in Resources */,
 				823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */,
 				828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */,
 				828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */,
+				823960C822894B120014D7CD /* org.sparkle-project.InstallerLauncher.xpc in Resources */,
+				823960C622894B0A0014D7CD /* org.sparkle-project.InstallerConnection.xpc in Resources */,
+				823960C422894B000014D7CD /* org.sparkle-project.Downloader.xpc in Resources */,
 				82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */,
 				AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */,
 				82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */,
 				AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */,
 				82556532208C5B9300A6807F /* Sparkle.framework.dSYM in Resources */,
+				823960CA22894B180014D7CD /* org.sparkle-project.InstallerStatus.xpc in Resources */,
 				829553CB20884F4700A29C49 /* SwiftyBeaver.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
