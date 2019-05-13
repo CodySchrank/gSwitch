@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.8.2 Fixed small bugs</title>
+        <title>1.8.4-experimental 1.8.4-experimental</title>
         <description>
-          Fixed GPU change notifications and added warning about unsupported hardware
+          Removed gSwitchLauncher and replaced it with StartAtLogin
         </description>
-        <pubDate>2019-04-17.15:47:40</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.2/gSwitch.zip" sparkle:version="1.8.2" length="10782202" type="application/octet-stream" sparkle:dsaSignature="MEUCIBWvBXmlsMCP/KYjDu9oJhboiSc45P/NA2WxSUhcLb2OAiEAicOXOatBHVpp
-r7cQErSPmQarE5bGxjepenSL2PvEfgY=" />
+        <pubDate>2019-05-12.22:40:44</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.4-experimental/gSwitch.zip" sparkle:version="1.8.4-experimental" length="10308265" type="application/octet-stream" sparkle:dsaSignature="MEQCIDMMhhg0jZ9ePCEAaEWUyu9SQt0Sb7cy0FQX/Y0SoznIAiAJ6OKFqTONgi5/
+jr1iBpnGZ2TLWggmQxzf7e+0Qcar/A==" />
       </item>
   </channel>
 </rss>
