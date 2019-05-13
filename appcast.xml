@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.8.6-experimental 1.8.6-experimental</title>
+        <title>1.9.0 New Launcher System</title>
         <description>
-          Test release for auto updates
+          Removed gSwitchLauncher and replaced it with LaunchAtLogin - Fixes #35.  Also the app is now sandboxed and hardened runtime is enabled so the app is significantly more secure.
         </description>
-        <pubDate>2019-05-13.00:12:06</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.8.6-experimental/gSwitch.zip" sparkle:version="1.8.6-experimental" length="11746017" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCb9PTO+T6Mmoyevrwo036J0jrq7rOCO7iGi2KI3VVyUQIgUuVm2ZcNThpz
-361xxSNRZLGeQjJDmQSAHSSjnH8Bkj0=" />
+        <pubDate>2019-05-13.15:36:35</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.0/gSwitch.zip" sparkle:version="1.9.0" length="11752322" type="application/octet-stream" sparkle:dsaSignature="MEQCIHuHLAU6SZyeD27IlDVy8f15W4ZYBADlsAYwznw0SnHcAiA6sUhwYfpfNkKe
+0/sH2uq/hTeQpoAL20ceQ49ZLZPRpQ==" />
       </item>
   </channel>
 </rss>
