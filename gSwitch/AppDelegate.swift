@@ -11,6 +11,7 @@
 */
 
 import Cocoa
+import ServiceManagement
 import SwiftyBeaver
 import Sparkle
 
@@ -27,17 +28,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusMenu: StatusMenuController?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        /** Check if the launcher app is started */
-        var startedAtLogin = false
-        for app in NSWorkspace.shared.runningApplications {
-            if app.bundleIdentifier == Constants.launcherApplicationIdentifier {
-                startedAtLogin = true
-            }
-        }
-    
-        /** If the app started, post to the notification center to kill the launcher app */
-        if startedAtLogin {
-            DistributedNotificationCenter.default().postNotificationName(.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
+        /** Kill launcher */
+        let runningApps = NSWorkspace.shared.runningApplications
+        
+        let isRunning = !runningApps.filter { $0.bundleIdentifier == Constants.launcherApplicationIdentifier }.isEmpty
+        
+        SMLoginItemSetEnabled(Constants.launcherApplicationIdentifier as CFString, true)
+        
+        if isRunning {
+            DistributedNotificationCenter.default().post(name: .killLauncher,
+                                                         object: Bundle.main.bundleIdentifier!)
         }
         
         /** I like me dam logs! <-- get it, because beavers... its swiftybeaver... sorry */

@@ -126,6 +126,6 @@ extension Notification.Name {
     static let externalDisplayConnect = Notification.Name("externalDisplayConnect")
     static let startPolling = Notification.Name("startPolling")
     static let stopPolling = Notification.Name("stopPolling")
-    static let KILLME = Notification.Name("killme")
+    static let killLauncher = Notification.Name("killLauncher")
 }
 
