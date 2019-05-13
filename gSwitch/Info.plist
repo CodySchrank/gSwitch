@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018 CodySchrank. All rights reserved.</string>
+	<string>Copyright © 2019 CodySchrank. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -40,7 +40,7 @@
 	<key>NSUserNotificationAlertStyle</key>
 	<string>banner</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/CodySchrank/gSwitch/master/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/CodySchrank/gSwitch/experimental/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>XPCService</key>
