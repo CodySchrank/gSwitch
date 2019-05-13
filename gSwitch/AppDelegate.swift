@@ -7,7 +7,7 @@
 //
 
 /**
-     gSwitch 1.8.6 (Experimental Build)
+     gSwitch 1.9.0
 */
 
 import Cocoa
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
         UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
         
-        
+        /** Startup AutoLauncher */
         LaunchAtLogin.isEnabled = (UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN) == 1)
         
         /** GPU Names are good */
