@@ -1,3 +1,4 @@
 github "SwiftyBeaver/SwiftyBeaver"
+github "sindresorhus/LaunchAtLogin"
 github "sparkle-project/Sparkle" "ui-separation-and-xpc"
 

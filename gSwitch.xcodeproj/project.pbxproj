@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8201F52A2289129900751DA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233ECB20844ADF006C57E7 /* Constants.swift */; };
-		8201F532228914FD00751DA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8201F531228914FD00751DA7 /* AppDelegate.swift */; };
-		8201F534228914FE00751DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8201F533228914FE00751DA7 /* Assets.xcassets */; };
-		8201F537228914FE00751DA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8201F535228914FE00751DA7 /* MainMenu.xib */; };
-		8201F53E2289172A00751DA7 /* gSwitchLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8201F52F228914FD00751DA7 /* gSwitchLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82233EA120844AC9006C57E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82233EA020844AC9006C57E7 /* AppDelegate.swift */; };
 		82233EA320844ACA006C57E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82233EA220844ACA006C57E7 /* Assets.xcassets */; };
 		82233EA620844ACA006C57E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82233EA420844ACA006C57E7 /* MainMenu.xib */; };
@@ -42,6 +38,8 @@
 		829553D220884FC200A29C49 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829553D120884FC200A29C49 /* Extentions.swift */; };
 		82AD4BE92087F335003375C1 /* GPUView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD4BE82087F335003375C1 /* GPUView.swift */; };
 		82C7028120859AB600EB6B85 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7028020859AB600EB6B85 /* UserNotificationManager.swift */; };
+		82CCB3B122892B8700D6C05D /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82CCB3B322892B9900D6C05D /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */; };
 		82F3298E20897EA0000E34B3 /* BossyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F3298D20897EA0000E34B3 /* BossyWindow.swift */; };
 		AA20D30820EC2D6B009862FB /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20D30A20EC2D6B009862FB /* PreferencesWindow.xib */; };
 		AAC7195520E2D04E009862FB /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC7195720E2D04E009862FB /* AboutWindow.xib */; };
@@ -65,15 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8201F53D2289171E00751DA7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		824BA5BC2085C4B800A5261B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				82CCB3B122892B8700D6C05D /* LaunchAtLogin.framework in Embed Frameworks */,
 				829553CE20884F5400A29C49 /* SwiftyBeaver.framework in Embed Frameworks */,
 				82556534208C5BA900A6807F /* Sparkle.framework in Embed Frameworks */,
 			);
@@ -103,19 +93,12 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				8201F53E2289172A00751DA7 /* gSwitchLauncher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8201F52F228914FD00751DA7 /* gSwitchLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gSwitchLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8201F531228914FD00751DA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8201F533228914FE00751DA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8201F536228914FE00751DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		8201F538228914FE00751DA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8201F539228914FE00751DA7 /* gSwitchLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gSwitchLauncher.entitlements; sourceTree = "<group>"; };
 		82233E9D20844AC9006C57E7 /* gSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82233EA020844AC9006C57E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82233EA220844ACA006C57E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +135,8 @@
 		829553D120884FC200A29C49 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		82AD4BE82087F335003375C1 /* GPUView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUView.swift; sourceTree = "<group>"; };
 		82C7028020859AB600EB6B85 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
+		82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LaunchAtLogin.framework; sourceTree = "<group>"; };
+		82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = "<group>"; };
 		82F3298D20897EA0000E34B3 /* BossyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossyWindow.swift; sourceTree = "<group>"; };
 		AA08261420E29C61009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		AA08261520E2A52E009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -167,13 +152,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8201F52C228914FD00751DA7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		82233E9A20844AC9006C57E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,25 +179,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8201F530228914FD00751DA7 /* gSwitchLauncher */ = {
-			isa = PBXGroup;
-			children = (
-				8201F531228914FD00751DA7 /* AppDelegate.swift */,
-				8201F533228914FE00751DA7 /* Assets.xcassets */,
-				8201F535228914FE00751DA7 /* MainMenu.xib */,
-				8201F538228914FE00751DA7 /* Info.plist */,
-				8201F539228914FE00751DA7 /* gSwitchLauncher.entitlements */,
-			);
-			path = gSwitchLauncher;
-			sourceTree = "<group>";
-		};
 		82233E9420844AC9006C57E7 = {
 			isa = PBXGroup;
 			children = (
 				82233E9F20844AC9006C57E7 /* gSwitch */,
 				82233EB020844ACA006C57E7 /* gSwitchTests */,
 				82233EBB20844ACA006C57E7 /* gSwitchUITests */,
-				8201F530228914FD00751DA7 /* gSwitchLauncher */,
 				82233E9E20844AC9006C57E7 /* Products */,
 				8230418820882BB1006701CB /* Frameworks */,
 			);
@@ -231,7 +196,6 @@
 				82233E9D20844AC9006C57E7 /* gSwitch.app */,
 				82233EAD20844ACA006C57E7 /* gSwitchTests.xctest */,
 				82233EB820844ACA006C57E7 /* gSwitchUITests.xctest */,
-				8201F52F228914FD00751DA7 /* gSwitchLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +319,8 @@
 		8230418820882BB1006701CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82CCB3B022892B8700D6C05D /* LaunchAtLogin.framework */,
+				82CCB3B222892B9900D6C05D /* LaunchAtLogin.framework.dSYM */,
 				8255652F208C5B9300A6807F /* Sparkle.framework */,
 				82556530208C5B9300A6807F /* Sparkle.framework.dSYM */,
 				829553CA20884F4700A29C49 /* SwiftyBeaver.framework */,
@@ -367,23 +333,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8201F52E228914FD00751DA7 /* gSwitchLauncher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8201F53A228914FE00751DA7 /* Build configuration list for PBXNativeTarget "gSwitchLauncher" */;
-			buildPhases = (
-				8201F52B228914FD00751DA7 /* Sources */,
-				8201F52C228914FD00751DA7 /* Frameworks */,
-				8201F52D228914FD00751DA7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = gSwitchLauncher;
-			productName = gSwitchLauncher;
-			productReference = 8201F52F228914FD00751DA7 /* gSwitchLauncher.app */;
-			productType = "com.apple.product-type.application";
-		};
 		82233E9C20844AC9006C57E7 /* gSwitch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82233EC120844ACA006C57E7 /* Build configuration list for PBXNativeTarget "gSwitch" */;
@@ -394,7 +343,7 @@
 				824BA5BC2085C4B800A5261B /* CopyFiles */,
 				82EB58F320882E1B00747BAF /* CopyFiles */,
 				829553CF20884F5400A29C49 /* Embed Frameworks */,
-				8201F53D2289171E00751DA7 /* CopyFiles */,
+				82CCB3AF228928A400D6C05D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -451,14 +400,6 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = CodySchrank;
 				TargetAttributes = {
-					8201F52E228914FD00751DA7 = {
-						CreatedOnToolsVersion = 10.2.1;
-						SystemCapabilities = {
-							com.apple.HardenedRuntime = {
-								enabled = 1;
-							};
-						};
-					};
 					82233E9C20844AC9006C57E7 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1020;
@@ -501,25 +442,16 @@
 				82233E9C20844AC9006C57E7 /* gSwitch */,
 				82233EAC20844ACA006C57E7 /* gSwitchTests */,
 				82233EB720844ACA006C57E7 /* gSwitchUITests */,
-				8201F52E228914FD00751DA7 /* gSwitchLauncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8201F52D228914FD00751DA7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8201F534228914FE00751DA7 /* Assets.xcassets in Resources */,
-				8201F537228914FE00751DA7 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		82233E9B20844AC9006C57E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CCB3B322892B9900D6C05D /* LaunchAtLogin.framework.dSYM in Resources */,
 				823B274E208C0A2900A7DFB6 /* dsa_pub.pem in Resources */,
 				828D681320C897D200A41DD9 /* AdvancedWindow.xib in Resources */,
 				828D681920C8BCFF00A41DD9 /* HelpWindow.xib in Resources */,
@@ -548,15 +480,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		8201F52B228914FD00751DA7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		82CCB3AF228928A400D6C05D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8201F532228914FD00751DA7 /* AppDelegate.swift in Sources */,
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PROJECT_DIR}/Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh\"\n";
 		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		82233E9920844AC9006C57E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -612,14 +556,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8201F535228914FE00751DA7 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8201F536228914FE00751DA7 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		82233EA420844ACA006C57E7 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -656,51 +592,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8201F53B228914FE00751DA7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = gSwitchLauncher/gSwitchLauncher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Z26D67C784;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = gSwitchLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		8201F53C228914FE00751DA7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = gSwitchLauncher/gSwitchLauncher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Z26D67C784;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = gSwitchLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitchLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		82233EBF20844ACA006C57E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -958,15 +849,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8201F53A228914FE00751DA7 /* Build configuration list for PBXNativeTarget "gSwitchLauncher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8201F53B228914FE00751DA7 /* Debug */,
-				8201F53C228914FE00751DA7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		82233E9820844AC9006C57E7 /* Build configuration list for PBXProject "gSwitch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

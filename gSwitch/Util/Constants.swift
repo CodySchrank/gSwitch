@@ -110,7 +110,7 @@ struct Constants {
     static let kCGDisplayRemoveFlag = (1 << 5)
     static let launcherApplicationIdentifier = "com.CodySchrank.gSwitchLauncher"
     static let GPU_CHANGE_NOTIFICATIONS = "gpuChangeNotifications"
-    static let APP_LOGIN_START = "appLoginStart"
+    static let LAUNCH_AT_LOGIN = "appLoginStart"
     static let USE_LAST_STATE = "useLastState"
     static let SAVED_GPU_STATE = "savedGPUState"
     static let STATUS_MENU_DEPENDENCY_APPEND_INDEX = 5

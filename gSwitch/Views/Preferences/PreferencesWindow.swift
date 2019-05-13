@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import ServiceManagement
+import LaunchAtLogin
 
 class PreferencesWindow: BossyWindow {
     @IBOutlet weak var toggleOpenAppLogin: NSButton!
@@ -27,7 +27,7 @@ class PreferencesWindow: BossyWindow {
         
         log.info("Preferences Opened")
         
-        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START))
+        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN))
         
         automaticallyUpdate.state = NSControl.StateValue(rawValue: (appDelegate.updater?.automaticallyChecksForUpdates)! ? 1 : 0)
         
@@ -45,24 +45,14 @@ class PreferencesWindow: BossyWindow {
     
     @IBAction func loginItemPressed(_ sender: NSButton) {
         if toggleOpenAppLogin.state.rawValue == 1 {
-            if !SMLoginItemSetEnabled(Constants.launcherApplicationIdentifier as CFString, true) {
-                log.error("The login item was not successfull")
-                toggleOpenAppLogin.state = NSControl.StateValue(rawValue: 0)
-            }
-            else {
-                log.info("Successfully set login item to be true")
-                UserDefaults.standard.set(1, forKey: Constants.APP_LOGIN_START)
-            }
+            log.info("Successfully set LAUNCH_AT_LOGIN to be true")
+            UserDefaults.standard.set(1, forKey: Constants.LAUNCH_AT_LOGIN)
+            LaunchAtLogin.isEnabled = true;
         }
         else {
-            if !SMLoginItemSetEnabled(Constants.launcherApplicationIdentifier as CFString, false) {
-                log.error("The login item was not successfull")
-                toggleOpenAppLogin.state = NSControl.StateValue(rawValue: 1)
-            }
-            else {
-                log.info("Successfully set login item to be false")
-                UserDefaults.standard.set(0, forKey: Constants.APP_LOGIN_START)
-            }
+            log.info("Successfully set LAUNCH_AT_LOGIN to be false")
+            UserDefaults.standard.set(0, forKey: Constants.LAUNCH_AT_LOGIN)
+            LaunchAtLogin.isEnabled = false;
         }
         
     }

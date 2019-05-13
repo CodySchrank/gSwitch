@@ -7,13 +7,15 @@
 //
 
 /**
-     gSwitch 1.8.2
+     gSwitch 1.8.3
 */
 
 import Cocoa
 import ServiceManagement
 import SwiftyBeaver
 import Sparkle
+import LaunchAtLogin
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,18 +30,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusMenu: StatusMenuController?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        /** Kill launcher */
-        let runningApps = NSWorkspace.shared.runningApplications
-        
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == Constants.launcherApplicationIdentifier }.isEmpty
-        
-        SMLoginItemSetEnabled(Constants.launcherApplicationIdentifier as CFString, true)
-        
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher,
-                                                         object: Bundle.main.bundleIdentifier!)
-        }
-        
         /** I like me dam logs! <-- get it, because beavers... its swiftybeaver... sorry */
         let console = ConsoleDestination()
         let file = FileDestination()
@@ -59,10 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         /** Default prefs so shit works */
-        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : true])
-        UserDefaults.standard.register(defaults: [Constants.APP_LOGIN_START : true])
+        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : false])
+        UserDefaults.standard.register(defaults: [Constants.LAUNCH_AT_LOGIN : true])
         UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
         UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
+        
+        
+        LaunchAtLogin.isEnabled = (UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN) == 1)
         
         /** GPU Names are good */
         manager.setGPUNames()
@@ -263,7 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Just Logging
     */
     private func deforestation() {
-        log.verbose("Launch at Login set as \(UserDefaults.standard.integer(forKey: Constants.APP_LOGIN_START) == 1)")
+        log.verbose("Launch at Login set as \(UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN) == 1)")
         
         log.verbose("Automatically update set as \(updater?.automaticallyChecksForUpdates ?? false)")
         
