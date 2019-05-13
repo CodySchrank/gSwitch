@@ -7,7 +7,7 @@
 //
 
 /**
-     gSwitch 1.8.3
+     gSwitch 1.8.6 (Experimental Build)
 */
 
 import Cocoa
