@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.9.0 New Launcher System</title>
+        <title>1.9.1 Fixed Codesign Issue</title>
         <description>
-          Removed gSwitchLauncher and replaced it with LaunchAtLogin - Fixes #35.  Also the app is now sandboxed and hardened runtime is enabled so the app is significantly more secure.
+          1.9.0 had an incorrect signature and reported it was broken
         </description>
-        <pubDate>2019-05-13.15:36:35</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.0/gSwitch.zip" sparkle:version="1.9.0" length="11752322" type="application/octet-stream" sparkle:dsaSignature="MEQCIHuHLAU6SZyeD27IlDVy8f15W4ZYBADlsAYwznw0SnHcAiA6sUhwYfpfNkKe
-0/sH2uq/hTeQpoAL20ceQ49ZLZPRpQ==" />
+        <pubDate>2019-05-14.16:03:03</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.1/gSwitch.zip" sparkle:version="1.9.1" length="11220765" type="application/octet-stream" sparkle:dsaSignature="MEQCIHHyKm8FCQqZvItILKooKQ43WAEliHP3StHj7fmQhJkPAiBIbLER9+55MuKm
+Bgp1C3xbm85JndBFZhhmsm/iwQ645Q==" />
       </item>
   </channel>
 </rss>
