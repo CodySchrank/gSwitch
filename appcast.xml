@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.9.1 Fixed Codesign Issue</title>
+        <title>1.9.2 Fixed Codesign Issue</title>
         <description>
-          1.9.0 had an incorrect signature and reported it was broken
+          gSwitch will now be realesed as a .dmg because it requires more complex code signing.
         </description>
-        <pubDate>2019-05-14.16:03:03</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.1/gSwitch.zip" sparkle:version="1.9.1" length="11220765" type="application/octet-stream" sparkle:dsaSignature="MEQCIHHyKm8FCQqZvItILKooKQ43WAEliHP3StHj7fmQhJkPAiBIbLER9+55MuKm
-Bgp1C3xbm85JndBFZhhmsm/iwQ645Q==" />
+        <pubDate>2019-05-14.17:44:06</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.2/gSwitch.zip" sparkle:version="1.9.2" length="11063289" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCPzemd9VWPyldVehM0oDm2XlCzaC8uhF19ojgBBATZuAIgJWsY/jkI2iHE
+up8FVYRwV2/gcgQigoH//bNaqwodGEg=" />
       </item>
   </channel>
 </rss>
