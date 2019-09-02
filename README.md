@@ -55,11 +55,11 @@ The gear will have a dot in the middle when the discrete gpu is active.  Otherwi
 
 **Why does the app go back to _dynamic switching_ when a display is plugged in?**
 
-Unfortunately your mac is designed such that in order to use an external display, it has to use the discrete graphics card. And since you plugged in the cable I'm assuming you want to use the display.  When you unplug the display, if you want to use a different mode, you will have to manually set it (at this time).
+Unfortunately your mac is designed such that in order to use an external display, it has to use the discrete graphics card. And since you plugged in the cable I'm assuming you want to use the display.
 
 **What is a dependent process vs a hungry process?**
 
-A dependent process is one that is currently using your discrete gpu. A hungry process is one that wants to use the discrete gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.
+A dependent process is one that is currently using your discrete gpu. A hungry process is one that wants to use the discrete gpu but is not allowed because you have set _integrated only_. If you change to _dynamic switching_ or _discrete only_ any process that was hungry will become dependent.  You can force integrated only when you have dependent processes but it might crash those processes.  You cannot force integrated only if you have an external display plugged in.  
 
 **How do I disable my discrete GPU?**
 
