@@ -31,6 +31,8 @@ class StatusMenuController: NSViewController {
     
     private let log = SwiftyBeaver.self
     
+    private var modeWasForcedFromDisplay = false;
+    
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     weak private var appDelegate: AppDelegate?
@@ -158,19 +160,33 @@ class StatusMenuController: NSViewController {
             }
         }
         
+        if(modeWasForcedFromDisplay) {
+            log.warning("Mode was forced from external display.  Going back to integrated only when the display is disconnected")
+        }
+        
+        var isDisplayConnected = false;
+        
         for process in hungry {
-            if process.name.contains("External Display")
-                && appDelegate?.manager.requestedMode == SwitcherMode.ForceIntergrated {
+            if process.name.contains("External Display") {
+                isDisplayConnected = true;
                 
-                if (appDelegate?.manager.GPUMode(mode: SwitcherMode.SetDynamic))! {
-                    log.warning("External display connected, going back to dynamic")
-                    
-                    NotificationCenter.default.post(name: .externalDisplayConnect, object: nil)
-                    
-                    changeGPUButtonToCorrectState(state: .SetDynamic)
-                    return
+                if appDelegate?.manager.requestedMode == SwitcherMode.ForceIntergrated {
+                    if (appDelegate?.manager.GPUMode(mode: SwitcherMode.SetDynamic))! {
+                        log.warning("External display connected, going back to dynamic")
+                        
+                        modeWasForcedFromDisplay = true;
+                        
+                        NotificationCenter.default.post(name: .externalDisplayConnect, object: nil)
+                        
+                        changeGPUButtonToCorrectState(state: .SetDynamic)
+                        return
+                    }
                 }
             }
+        }
+        
+        if(modeWasForcedFromDisplay && !isDisplayConnected) {
+            appDelegate?.safeIntergratedOnly()
         }
         
         if hungry.count > 0 {

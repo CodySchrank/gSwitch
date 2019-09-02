@@ -5,11 +5,7 @@
 //  Created by Cody Schrank on 4/15/18.
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
-//  some logic is from gfxCardStatus
-//  https://github.com/codykrieger/gfxCardStatus/blob/master/LICENSE @ Jun 17, 2012
-//  Copyright (c) 2010-2012, Cody Krieger
-//  All rights reserved.
-//
+
 
 import Foundation
 import CoreGraphics
