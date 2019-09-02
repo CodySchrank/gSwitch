@@ -186,6 +186,7 @@ class StatusMenuController: NSViewController {
         }
         
         if(modeWasForcedFromDisplay && !isDisplayConnected) {
+            modeWasForcedFromDisplay = false;
             appDelegate?.safeIntergratedOnly()
         }
         
