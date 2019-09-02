@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.9.4 Added Russian Translation</title>
+        <title>1.9.5 Fixed display detection for better mode switching</title>
         <description>
-          Thanks to grishamsc gSwitch now supports russian localization
+          gSwitch now remembers the last used mode when a display is connected and will return to that mode when the display is disconnected
         </description>
-        <pubDate>2019-07-11.12:47:35</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.4/gSwitch.zip" sparkle:version="1.9.4" length="11438849" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCMSSCov87epYk3oGWvFnl25ZZSHeG0iy3apkBeSirWfwIgDuGxRasJ//Or
-IHC9JGATB3Y4ItF3waaQEu3ao9Ai/l0=" />
+        <pubDate>2019-09-02.13:37:06</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.5/gSwitch.zip" sparkle:version="1.9.5" length="11439445" type="application/octet-stream" sparkle:dsaSignature="MEYCIQC28OckZjpUHo6h9p9DmBA6gjpXWOfFeEpJ8aK6NMj5uAIhAJHCrt03Ai3s
+raJpIVpPX/EF8eTMIm4RPIXyh14dGdhI" />
       </item>
   </channel>
 </rss>
