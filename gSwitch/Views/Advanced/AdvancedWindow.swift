@@ -64,7 +64,7 @@ class AdvancedWindow: BossyWindow {
     
     @IBAction func getGPUStateHelpClicked(_ sender: NSButton) {
         let message = """
-            These are testes values
+            These are tested values
             
             0: DisableFeatureORFeatureInfo
             returns a uint64_t with bits set according to FeatureInfos, 1=enabled
