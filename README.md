@@ -2,6 +2,10 @@
 
 gSwitch lets you set which graphics card your macbook pro can use, mainly to prevent it from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some macbooks with glitchy and buggy graphics card drivers that apple still hasn't fixed!
 
+gSwitch is and always will be free.  However, if you want to thank me I will gladly take a donation :)
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=8BYQDVMMGR8EY&item_name=gSwitch+Donations&currency_code=USD&source=url)
+
 ## Install
 
 ### With Zip
