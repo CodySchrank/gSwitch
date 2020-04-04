@@ -12,8 +12,6 @@ Then after unzipping just move the gSwitch.app file to your applications folder.
 
 ### With Brew
 
-Use brew ([homebrew](https://brew.sh/) required)
-
 ```bash
 brew cask install gswitch
 ```
