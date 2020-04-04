@@ -1,12 +1,23 @@
-# Sparkle-XPC-UI
+# Sparkle 2.x (Beta)
 
-A major fork to the popular Sparkle update framework that supports sandboxing, custom user interfaces, updating other bundles, and a modern secure architecture.
+Secure and reliable software update framework for Cocoa developers.
 
 <img src="Resources/Screenshot.png" width="732" alt="Sparkle shows familiar update window with release notes">
 
-This fork's current status is beta. I am no longer looking into adding or rewriting major functionality, and would like to finalize and have it be battle tested.
+This is the upcoming new version of Sparkle, based on the `ui-separation-and-xpc` branch.
+Major new features are support for sandboxing, custom user interfaces, updating other bundles, and a modern secure architecture.
 
-New issues that are found should be [reported here](https://github.com/sparkle-project/issues), with an indication in the title that they pertain to the `ui-separation-and-xpc` branch. Internal design documents can be found in [Documentation](Documentation/). Discussion of this fork can be found in [this issue](https://github.com/sparkle-project/Sparkle/issues/363).
+Sparkle 2.x is currently in beta. Some people already use it in production, but some work is still required before it can be released:
+
+1. Documentation for the website needs to be written (see [https://github.com/sparkle-project/sparkle-project.github.io](sparkle-project.github.io))
+2. Changes from the master branch need to be merged
+3. Bugs and issues have to be fixed
+
+The current status of Sparkle 2.x is tracked in issue [#1523](https://github.com/sparkle-project/Sparkle/issues/1523).
+
+If you can help with any of the above, please submit pull requests!
+
+New issues that are found should be [reported here](https://github.com/sparkle-project/Sparkle/issues). Internal design documents can be found in [Documentation](Documentation/). Discussion of this fork can be found in [this issue](https://github.com/sparkle-project/Sparkle/issues/363).
 
 # Features
 
@@ -44,7 +55,7 @@ Usage of AppKit has been minimized greatly. No linkage of it is found in the ins
 
 Despite decoupling update scheduling, UI, installation, and minimizing AppKit usage, a great deal of effort was made to maintain ABI compatibility with older versions of Sparkle. A deprecated `SUUpdater` shim exists for maintaining runtime compatibility. Please check out `SPUStandardUpdaterController` and `SPUUpdater` instead for modern replacements.
 
-Interactive package based installations have been deprecated in favor for guided package installations. As a consequence, interactive installations now have to be opted into (eg: `foo.sparkle_interactive.pkg`). A `sparkle:installationType=package` or `sparkle:installationType=interactive-package` tag is also now required in the appcast enclosure item for package based installs.
+Interactive package based installations have been deprecated in favor for guided package installations. As a consequence, interactive installations now have to be opted into (eg: `foo.sparkle_interactive.pkg`). A `sparkle:installationType="package"` or `sparkle:installationType="interactive-package"` tag is also now required in the appcast enclosure item for package based installs.
 
 No attempt is made to preserve compatibility with regards to subclassing Sparkle's internal classes. Doing this is not supported or maintainable anymore. Much of this desire will go away with the extensibility provided by the user driver API.
 

@@ -8,32 +8,13 @@
 
 import Foundation
 
-/// cross-platform random numbers generator
-fileprivate struct Random {
-    #if os(Linux)
-    static var initialized = false
-    #endif
-
-    public static func generate(_ upperBound: Int) -> Int {
-        #if os(Linux)
-            if !Random.initialized {
-                srandom(UInt32(time(nil)))
-                Random.initialized = true
-            }
-            return Int(random() % upperBound)
-        #else
-            return Int(arc4random_uniform(UInt32(upperBound)))
-        #endif
-    }
-}
-
 final class AES256CBC {
 
     /// returns optional encrypted string via AES-256CBC
     /// automatically generates and puts a random IV at first 16 chars
     /// the password must be exactly 32 chars long for AES-256
     class func encryptString(_ str: String, password: String) -> String? {
-        if !str.isEmpty && password.length == 32 {
+        if !str.isEmpty && Data(password.utf8).count == 32 {
             let iv = randomText(16)
             let key = password
 
@@ -49,16 +30,12 @@ final class AES256CBC {
     /// returns optional decrypted string via AES-256CBC
     /// IV need to be at first 16 chars, password must be 32 chars long
     class func decryptString(_ str: String, password: String) -> String? {
-        if str.length > 16 && password.length == 32 {
+        if Data(str.utf8).count > 16 && Data(password.utf8).count == 32 {
             // get AES initialization vector from first 16 chars
-            #if swift(>=4.0)
-            let iv = String(str[..<str.index(str.startIndex, offsetBy: 16)])
-            #else
-            let iv = str.substring(to: str.index(str.startIndex, offsetBy: 16))
-            #endif
-
+            let iv = String(str.prefix(16))
             let encryptedString = str.replacingOccurrences(of: iv, with: "",
-                                                           options: String.CompareOptions.literal, range: nil) // remove IV
+                                      options: String.CompareOptions.literal,
+                                      range: nil) // remove IV
 
             guard let decryptedString = try? aesDecrypt(encryptedString, key: password, iv: iv) else {
                 print("an error occured while decrypting")
@@ -68,54 +45,17 @@ final class AES256CBC {
         }
         return nil
     }
-
+    
     /// returns random string (uppercase & lowercase, no spaces) of 32 characters length
-    /// which can be used as SHA-256 compatbile password
-    class func generatePassword() -> String {
-        return randomText(32)
-    }
+     /// which can be used as SHA-256 compatbile password
+     class func generatePassword() -> String {
+         return randomText(32)
+     }
 
-    /// returns random text of a defined length.
-    /// Optional bool parameter justLowerCase to just generate random lowercase text and
-    /// whitespace to exclude the whitespace character
-    class func randomText(_ length: Int, justLowerCase: Bool = false, whitespace: Bool = false) -> String {
-        var chars = [UInt8]()
-
-        while chars.count < length {
-            let char = CharType.random(justLowerCase, whitespace).randomCharacter()
-            if char == 32 && (chars.last ?? 0) == char {
-                // do not allow two consecutive spaces
-                continue
-            }
-            chars.append(char)
-        }
-        return String(bytes: chars, encoding: .ascii)!
-    }
-
-    /// Used for random text generation
-    fileprivate enum CharType: Int {
-        case LowerCase, UpperCase, Digit, Space
-
-        func randomCharacter() -> UInt8 {
-            switch self {
-            case .LowerCase:
-                return UInt8(Random.generate(26)) + 97
-            case .UpperCase:
-                return UInt8(Random.generate(26)) + 65
-            case .Digit:
-                return UInt8(Random.generate(10)) + 48
-            case .Space:
-                return 32
-            }
-        }
-
-        static func random(_ justLowerCase: Bool, _ allowWhitespace: Bool) -> CharType {
-            if justLowerCase {
-                return .LowerCase
-            } else {
-                return CharType(rawValue: Int(Random.generate(allowWhitespace ? 4 : 3)))!
-            }
-        }
+    /// returns random text of a defined length
+    public class func randomText(_ length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map { _ in letters.randomElement()!})
     }
 
     /// returns encrypted string, IV must be 16 chars long
@@ -125,35 +65,33 @@ final class AES256CBC {
         let data = str.data(using: String.Encoding.utf8)!
         #if swift(>=5)
         let enc = try Data(AESCipher(key: keyData.bytes,
-                                            iv: ivData.bytes).encrypt(bytes: data.bytes))
+                                     iv: ivData.bytes).encrypt(bytes: data.bytes))
         #else
         let enc = try Data(bytes: AESCipher(key: keyData.bytes,
                                             iv: ivData.bytes).encrypt(bytes: data.bytes))
         #endif
-        // Swift 3.1.x has a bug with base64encoding under Linux, so we are using our own
-        #if os(Linux)
-            return Base64.encode([UInt8](enc))
-        #else
-            return enc.base64EncodedString(options: [])
-        #endif
+        return enc.base64EncodedString(options: [])
     }
 
     /// returns decrypted string, IV must be 16 chars long
     fileprivate class func aesDecrypt(_ str: String, key: String, iv: String) throws -> String {
         let keyData = key.data(using: String.Encoding.utf8)!
         let ivData = iv.data(using: String.Encoding.utf8)!
-        let data = Data(base64Encoded: str)!
-        #if swift(>=5)
-        let dec = try Data(AESCipher(key: keyData.bytes,
-                                            iv: ivData.bytes).decrypt(bytes: data.bytes))
-        #else
-        let dec = try Data(bytes: AESCipher(key: keyData.bytes,
-                                            iv: ivData.bytes).decrypt(bytes: data.bytes))
-        #endif
-        guard let decryptStr = String(data: dec, encoding: String.Encoding.utf8) else {
-            throw NSError(domain: "Invalid utf8 data", code: 0, userInfo: nil)
+        if let data = Data(base64Encoded: str) {
+            #if swift(>=5)
+            let dec = try Data(AESCipher(key: keyData.bytes,
+                                         iv: ivData.bytes).decrypt(bytes: data.bytes))
+            #else
+            let dec = try Data(bytes: AESCipher(key: keyData.bytes,
+                                                iv: ivData.bytes).decrypt(bytes: data.bytes))
+            #endif
+            guard let decryptStr = String(data: dec, encoding: String.Encoding.utf8) else {
+                throw NSError(domain: "Invalid utf8 data", code: 0, userInfo: nil)
+            }
+            return decryptStr
+        } else {
+            return "error"
         }
-        return decryptStr
     }
 
 }
@@ -179,7 +117,7 @@ final class AES256CBC {
 
 // MARK: - AESCipher
 
-fileprivate typealias Key = Array<UInt8>
+private typealias Key = Array<UInt8>
 
 final private class AESCipher {
 
@@ -267,12 +205,6 @@ final private class AESCipher {
     init(key: [UInt8], iv: [UInt8]) throws {
         self.key = key
         self.iv = iv
-    }
-
-    convenience init(key: [UInt8]) throws {
-        // default IV is all 0x00...
-        let defaultIV = [UInt8](repeating: 0, count: AESCipher.blockSize)
-        try self.init(key: key, iv: defaultIV)
     }
 
     /**
@@ -700,7 +632,7 @@ private struct PKCS7 {
 
 // MARK: - Utils
 
-fileprivate func xor(_ a: Array<UInt8>, _ b: Array<UInt8>) -> Array<UInt8> {
+private func xor(_ a: Array<UInt8>, _ b: Array<UInt8>) -> Array<UInt8> {
     var xored = Array<UInt8>(repeating: 0, count: min(a.count, b.count))
     for i in 0..<xored.count {
         xored[i] = a[i] ^ b[i]
@@ -708,26 +640,26 @@ fileprivate func xor(_ a: Array<UInt8>, _ b: Array<UInt8>) -> Array<UInt8> {
     return xored
 }
 
-fileprivate func rotateLeft(_ value: UInt8, by: UInt8) -> UInt8 {
+private func rotateLeft(_ value: UInt8, by: UInt8) -> UInt8 {
     return ((value << by) & 0xFF) | (value >> (8 - by))
 }
 
-fileprivate func rotateLeft(_ value: UInt32, by: UInt32) -> UInt32 {
+private func rotateLeft(_ value: UInt32, by: UInt32) -> UInt32 {
     return ((value << by) & 0xFFFFFFFF) | (value >> (32 - by))
 }
 
-fileprivate protocol BitshiftOperationsType {
+private protocol BitshiftOperationsType {
     static func << (lhs: Self, rhs: Self) -> Self
 }
 
-fileprivate protocol ByteConvertible {
+private protocol ByteConvertible {
     init(_ value: UInt8)
     init(truncatingBitPattern: UInt64)
 }
 
 #if swift(>=4.0)
 #else
-    extension UInt32 : BitshiftOperationsType, ByteConvertible { }
+    extension UInt32: BitshiftOperationsType, ByteConvertible { }
 #endif
 
 fileprivate extension UInt32 {
@@ -740,7 +672,7 @@ fileprivate extension UInt32 {
     }
 }
 
-fileprivate func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
+private func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
     var result = Array<UInt32>()
     result.reserveCapacity(16)
     for idx in stride(from: slice.startIndex, to: slice.endIndex, by: MemoryLayout<UInt32>.size) {
@@ -757,7 +689,7 @@ fileprivate func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
 
 /// Array of bytes, little-endian representation. Don't use if not necessary.
 /// I found this method slow
-fileprivate func arrayOfBytes<T>(value: T, length: Int? = nil) -> Array<UInt8> {
+private func arrayOfBytes<T>(value: T, length: Int? = nil) -> Array<UInt8> {
     let totalBytes = length ?? MemoryLayout<T>.size
 
     let valuePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
@@ -854,4 +786,3 @@ fileprivate extension Data {
         return Array(self)
     }
 }
-

@@ -85,7 +85,6 @@ open class BaseDestination: Hashable, Equatable {
 
     open var defaultHashValue: Int {return 0}
 
-
     // each destination instance must have an own serial queue to ensure serial output
     // GCD gives it a prioritization between User Initiated and Utility
     var queue: DispatchQueue? //dispatch_queue_t?
@@ -123,7 +122,7 @@ open class BaseDestination: Hashable, Equatable {
             queue.async(execute: block)
         }
     }
-    
+
     public func executeSynchronously<T>(block: @escaping () throws -> T) rethrows -> T {
         guard let queue = queue else {
             fatalError("Queue not set")
@@ -136,8 +135,7 @@ open class BaseDestination: Hashable, Equatable {
     ////////////////////////////////
 
     /// returns (padding length value, offset in string after padding info)
-    private func parsePadding(_ text: String) -> (Int, Int)
-    {
+    private func parsePadding(_ text: String) -> (Int, Int) {
         // look for digits followed by a alpha character
         var s: String!
         var sign: Int = 1
@@ -154,7 +152,7 @@ open class BaseDestination: Hashable, Equatable {
             return (0, 0)
         }
     }
-    
+
     private func paddedString(_ text: String, _ toLength: Int, truncating: Bool = false) -> String {
         if toLength > 0 {
             // Pad to the left of the string
@@ -172,7 +170,7 @@ open class BaseDestination: Hashable, Equatable {
             return text
         }
     }
-    
+
     /// returns the log message based on the format pattern
     func formatMessage(_ format: String, level: SwiftyBeaver.Level, msg: String, thread: String,
         file: String, function: String, line: Int, context: Any? = nil) -> String {
@@ -188,7 +186,7 @@ open class BaseDestination: Hashable, Equatable {
             let formatChar = phrase[formatCharIndex]
             let rangeAfterFormatChar = phrase.index(formatCharIndex, offsetBy: 1)..<phrase.endIndex
             let remainingPhrase = phrase[rangeAfterFormatChar]
-            
+
             switch formatChar {
             case "I":  // ignore
                 text += remainingPhrase
@@ -347,16 +345,16 @@ open class BaseDestination: Hashable, Equatable {
         let dateStr = formatter.string(from: Date())
         return dateStr
     }
-    
+
     /// returns a uptime string
     func uptime() -> String {
         let interval = Date().timeIntervalSince(startDate)
-        
+
         let hours = Int(interval) / 3600
         let minutes = Int(interval / 60) - Int(hours * 60)
         let seconds = Int(interval) - (Int(interval / 60) * 60)
         let milliseconds = Int(interval.truncatingRemainder(dividingBy: 1) * 1000)
-        
+
         return String(format: "%0.2d:%0.2d:%0.2d.%03d", arguments: [hours, minutes, seconds, milliseconds])
     }
 
@@ -437,132 +435,64 @@ open class BaseDestination: Hashable, Equatable {
         if filters.isEmpty {
             if level.rawValue >= minLevel.rawValue {
                 if debugPrint {
-                    print("filters is empty and level >= minLevel")
+                    print("filters are empty and level >= minLevel")
                 }
                 return true
             } else {
                 if debugPrint {
-                    print("filters is empty and level < minLevel")
+                    print("filters are empty and level < minLevel")
                 }
                 return false
             }
         }
 
-        let (matchedExclude, allExclude) = passedExcludedFilters(level, path: path,
-                                                                 function: function, message: message)
-        if allExclude > 0 && matchedExclude != allExclude {
+        let filterCheckResult = FilterValidator.validate(input: .init(filters: self.filters, level: level, path: path, function: function, message: message))
+
+        // Exclusion filters match if they do NOT meet the filter condition (see Filter.apply(_:) method)
+        switch filterCheckResult[.excluded] {
+        case .some(.someFiltersMatch):
+            // Exclusion filters are present and at least one of them matches the log entry
             if debugPrint {
-                print("filters is not empty and message was excluded")
+                print("filters are not empty and message was excluded")
             }
             return false
+        case .some(.allFiltersMatch), .some(.noFiltersMatchingType), .none: break
         }
-
-        let (matchedRequired, allRequired) = passedRequiredFilters(level, path: path,
-                                                                   function: function, message: message)
-        let (matchedNonRequired, allNonRequired) = passedNonRequiredFilters(level, path: path,
-                                                                    function: function, message: message)
 
         // If required filters exist, we should validate or invalidate the log if all of them pass or not
-        if allRequired > 0 {
-            return matchedRequired == allRequired
+        switch filterCheckResult[.required] {
+        case .some(.allFiltersMatch): return true
+        case .some(.someFiltersMatch): return false
+        case .some(.noFiltersMatchingType), .none: break
         }
 
-        // If a non-required filter matches, the log is validated
-		if allNonRequired > 0 {  // Non-required filters exist
+        let checkLogLevel: () -> Bool = {
+            // Check if the log message's level matches or exceeds the minLevel of the destination
+            return level.rawValue >= self.minLevel.rawValue
+        }
 
-			if matchedNonRequired > 0 { return true }  // At least one non-required filter matched
-			else { return false }  // No non-required filters matched
-		}
-
-        if level.rawValue < minLevel.rawValue {
-            if debugPrint {
-                print("filters is not empty and level < minLevel")
+        // Non-required filters should only be applied if the log entry matches the filter condition (e.g. path)
+        switch filterCheckResult[.nonRequired] {
+        case .some(.allFiltersMatch): return true
+        case .some(.noFiltersMatchingType), .none: return checkLogLevel()
+        case .some(.someFiltersMatch(let partialMatchData)):
+            if partialMatchData.fullMatchCount > 0 {
+                // The log entry matches at least one filter condition and the destination's log level
+                return true
+            } else if partialMatchData.conditionMatchCount > 0 {
+                // The log entry matches at least one filter condition, but does not match or exceed the destination's log level
+                return false
+            } else {
+                // There is no filter with a matching filter condition. Check the destination's log level
+                return checkLogLevel()
             }
-            return false
         }
-
-        return true
     }
 
     func getFiltersTargeting(_ target: Filter.TargetType, fromFilters: [FilterType]) -> [FilterType] {
         return fromFilters.filter { filter in
             return filter.getTarget() == target
         }
-    }
-
-    /// returns a tuple of matched and all filters
-    func passedRequiredFilters(_ level: SwiftyBeaver.Level, path: String,
-                               function: String, message: String?) -> (Int, Int) {
-        let requiredFilters = self.filters.filter { filter in
-            return filter.isRequired() && !filter.isExcluded()
-        }
-
-        let matchingFilters = applyFilters(requiredFilters, level: level, path: path,
-                                           function: function, message: message)
-        if debugPrint {
-            print("matched \(matchingFilters) of \(requiredFilters.count) required filters")
-        }
-
-        return (matchingFilters, requiredFilters.count)
-    }
-
-    /// returns a tuple of matched and all filters
-    func passedNonRequiredFilters(_ level: SwiftyBeaver.Level,
-                                  path: String, function: String, message: String?) -> (Int, Int) {
-        let nonRequiredFilters = self.filters.filter { filter in
-            return !filter.isRequired() && !filter.isExcluded()
-        }
-
-        let matchingFilters = applyFilters(nonRequiredFilters, level: level,
-                                           path: path, function: function, message: message)
-        if debugPrint {
-            print("matched \(matchingFilters) of \(nonRequiredFilters.count) non-required filters")
-        }
-        return (matchingFilters, nonRequiredFilters.count)
-    }
-
-    /// returns a tuple of matched and all exclude filters
-    func passedExcludedFilters(_ level: SwiftyBeaver.Level,
-                               path: String, function: String, message: String?) -> (Int, Int) {
-        let excludeFilters = self.filters.filter { filter in
-            return filter.isExcluded()
-        }
-
-        let matchingFilters = applyFilters(excludeFilters, level: level,
-                                           path: path, function: function, message: message)
-        if debugPrint {
-            print("matched \(matchingFilters) of \(excludeFilters.count) exclude filters")
-        }
-        return (matchingFilters, excludeFilters.count)
-    }
-
-    func applyFilters(_ targetFilters: [FilterType], level: SwiftyBeaver.Level,
-                      path: String, function: String, message: String?) -> Int {
-        return targetFilters.filter { filter in
-
-            let passes: Bool
-
-            if !filter.reachedMinLevel(level) {
-                return false
-            }
-
-            switch filter.getTarget() {
-            case .Path(_):
-                passes = filter.apply(path)
-
-            case .Function(_):
-                passes = filter.apply(function)
-
-            case .Message(_):
-                guard let message = message else {
-                    return false
-                }
-
-                passes = filter.apply(message)
-            }
-
-            return passes
-            }.count
     }
 
   /**

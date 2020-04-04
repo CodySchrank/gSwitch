@@ -1,9 +1,74 @@
 # Change Log
 
-All notable changes to this project will be documented in this file following the style described at [Keep a Changelog](http://keepachangelog.com) by [@olivierlacan](https://github.com/olivierlacan). 
+All notable changes to this project will be documented in this file following the style described at [Keep a Changelog](http://keepachangelog.com) by [@olivierlacan](https://github.com/olivierlacan).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ----
+<br/>
+
+## 1.9.0 (2020-03-30)
+
+##### Fixed
+- More cryptographically secure random text generator by [@skreutzberger](https://github.com/skreutzberger)
+
+##### Removed
+- Support for Swift 3 by [@skreutzberger](https://github.com/skreutzberger)
+
+<br/>
+
+## 1.8.4 (2019-12-06)
+
+##### Added
+- Enabled "Allow app extension API only" flag by [@FelixII](https://github.com/FelixII)
+- Support for older Swift version with Cocoapods by [@RomanPodymov](https://github.com/RomanPodymov)
+- Support for colors in FileDestination by [@FabioTacke](https://github.com/FabioTacke)
+- More human-readable thread names by [@robowen5mac](https://github.com/robowen5mac)
+
+<br/>
+
+## 1.8.3 (2019-10-23)
+
+##### Added
+- Support for older OS versions via SPM by [@OlexandrStepanov](https://github.com/OlexandrStepanov)
+
+##### Fixed
+- Support for latest server-side Swift by [@JRHeaton](https://github.com/JRHeaton)
+
+<br/>
+
+## 1.8.2 (2019-10-02)
+
+##### Fixed
+- Key value in `info.plist` by [@Sidetalker](https://github.com/Sidetalker)
+
+<br/>
+
+## 1.8.1 (2019-09-30)
+
+##### Fixed
+- Added missing key to `info.plist` by [@lgaches](https://github.com/lgaches)
+
+<br/>
+
+## 1.8.0 (2019-09-27)
+
+##### Added
+- Support for Xcode 11 and iOS 13 by [@lgaches](https://github.com/lgaches)
+
+<br/>
+
+## 1.7.1 (2019-08-22)
+
+##### Added
+- Improved file destination by [@CognitiveDisson](https://github.com/CognitiveDisson)
+- Improved README by [@skreutzberger](https://github.com/skreutzberger)
+- All build targets can use Swift 5 by [@DivineDominion](https://github.com/DivineDominion)
+
+
+##### Fixed
+- Issue in BaseDestination with non-required filters by [@FelixII ](https://github.com/FelixII)
+
+
 <br/>
 
 ## 1.7.0 (2019-03-26)

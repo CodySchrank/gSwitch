@@ -212,28 +212,28 @@ class SwiftyBeaverTests: XCTestCase {
 
         XCTAssertEqual(log.countDestinations(), 2)
     }
-    
+
     func testUptime() {
         let log = SwiftyBeaver.self
         log.verbose("that should lead to nowhere")
-        
+
         // add console
         let console = ConsoleDestination()
         console.format = "$U: $M"
         XCTAssertTrue(log.addDestination(console))
-        
+
         // add file
         let file = FileDestination()
         file.logFileURL = URL(string: "file:///tmp/testSwiftyBeaver.log")!
         file.format = "$U: $M"
         XCTAssertTrue(log.addDestination(file))
-        
+
         log.verbose("not so important")
         log.debug("something to debug")
         log.info("a nice information")
         log.warning("oh no, that won’t be good")
         log.error("ouch, an error did occur!")
-        
+
         XCTAssertEqual(log.countDestinations(), 2)
     }
 
@@ -331,6 +331,65 @@ class SwiftyBeaverTests: XCTestCase {
         XCTAssertEqual(SwiftyBeaver.stripParams(function: f), "aFunc()")
     }
 
+    func testGetCorrectThread() {
+        let log = SwiftyBeaver.self
+        let mock = MockDestination()
+        // set info level on default
+        mock.minLevel = .verbose
+        mock.asynchronously = false
+
+        log.addDestination(mock)
+
+        //main thread
+        log.verbose("Hi")
+        XCTAssertEqual(mock.didSendToThread, "")
+        log.debug("Hi")
+        XCTAssertEqual(mock.didSendToThread, "")
+        log.info("Hi")
+        XCTAssertEqual(mock.didSendToThread, "")
+        log.warning("Hi")
+        XCTAssertEqual(mock.didSendToThread, "")
+        log.error("Hi")
+        XCTAssertEqual(mock.didSendToThread, "")
+
+        var expectation = XCTestExpectation(description: "thread check")
+
+        DispatchQueue.global(qos: .background).async {
+            log.verbose("Hi")
+            XCTAssertEqual(mock.didSendToThread, "com.apple.root.background-qos")
+            log.debug("Hi")
+            XCTAssertEqual(mock.didSendToThread, "com.apple.root.background-qos")
+            log.info("Hi")
+            XCTAssertEqual(mock.didSendToThread, "com.apple.root.background-qos")
+            log.warning("Hi")
+            XCTAssertEqual(mock.didSendToThread, "com.apple.root.background-qos")
+            log.error("Hi")
+            XCTAssertEqual(mock.didSendToThread, "com.apple.root.background-qos")
+            expectation.fulfill()
+        }
+
+        self.wait(for: [expectation], timeout: 2)
+        
+        expectation = XCTestExpectation(description: "thread check custom")
+
+        DispatchQueue.init(label: "MyTestLabel").async {
+            log.verbose("Hi")
+            XCTAssertEqual(mock.didSendToThread, "MyTestLabel")
+            log.debug("Hi")
+            XCTAssertEqual(mock.didSendToThread, "MyTestLabel")
+            log.info("Hi")
+            XCTAssertEqual(mock.didSendToThread, "MyTestLabel")
+            log.warning("Hi")
+            XCTAssertEqual(mock.didSendToThread, "MyTestLabel")
+            log.error("Hi")
+            XCTAssertEqual(mock.didSendToThread, "MyTestLabel")
+            expectation.fulfill()
+        }
+
+        self.wait(for: [expectation], timeout: 2)
+
+    }
+
     static let allTests = [
         ("testAddDestination", testAddDestination),
         ("testRemoveDestination", testRemoveDestination),
@@ -343,7 +402,8 @@ class SwiftyBeaverTests: XCTestCase {
         ("testLongRunningTaskIsNotExecutedWhenLoggingUnderMinLevel",
             testLongRunningTaskIsNotExecutedWhenLoggingUnderMinLevel),
         ("testVersionAndBuild", testVersionAndBuild),
-        ("testStripParams", testStripParams)
+        ("testStripParams", testStripParams),
+        ("testGetCorrectThread", testGetCorrectThread)
     ]
 }
 
@@ -384,3 +444,4 @@ private class MockDestination: BaseDestination {
         return true
     }
 }
+

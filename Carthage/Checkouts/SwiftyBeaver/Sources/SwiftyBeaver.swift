@@ -12,9 +12,9 @@ import Foundation
 open class SwiftyBeaver {
 
     /// version string of framework
-    public static let version = "1.7.0"  // UPDATE ON RELEASE!
+    public static let version = "1.9.0"  // UPDATE ON RELEASE!
     /// build number of framework
-    public static let build = 1700 // version 1.6.2 -> 1620, UPDATE ON RELEASE!
+    public static let build = 1900 // version 1.6.2 -> 1620, UPDATE ON RELEASE!
 
     public enum Level: Int {
         case verbose = 0
@@ -71,12 +71,8 @@ open class SwiftyBeaver {
             if Thread.isMainThread {
                 return ""
             } else {
-                let threadName = Thread.current.name
-                if let threadName = threadName, !threadName.isEmpty {
-                    return threadName
-                } else {
-                    return String(format: "%p", Thread.current)
-                }
+                let name = __dispatch_queue_get_label(nil)
+                return String(cString: name, encoding: .utf8) ?? Thread.current.description
             }
         #endif
     }
