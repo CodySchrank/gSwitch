@@ -4,11 +4,13 @@ gSwitch lets you set which graphics card your macbook pro can use, mainly to pre
 
 ## Install
 
+### Install With Zip
+
 You can [download the most recent release](https://codyschrank.github.io/gSwitch/) (click download .zip).
 
 Then after unzipping just move the gSwitch.app file to your applications folder.
 
-**OR**
+### Install With Brew
 
 Use brew ([homebrew](https://brew.sh/) required)
 
@@ -16,7 +18,7 @@ Use brew ([homebrew](https://brew.sh/) required)
 brew cask install gswitch
 ```
 
-**OR**
+### Install From Source
 
 You can build from the source.
 
