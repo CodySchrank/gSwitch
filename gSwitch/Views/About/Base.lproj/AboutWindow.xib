@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +17,38 @@
         <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="341" height="156"/>
+            <rect key="contentRect" x="196" y="240" width="341" height="170"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="341" height="156"/>
+                <rect key="frame" x="0.0" y="0.0" width="341" height="170"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i1L-m9-W4j">
-                        <rect key="frame" x="91" y="41" width="159" height="17"/>
+                        <rect key="frame" x="91" y="57" width="159" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Created by Cody Schrank" id="G3V-eP-9mf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAL-uh-FJz">
+                        <rect key="frame" x="152" y="112" width="38" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="38" id="Fkw-J6-JiW"/>
+                            <constraint firstAttribute="width" constant="38" id="KJo-w6-K4h"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="appicon" id="yLp-E9-I7m"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-Uj-I2d">
+                        <rect key="frame" x="127" y="81" width="87" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="gSwitch 0.0.0" id="EHw-NS-fD9">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7t-Z0-nGa" customClass="HyperlinkTextField" customModule="gSwitch" customModuleProvider="target">
-                        <rect key="frame" x="116" y="16" width="110" height="17"/>
+                        <rect key="frame" x="83" y="33" width="110" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Report a problem" id="Tgz-jQ-mJJ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -41,39 +58,48 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/CodySchrank/gSwitch/issues"/>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAL-uh-FJz">
-                        <rect key="frame" x="152" y="98" width="38" height="38"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="38" id="MMD-PX-nZS"/>
-                            <constraint firstAttribute="width" constant="38" id="ddL-ko-Hcp"/>
-                        </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="appicon" id="yLp-E9-I7m"/>
-                    </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-Uj-I2d">
-                        <rect key="frame" x="127" y="66" width="87" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="gSwitch 0.0.0" id="EHw-NS-fD9">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XCs-r7-gp8" customClass="HyperlinkTextField" customModule="gSwitch" customModuleProvider="target">
+                        <rect key="frame" x="210" y="33" width="48" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Donate" id="Der-db-cFl">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="href">
+                                <string key="value">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=8BYQDVMMGR8EY&amp;item_name=gSwitch+Donations&amp;currency_code=USD&amp;source=url</string>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-5z-9EF">
+                        <rect key="frame" x="197" y="33" width="9" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="|" id="V2I-d6-QPl">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="top" secondItem="i1L-m9-W4j" secondAttribute="bottom" constant="8" id="3vp-JG-ZwW"/>
-                    <constraint firstItem="IAL-uh-FJz" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="69S-DR-jhu"/>
-                    <constraint firstItem="i1L-m9-W4j" firstAttribute="top" secondItem="QOd-Uj-I2d" secondAttribute="bottom" constant="8" id="BHt-9S-pdA"/>
-                    <constraint firstItem="i1L-m9-W4j" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Ix5-j3-AsX"/>
-                    <constraint firstAttribute="bottom" secondItem="h7t-Z0-nGa" secondAttribute="bottom" constant="16" id="Qiv-Rs-zh4"/>
-                    <constraint firstItem="IAL-uh-FJz" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Vdd-yH-8AC"/>
-                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="aIy-yO-pL1"/>
-                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="top" secondItem="IAL-uh-FJz" secondAttribute="bottom" constant="15" id="icL-pT-YUM"/>
-                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="kse-mt-W6r"/>
+                    <constraint firstItem="XCs-r7-gp8" firstAttribute="leading" secondItem="xjf-5z-9EF" secondAttribute="trailing" constant="8" symbolic="YES" id="12J-kt-l05"/>
+                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="85" id="AAy-dL-qbr"/>
+                    <constraint firstItem="xjf-5z-9EF" firstAttribute="leading" secondItem="h7t-Z0-nGa" secondAttribute="trailing" constant="8" symbolic="YES" id="JaZ-Bs-ybn"/>
+                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="top" secondItem="IAL-uh-FJz" secondAttribute="bottom" constant="15" id="T2q-0L-ihI"/>
+                    <constraint firstItem="QOd-Uj-I2d" firstAttribute="centerX" secondItem="i1L-m9-W4j" secondAttribute="centerX" id="Y7J-nT-a4q"/>
+                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="top" secondItem="i1L-m9-W4j" secondAttribute="bottom" constant="8" symbolic="YES" id="aHu-mS-tmg"/>
+                    <constraint firstItem="h7t-Z0-nGa" firstAttribute="baseline" secondItem="xjf-5z-9EF" secondAttribute="baseline" id="cJx-Rx-akF"/>
+                    <constraint firstItem="i1L-m9-W4j" firstAttribute="top" secondItem="QOd-Uj-I2d" secondAttribute="bottom" constant="8" symbolic="YES" id="eKh-TQ-kdZ"/>
+                    <constraint firstItem="xjf-5z-9EF" firstAttribute="baseline" secondItem="XCs-r7-gp8" secondAttribute="baseline" id="eYj-pb-Wxe"/>
+                    <constraint firstItem="IAL-uh-FJz" firstAttribute="centerX" secondItem="QOd-Uj-I2d" secondAttribute="centerX" id="kW3-zZ-flm"/>
+                    <constraint firstItem="IAL-uh-FJz" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="qF1-QQ-qgl"/>
+                    <constraint firstAttribute="trailing" secondItem="XCs-r7-gp8" secondAttribute="trailing" constant="85" id="qRy-K5-WbM"/>
+                    <constraint firstItem="IAL-uh-FJz" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="zn6-Qc-lYY"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="69.5" y="105"/>
+            <point key="canvasLocation" x="69.5" y="113"/>
         </window>
     </objects>
     <resources>

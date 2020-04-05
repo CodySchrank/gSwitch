@@ -76,10 +76,7 @@ class GPUListener {
             
             if Int(flags.rawValue) & Constants.kCGDisplayRemoveFlag > 0 {
                 /**
-                    usually gets called when switched. If I could get a flag that only triggered
-                    when the display was disconnected I could save the last desired state that
-                    the user selected and put them back on it.
-                    (because dynamic is forced when a display is connected)
+                    usually gets called when switched.
                  */
             }
         }

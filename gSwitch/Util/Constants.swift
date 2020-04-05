@@ -113,6 +113,7 @@ struct Constants {
     static let LAUNCH_AT_LOGIN = "appLoginStart"
     static let USE_LAST_STATE = "useLastState"
     static let SAVED_GPU_STATE = "savedGPUState"
+    static let IGNORE_IGPU_CHANGE_WARNING = "ignoreIGPUChangeWarning"
     static let STATUS_MENU_DEPENDENCY_APPEND_INDEX = 5
     static let STATUS_MENU_DEPENDENCY_TAG = 10
     static let HELP_URL = "https://codyschrank.github.io/gSwitch/#faq"

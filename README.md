@@ -78,3 +78,5 @@ At this time it seems like gSwitch will not work on macbooks older than 2011. It
 ## Notes
 
 Requires macOS >= 10.12
+
+gSwitch provided “as is” without warranty of any kind, either expressed or implied and such software is to be used at your own risk.

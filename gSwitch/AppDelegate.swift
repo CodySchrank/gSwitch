@@ -47,10 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         /** Default prefs so shit works */
-        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : false])
-        UserDefaults.standard.register(defaults: [Constants.LAUNCH_AT_LOGIN : true])
-        UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
-        UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
+        setupDefaultPreferences()
         
         /** Startup AutoLauncher */
         LaunchAtLogin.isEnabled = (UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN) == 1)
@@ -184,22 +181,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             Check for hungry processes because it could cause a crash
          */
         let hungryProcesses = processer.getHungryProcesses()
-        if(hungryProcesses.count > 0) {
+        if(hungryProcesses.count > 0 && UserDefaults.standard.integer(forKey: Constants.IGNORE_IGPU_CHANGE_WARNING) == 0) {
             log.warning("SHOW: Can't switch to integrated only, because of \(String(describing: hungryProcesses))")
             
             let alert = NSAlert.init()
             
             alert.messageText = "Warning!  Are you sure you want to change to integrated only?"
             alert.informativeText = "You currently have GPU dependencies. Changing the mode now could cause these processes to crash.  If there is currently an external display plugged in you cannot change to integrated only."
-
-            alert.addButton(withTitle: "Do it anyway").setAccessibilityFocused(true)
+            
+            alert.addButton(withTitle: "Override Once").setAccessibilityFocused(true)
+            alert.addButton(withTitle: "Always Override")
             alert.addButton(withTitle: "Never mind")
             
             let modalResult = alert.runModal()
             
             switch modalResult {
             case .alertFirstButtonReturn:
-                log.info("Override clicked!")
+                log.info("Override once clicked!")
+                unsafeIntegratedOnly();
+            case .alertSecondButtonReturn:
+                log.info("Override always clicked!")
+                UserDefaults.standard.set(1, forKey: Constants.IGNORE_IGPU_CHANGE_WARNING)
                 unsafeIntegratedOnly();
             default:
                 break;
@@ -225,6 +227,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         unsafeDynamicSwitching()
+    }
+
+    public func setupDefaultPreferences() {
+        UserDefaults.standard.register(defaults: [Constants.LAUNCH_AT_LOGIN : true])
+        UserDefaults.standard.register(defaults: [Constants.USE_LAST_STATE: true])
+        UserDefaults.standard.register(defaults: [Constants.IGNORE_IGPU_CHANGE_WARNING: false])
+        UserDefaults.standard.register(defaults: [Constants.GPU_CHANGE_NOTIFICATIONS : false])
+        UserDefaults.standard.register(defaults: [Constants.SAVED_GPU_STATE: SwitcherMode.SetDynamic.rawValue])
     }
     
     public func checkForUpdates() {
@@ -261,6 +271,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log.verbose("GPU Change notifications set as \(UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS) == 1)")
         
         log.verbose("Use Last State set as \(UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE) == 1)")
+        
+        log.verbose("Ignore IGPU Warning set as \(UserDefaults.standard.integer(forKey: Constants.IGNORE_IGPU_CHANGE_WARNING) == 1)")
         
         log.verbose("Saved GPU State set as \(UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE)) (\(SwitcherMode(rawValue: UserDefaults.standard.integer(forKey: Constants.SAVED_GPU_STATE))!))")
     }

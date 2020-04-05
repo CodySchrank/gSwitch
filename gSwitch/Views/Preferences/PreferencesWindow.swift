@@ -18,22 +18,20 @@ class PreferencesWindow: BossyWindow {
     
     @IBOutlet weak var automaticallyUpdate: NSButton!
     
+    @IBOutlet weak var ignoreIGPUChangeWarning: NSButton!
+    
     private var advancedWindow: AdvancedWindow!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(_updatePreferencesState(notification:)), name: .checkForHungryProcesses, object: nil)
+        
         advancedWindow = AdvancedWindow(windowNibName: "AdvancedWindow")
         
         log.info("Preferences Opened")
         
-        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN))
-        
-        automaticallyUpdate.state = NSControl.StateValue(rawValue: (appDelegate.updater?.automaticallyChecksForUpdates)! ? 1 : 0)
-        
-        useLastState.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))
-        
-        toggleGPUChangeNotifications.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))
+        updatePreferencesList();
     }
     
     @IBAction func gpuChangeNotificationsPressed(_ sender: NSButton) {
@@ -71,6 +69,13 @@ class PreferencesWindow: BossyWindow {
         UserDefaults.standard.set(status, forKey: Constants.USE_LAST_STATE)
     }
     
+    @IBAction func ignoreIGPUChangeWarningClicked(_ sender: NSButton) {
+        let status = sender.state.rawValue
+        
+        log.info("Successfully set IGNORE_IGPU_CHANGE_WARNING item to be \(status == 1)")
+        UserDefaults.standard.set(status, forKey: Constants.IGNORE_IGPU_CHANGE_WARNING)
+    }
+    
     @IBAction func checkForUpdatesClicked(_ sender: NSButton) {
         appDelegate.checkForUpdates()
         log.info("Checking for updates..")
@@ -81,5 +86,21 @@ class PreferencesWindow: BossyWindow {
         advancedWindow.showWindow(nil)
         advancedWindow.pushToFront()
         self.close()
+    }
+    
+    public func updatePreferencesList() {
+        toggleOpenAppLogin.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.LAUNCH_AT_LOGIN))
+        
+        automaticallyUpdate.state = NSControl.StateValue(rawValue: (appDelegate.updater?.automaticallyChecksForUpdates)! ? 1 : 0)
+        
+        useLastState.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.USE_LAST_STATE))
+        
+        toggleGPUChangeNotifications.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.GPU_CHANGE_NOTIFICATIONS))
+        
+        ignoreIGPUChangeWarning.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: Constants.IGNORE_IGPU_CHANGE_WARNING))
+    }
+    
+    @objc private func _updatePreferencesState(notification: NSNotification) {
+        self.updatePreferencesList();
     }
 }
