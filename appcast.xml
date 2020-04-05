@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.9.5 Fixed display detection for better mode switching</title>
+        <title>1.9.6 Added preference to override igpu warning</title>
         <description>
-          gSwitch now remembers the last used mode when a display is connected and will return to that mode when the display is disconnected
+          Added #44.  This allows the user to always change to force integrated when they have gpu dependencies without a warning message
         </description>
-        <pubDate>2019-09-02.13:37:06</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.5/gSwitch.zip" sparkle:version="1.9.5" length="11439445" type="application/octet-stream" sparkle:dsaSignature="MEYCIQC28OckZjpUHo6h9p9DmBA6gjpXWOfFeEpJ8aK6NMj5uAIhAJHCrt03Ai3s
-raJpIVpPX/EF8eTMIm4RPIXyh14dGdhI" />
+        <pubDate>2020-04-05.16:11:45</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.6/gSwitch.zip" sparkle:version="1.9.6" length="11764008" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDGRa9jmgUXtLTSIm6Gy42uSq22YdRDJug7b72Av2howgIgD/vcG3bfwRfW
+Znsyg0ZdKht7dbOhXvQzMsO2lnQ53uM=" />
       </item>
   </channel>
 </rss>
