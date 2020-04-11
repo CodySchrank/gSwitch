@@ -10,9 +10,9 @@ gSwitch is and always will be free.  However, if you want to thank me I will gla
 
 ### With Zip
 
-You can [download the most recent release](https://codyschrank.github.io/gSwitch/) (click download .zip).
+[Download the most recent release](https://codyschrank.github.io/gSwitch/) (click download .zip).
 
-Then after unzipping just move the gSwitch.app file to your applications folder.
+Then after unzipping move the gSwitch.app file to your applications folder.
 
 ### With Brew
 
@@ -21,10 +21,6 @@ brew cask install gswitch
 ```
 
 ### From Source
-
-You can build from the source.
-
-You must have Carthage installed ([homebrew](https://brew.sh/) required)
 
 ```bash
 brew update
@@ -37,7 +33,7 @@ And then in the project folder bootstrap the frameworks:
 carthage bootstrap
 ```
 
-and then build in xcode
+And then build in xcode
 
 ## Usage
 
