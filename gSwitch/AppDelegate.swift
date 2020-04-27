@@ -6,7 +6,7 @@
 //  Copyright © 2018 CodySchrank. All rights reserved.
 //
 
-/** gSwitch 1.9.6 */
+/** gSwitch 1.9.7 */
 
 import Cocoa
 import ServiceManagement
