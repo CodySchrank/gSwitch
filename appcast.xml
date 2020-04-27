@@ -9,9 +9,9 @@
         <description>
           Fixed bug caused by swifty beaver that would crash gswitch if the user had an old version of xcode installed.  Updated french and german translations.  Updated Russian translations thanks to @kikudjira.  Added spanish translations thanks to @rauldzmartin
         </description>
-        <pubDate>2020-04-26.20:09:02</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.7/gSwitch.zip" sparkle:version="1.9.7" length="11772008" type="application/octet-stream" sparkle:dsaSignature="MEQCICCI5Djr8U+RAYNeSRGUk3lz7hbI5unF92kNkvnmxB1+AiAlhvsNuOj67/IM
-IWYBZ5jIC+Y02+WYpIPMQzt2yOb7tw==" />
+        <pubDate>2020-04-26.20:17:49</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.7/gSwitch.zip" sparkle:version="1.9.7" length="11772025" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDGX0Dpbl7C/1NN17075Lkj+Pcd8SPg6iY4/WLXp+S5ZQIgECaiaANxBmNq
+Q9lxxrfxeWN/x8/YYbhiiEGxTN+R9ww=" />
       </item>
   </channel>
 </rss>
