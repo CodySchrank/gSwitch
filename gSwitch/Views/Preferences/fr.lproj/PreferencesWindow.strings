@@ -21,3 +21,6 @@
 
 /* Class = "NSButtonCell"; title = "Show GPU Change Notifications"; ObjectID = "gou-CF-jiG"; */
 "gou-CF-jiG.title" = "Afficher les notifications ";
+
+/* Class = "NSButtonCell"; title = "Do Not Show Warning When Forcing to iGPU"; ObjectID = "u4f-ab-Mhx"; */
+"u4f-ab-Mhx.title" = "Ne pas afficher d'avertissement lors du forçage de iGPU";

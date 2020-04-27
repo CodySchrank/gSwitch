@@ -156,9 +156,12 @@
 		AAC7195A20E2D05A009862FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutWindow.strings; sourceTree = "<group>"; };
 		AAC7195C20E2D05C009862FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AboutWindow.strings; sourceTree = "<group>"; };
 		AAC7195E20E2D05D009862FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AboutWindow.strings; sourceTree = "<group>"; };
-		C346696222BFFF9500BE9787 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		C346696322BFFF9500BE9787 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AboutWindow.strings; sourceTree = "<group>"; };
-		C346696422BFFF9500BE9787 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
+		C3F57A3824566D3400B9C9AF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		C3F57A3924566D3400B9C9AF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		C3F57A3A24566D3400B9C9AF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
+		C3F57A3B24566D4000B9C9AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		C3F57A3C24566D4000B9C9AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AboutWindow.strings; sourceTree = "<group>"; };
+		C3F57A3D24566D4100B9C9AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PreferencesWindow.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +445,7 @@
 				Base,
 				de,
 				fr,
+				es,
 				ru,
 			);
 			mainGroup = 82233E9420844AC9006C57E7;
@@ -573,7 +577,8 @@
 				AA08261420E29C61009862FB /* en */,
 				AA08261520E2A52E009862FB /* de */,
 				AA08261720E2A536009862FB /* fr */,
-				C346696222BFFF9500BE9787 /* ru */,
+				C3F57A3824566D3400B9C9AF /* es */,
+				C3F57A3B24566D4000B9C9AF /* ru */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -585,7 +590,8 @@
 				AA20D30C20EC2D6E009862FB /* en */,
 				AA20D30E20EC2D71009862FB /* de */,
 				AA20D31020EC2D74009862FB /* fr */,
-				C346696422BFFF9500BE9787 /* ru */,
+				C3F57A3A24566D3400B9C9AF /* es */,
+				C3F57A3D24566D4100B9C9AF /* ru */,
 			);
 			name = PreferencesWindow.xib;
 			sourceTree = "<group>";
@@ -597,7 +603,8 @@
 				AAC7195A20E2D05A009862FB /* en */,
 				AAC7195C20E2D05C009862FB /* de */,
 				AAC7195E20E2D05D009862FB /* fr */,
-				C346696322BFFF9500BE9787 /* ru */,
+				C3F57A3924566D3400B9C9AF /* es */,
+				C3F57A3C24566D4000B9C9AF /* ru */,
 			);
 			name = AboutWindow.xib;
 			sourceTree = "<group>";
@@ -731,7 +738,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.9.6;
+				CURRENT_PROJECT_VERSION = 1.9.7;
 				DEVELOPMENT_TEAM = Z26D67C784;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -745,7 +752,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.6;
+				MARKETING_VERSION = 1.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";
@@ -763,7 +770,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.9.6;
+				CURRENT_PROJECT_VERSION = 1.9.7;
 				DEVELOPMENT_TEAM = Z26D67C784;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -777,7 +784,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.6;
+				MARKETING_VERSION = 1.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodySchrank.gSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gSwitch/gSwitch-Bridging-Header.h";

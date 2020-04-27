@@ -1,24 +1,24 @@
 
 /* Class = "NSButtonCell"; title = "Open Advanced Pane"; ObjectID = "0Kj-h1-2n7"; */
-"0Kj-h1-2n7.title" = "Открыть расширенные настройки";
+"0Kj-h1-2n7.title" = "Abrir Panel Avanzado";
 
 /* Class = "NSButtonCell"; title = "Automatically Update"; ObjectID = "DeE-7M-miq"; */
-"DeE-7M-miq.title" = "Обновлять автоматически";
+"DeE-7M-miq.title" = "Actualizar Automáticamente";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
-"F0z-JX-Cv5.title" = "Настройки";
+"F0z-JX-Cv5.title" = "Preferencias";
 
 /* Class = "NSButtonCell"; title = "Start At Login"; ObjectID = "MkE-JC-o7C"; */
-"MkE-JC-o7C.title" = "Запуск при входе в систему";
+"MkE-JC-o7C.title" = "Abrir al Iniciar Sesión";
 
 /* Class = "NSButtonCell"; title = "Check For Updates"; ObjectID = "RkS-5e-LJU"; */
-"RkS-5e-LJU.title" = "Проверить наличие обновлений";
+"RkS-5e-LJU.title" = "Buscar Actualizaciones";
 
 /* Class = "NSButtonCell"; title = "Remember Last GPU Mode"; ObjectID = "bFW-cw-Q0d"; */
-"bFW-cw-Q0d.title" = "Запомнить последний режим GPU";
+"bFW-cw-Q0d.title" = "Recordar Último Modo GPU";
 
 /* Class = "NSButtonCell"; title = "Show GPU Change Notifications"; ObjectID = "gou-CF-jiG"; */
-"gou-CF-jiG.title" = "Не показывать предупреждение при принудительном переключении на интегрированную GPU";
+"gou-CF-jiG.title" = "Notificar Cambios de GPU";
 
 /* Class = "NSButtonCell"; title = "Do Not Show Warning When Forcing to iGPU"; ObjectID = "u4f-ab-Mhx"; */
-"u4f-ab-Mhx.title" = "Do Not Show Warning When Forcing to iGPU";
+"u4f-ab-Mhx.title" = "No Mostrar Advertencia al Forzar iGPU";
