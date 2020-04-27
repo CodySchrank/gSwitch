@@ -5,13 +5,13 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
       <item>
-        <title>1.9.6 Added preference to override igpu warning</title>
+        <title>1.9.7 Fixed Bugs.  Added Spanish translation.  Updated German, French, and Russian</title>
         <description>
-          Added #44.  This allows the user to always change to force integrated when they have gpu dependencies without a warning message
+          Fixed bug caused by swifty beaver that would crash gswitch if the user had an old version of xcode installed.  Updated french and german translations.  Updated Russian translations thanks to @kikudjira.  Added spanish translations thanks to @rauldzmartin
         </description>
-        <pubDate>2020-04-05.16:11:45</pubDate>
-        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.6/gSwitch.zip" sparkle:version="1.9.6" length="11764008" type="application/octet-stream" sparkle:dsaSignature="MEUCIQDGRa9jmgUXtLTSIm6Gy42uSq22YdRDJug7b72Av2howgIgD/vcG3bfwRfW
-Znsyg0ZdKht7dbOhXvQzMsO2lnQ53uM=" />
+        <pubDate>2020-04-26.19:05:39</pubDate>
+        <enclosure url="https://github.com/CodySchrank/gSwitch/releases/download/1.9.7/gSwitch.zip" sparkle:version="1.9.7" length="11772014" type="application/octet-stream" sparkle:dsaSignature="MEUCIAHPsrHN2U2BtE/E4WmA4+esLuRGGbfhqwc0Ey+cSwajAiEAjHzIaoPzUgLx
+xxZuUUVCp2yKSrrIf+mijSvMED8IYFI=" />
       </item>
   </channel>
 </rss>
