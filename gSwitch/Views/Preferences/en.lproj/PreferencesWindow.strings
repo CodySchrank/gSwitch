@@ -2,20 +2,20 @@
 /* Class = "NSButtonCell"; title = "Open Advanced Pane"; ObjectID = "0Kj-h1-2n7"; */
 "0Kj-h1-2n7.title" = "Open Advanced Pane";
 
-/* Class = "NSButtonCell"; title = "Automatically Update"; ObjectID = "DeE-7M-miq"; */
-"DeE-7M-miq.title" = "Automatically Update";
+/* Class = "NSButtonCell"; title = "Automatically update"; ObjectID = "DeE-7M-miq"; */
+"DeE-7M-miq.title" = "Automatically update";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
 "F0z-JX-Cv5.title" = "Preferences";
 
-/* Class = "NSButtonCell"; title = "Start At Login"; ObjectID = "MkE-JC-o7C"; */
-"MkE-JC-o7C.title" = "Start At Login";
+/* Class = "NSButtonCell"; title = "Start at login"; ObjectID = "MkE-JC-o7C"; */
+"MkE-JC-o7C.title" = "Start at Login";
 
-/* Class = "NSButtonCell"; title = "Check For Updates"; ObjectID = "RkS-5e-LJU"; */
-"RkS-5e-LJU.title" = "Check For Updates";
+/* Class = "NSButtonCell"; title = "Check for updates"; ObjectID = "RkS-5e-LJU"; */
+"RkS-5e-LJU.title" = "Check for updates";
 
-/* Class = "NSButtonCell"; title = "Remember Last GPU Mode"; ObjectID = "bFW-cw-Q0d"; */
-"bFW-cw-Q0d.title" = "Remember Last GPU Mode";
+/* Class = "NSButtonCell"; title = "Remember last GPU mode"; ObjectID = "bFW-cw-Q0d"; */
+"bFW-cw-Q0d.title" = "Remember last GPU mode";
 
-/* Class = "NSButtonCell"; title = "Show GPU Change Notifications"; ObjectID = "gou-CF-jiG"; */
-"gou-CF-jiG.title" = "Show GPU Change Notifications";
+/* Class = "NSButtonCell"; title = "Show GPU change notifications"; ObjectID = "gou-CF-jiG"; */
+"gou-CF-jiG.title" = "Show GPU change notifications";
