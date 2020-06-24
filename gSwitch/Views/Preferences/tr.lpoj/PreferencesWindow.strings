@@ -1,1 +1,20 @@
+/* Class = "NSButtonCell"; title = "Open Advanced Pane"; ObjectID = "0Kj-h1-2n7"; */
+"0Kj-h1-2n7.title" = "Gelişmiş Ayarları Aç";
 
+/* Class = "NSButtonCell"; title = "Automatically Update"; ObjectID = "DeE-7M-miq"; */
+"DeE-7M-miq.title" = "Otomatik Güncelle";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Ayarlar";
+
+/* Class = "NSButtonCell"; title = "Start At Login"; ObjectID = "MkE-JC-o7C"; */
+"MkE-JC-o7C.title" = "Açılışta Başlat";
+
+/* Class = "NSButtonCell"; title = "Check For Updates"; ObjectID = "RkS-5e-LJU"; */
+"RkS-5e-LJU.title" = "Güncellemeleri Kontrol Et";
+
+/* Class = "NSButtonCell"; title = "Remember Last GPU Mode"; ObjectID = "bFW-cw-Q0d"; */
+"bFW-cw-Q0d.title" = "Son GPU Modunu Hatırla";
+
+/* Class = "NSButtonCell"; title = "Show GPU Change Notifications"; ObjectID = "gou-CF-jiG"; */
+"gou-CF-jiG.title" = "GPU Değişim Bildirimlerini Göster";
