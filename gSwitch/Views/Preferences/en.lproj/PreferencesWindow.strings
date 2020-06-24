@@ -8,7 +8,7 @@
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
 "F0z-JX-Cv5.title" = "Preferences";
 
-/* Class = "NSButtonCell"; title = "Start at login"; ObjectID = "MkE-JC-o7C"; */
+/* Class = "NSButtonCell"; title = "Start at Login"; ObjectID = "MkE-JC-o7C"; */
 "MkE-JC-o7C.title" = "Start at Login";
 
 /* Class = "NSButtonCell"; title = "Check for updates"; ObjectID = "RkS-5e-LJU"; */
