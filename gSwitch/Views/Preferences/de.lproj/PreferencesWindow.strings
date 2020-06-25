@@ -23,4 +23,4 @@
 "gou-CF-jiG.title" = "Mitteilungen über GPU-Wechsel zeigen";
 
 /* Class = "NSButtonCell"; title = "Do Not Show Warning When Forcing to iGPU"; ObjectID = "u4f-ab-Mhx"; */
-"u4f-ab-Mhx.title" = "Beim Erzwingen keine Warnung anzeigen iGPU";
+"u4f-ab-Mhx.title" = "Beim Erzwingen der iGPU keine Warnung anzeigen";
