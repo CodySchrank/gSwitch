@@ -1,0 +1,14 @@
+/* Class = "NSTextFieldCell"; title = "Donate"; ObjectID = "Der-db-cFl"; */
+"Der-db-cFl.title" = "Bağış yap";
+
+/* Class = "NSTextFieldCell"; placeholderString = "gSwitch 0.0.0"; ObjectID = "EHw-NS-fD9"; */
+"EHw-NS-fD9.placeholderString" = "gSwitch 0.0.0";
+
+/* Class = "NSWindow"; title = "About"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Hakkında";
+
+/* Class = "NSTextFieldCell"; title = "Created by Cody Schrank"; ObjectID = "G3V-eP-9mf"; */
+"G3V-eP-9mf.title" = "Cody Schrank tarafından oluşturuldu";
+
+/* Class = "NSTextFieldCell"; title = "Report a problem"; ObjectID = "Tgz-jQ-mJJ"; */
+"Tgz-jQ-mJJ.title" = "Bir sorun bildir";
