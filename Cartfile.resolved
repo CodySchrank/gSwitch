@@ -1,3 +1,4 @@
-github "SwiftyBeaver/SwiftyBeaver" "1.9.1"
-github "sindresorhus/LaunchAtLogin" "v3.0.0"
-github "sparkle-project/Sparkle" "d2ac8bc61eff51461a6bc43ce146e35d53d163c9"
+github "ReactiveX/RxSwift" "5.1.1"
+github "SwiftyBeaver/SwiftyBeaver" "1.9.2"
+github "sindresorhus/LaunchAtLogin" "v4.0.0"
+github "sparkle-project/Sparkle" "6b2af4865a5cdde8519f204dcc3d5c63e128d762"
