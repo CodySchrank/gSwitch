@@ -74,3 +74,4 @@ At this time it seems like gSwitch will not work on macbooks older than 2011. It
 ## Notes
 
 Requires macOS >= 10.12
+
