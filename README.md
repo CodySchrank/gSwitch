@@ -1,3 +1,11 @@
+# Thank you for using gSwitch
+
+gSwitch is now archived.
+
+Apple's transition to Apple Silicon means MacBook Pros no longer ship with discrete GPUs.  The problem gSwitch was built to solve simply doesn't exist anymore. The last MacBook Pro with a discrete GPU was released in 2019, and as those machines age out, there's no reason to continue this project.  And to be honest, I haven't looked at it in 5 years :)
+
+Thanks to everyone who used gSwitch, contributed code, translations, and bug reports over the years. The repo will remain archived for anyone still running an older machine, but there will be no further development or support.
+
 # gSwitch
 
 gSwitch lets you set which graphics card your macbook pro can use, mainly to prevent it from using the discrete graphics card when it is simply unnecessary.  Why would you want to do that you ask?  Well the discrete graphics card uses significantly more power than the integrated one, which can ruin your battery life.  There are also problems on some macbooks with glitchy and buggy graphics card drivers that apple still hasn't fixed!
